@@ -286,6 +286,71 @@
             font-weight: 600;
         }
 
+        /* Route Steps (step-by-step transport) */
+        .route-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .route-step {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-size: 0.85rem;
+        }
+
+        .rs-mode {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .rs-body { flex: 1; }
+
+        .rs-meta {
+            color: var(--text-sub);
+            font-size: 0.78rem;
+            margin-left: 4px;
+            font-weight: 400;
+        }
+
+        .rs-note {
+            font-size: 0.78rem;
+            color: var(--text-sub);
+            margin-top: 2px;
+        }
+
+        .rs-warn {
+            color: var(--torii-red);
+            font-weight: 600;
+        }
+
+        .lb {
+            display: inline-block;
+            padding: 1px 7px;
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-right: 6px;
+        }
+
+        .lb-jr { background: #003f8e; }
+        .lb-mido { background: #e5171f; }
+        .lb-sakai { background: #814721; }
+        .lb-chuo { background: #019a66; }
+        .lb-keihan { background: #00814d; }
+        .lb-nankai { background: #005bab; }
+        .lb-hankyu { background: #59332e; }
+        .lb-bus { background: #c29b38; }
+        .lb-walk { background: #8a8a8a; }
+        .lb-taxi { background: #444444; }
+
         /* Tip / Alert Boxes */
         .tip-box {
             border-radius: var(--radius);
@@ -521,10 +586,19 @@
                 10/12 (一) 是日本「運動之日」，10/10 (六) ～ 10/12 (一) 連成三天連假。Day 4 箕面、Day 5 奈良宇治、Day 6 海遊館都落在連假中，日本人也會全家出遊。這三天熱門景點請盡量「開門就到」，越早越舒服。行程已依人潮做過優化：戶外的箕面排週六、室內的海遊館排連假最後一天。
             </div>
 
+            <div class="tip-box info">
+                <div class="tip-title">🚉 站名怎麼認？</div>
+                日本車站指標以「日文漢字」為主（多數和中文寫法相同，直接認得），並附英文拼音。本導覽的交通步驟一律用<strong>現地實際站名</strong>標示，少數寫法不同要特別記：<strong>稲荷</strong>＝稻荷、<strong>恵美須町</strong>＝惠美須町、<strong>関西空港</strong>＝關西機場；另外大阪地鐵/南海的難波站標示是平假名「<strong>なんば</strong>」、臨空城站是片假名「<strong>りんくうタウン</strong>」，不是漢字！
+            </div>
+
             <div class="transport-box">
-                <div class="transport-title">✈️ 航班資訊 & 交通指南</div>
-                <strong>樂桃航空 MM028</strong> (台北桃園 18:15 ➔ 大阪關西 22:00)<br>
-                📌 <strong>抵達動線：</strong> 班機停靠第2航廈 (T2)。出關領行李後，請搭乘 T2 專屬免費接駁巴士前往第1航廈/Aeroplaza，下車後依指標步行 3 分鐘即可直達日航酒店櫃台。
+                <div class="transport-title">✈️ 航班資訊 & 抵達動線</div>
+                <strong>樂桃航空 MM028</strong> (台北桃園 18:15 ➔ 大阪關西 22:00)，停靠第2航廈 (T2)
+                <div class="route-steps">
+                    <div class="route-step"><span class="rs-mode">🛬</span><div class="rs-body"><strong>T2 入境</strong><span class="rs-meta">排隊出關、領行李</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚌</span><div class="rs-body"><span class="lb lb-bus">免費接駁巴士</span><strong>T2 → 第1航廈／Aeroplaza</strong><span class="rs-meta">約10分，班次密集</span><div class="rs-note">出航廈後依「Terminal 1」指標上車</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>Aeroplaza → 日航酒店櫃台</strong><span class="rs-meta">約3分</span><div class="rs-note">下車後跟著「Hotel Nikko」指標走空橋</div></div></div>
+                </div>
             </div>
 
             <div class="timeline">
@@ -562,8 +636,16 @@
             </div>
 
             <div class="transport-box">
-                <div class="transport-title">🚃 交通路線</div>
-                早上從關西機場搭乘 JR 或南海電鐵進市區放行李。市區內移動主要使用 <strong>大阪地下鐵御堂筋線</strong>。
+                <div class="transport-title">🚃 今日交通・一步一步跟著走</div>
+                <div class="route-steps">
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>日航酒店 → 南海「関西空港」駅</strong><span class="rs-meta">約5分</span><div class="rs-note">走空橋回航廈方向，跟著「南海電車 Nankai」指標</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海空港急行</span><strong>関西空港 → 新今宮</strong><span class="rs-meta">約43分・往「なんば」方面</span><div class="rs-note">直達不用轉車！別搭到特急ラピート（要加價）</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>新今宮駅 → 住一新今宮3號店</strong><span class="rs-meta">約8分</span><div class="rs-note">放行李後從「動物園前」駅進地鐵</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">御堂筋線</span><strong>動物園前 → 梅田</strong><span class="rs-meta">約15分・往「千里中央・箕面萱野」方面</span><div class="rs-note">梅田駅直結 LUCUA（敘敘苑）；Grand Front（GARIGUETTE）步行約5分</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">御堂筋線</span><strong>梅田 → なんば</strong><span class="rs-meta">約9分・往「なかもず」方面</span><div class="rs-note">出站就是心齋橋／道頓堀商圈</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">堺筋線</span><strong>日本橋 → 堺筋本町</strong><span class="rs-meta">2站約4分・往「北千里・高槻市」方面</span><div class="rs-note">17:45 出發，趕在 KATSU華 18:00 開門前抵達</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">堺筋線</span><strong>堺筋本町 → 日本橋（夜遊）→ 動物園前（回住宿）</strong><span class="rs-meta">約4～8分・往「天下茶屋」方面</span></div></div>
+                </div>
             </div>
 
             <div class="timeline">
@@ -663,8 +745,18 @@
             </div>
 
             <div class="transport-box">
-                <div class="transport-title">🚃 京阪電車一線通</div>
-                JR新今宮站 ➔ [JR環狀線] ➔ 京橋站 ➔ 轉乘 [京阪本線] ➔ 伏見稻荷 / 清水五條 / 祇園四條，銜接極順！
+                <div class="transport-title">🚃 今日交通・一步一步跟著走</div>
+                <div class="route-steps">
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-jr">JR大阪環状線</span><strong>新今宮 → 大阪</strong><span class="rs-meta">約16分・往「西九条・大阪」方面</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-jr">JR京都線 新快速</span><strong>大阪 → 京都</strong><span class="rs-meta">約29分・往「野洲・米原」方面</span><div class="rs-note">大阪駅站內轉乘，跟「京都線」指標</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-jr">JR奈良線（普通）</span><strong>京都 → 稲荷</strong><span class="rs-meta">2站約5分・往「宇治・奈良」方面</span><div class="rs-note">🎯 稲荷駅出站就是伏見稻荷大鳥居！<span class="rs-warn">搭普通車，快速不停稲荷</span></div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>伏見稻荷 → 京阪「伏見稲荷」駅</strong><span class="rs-meta">約5分</span><div class="rs-note">參道走回頭往京阪方向</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-keihan">京阪本線</span><strong>伏見稲荷 → 清水五条</strong><span class="rs-meta">約8分・往「出町柳」方面（搭準急或普通）</span><div class="rs-note"><span class="rs-warn">特急不停這兩站</span>，看到準急／普通再上車</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>清水五条駅 → 清水寺</strong><span class="rs-meta">上坡約25分</span><div class="rs-note">不想爬坡：站前搭計程車約7分（約¥1,000上下）</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>清水寺 → 二三年坂 → 八坂神社 → 花見小路 → 鴨川</strong><span class="rs-meta">全程散步，邊走邊逛</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-keihan">京阪本線（特急）</span><strong>祇園四条 → 京橋</strong><span class="rs-meta">約40分・往「淀屋橋」方面</span><div class="rs-note">回程搭特急 OK（京橋有停），免加價</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-jr">JR大阪環状線</span><strong>京橋 → 新今宮</strong><span class="rs-meta">約16分・往「鶴橋・天王寺」方面</span></div></div>
+                </div>
             </div>
 
             <div class="timeline">
@@ -720,8 +812,15 @@
             </div>
 
             <div class="transport-box">
-                <div class="transport-title">🚇 直通運轉超方便</div>
-                地鐵動物園前站 ➔ [御堂筋線/北大阪急行] 直達終點「箕面萱野站」 ➔ 搭公車或計程車至勝尾寺。週六假日往勝尾寺的巴士班次比平日多，接駁反而更順！
+                <div class="transport-title">🚇 今日交通・一步一步跟著走</div>
+                <div class="route-steps">
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">御堂筋線直通</span><strong>動物園前 → 箕面萱野（終點站）</strong><span class="rs-meta">約45分・往「箕面萱野」方面</span><div class="rs-note"><span class="rs-warn">要搭「箕面萱野行」</span>，部分班次只到新大阪或千里中央</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚌</span><div class="rs-body"><span class="lb lb-bus">阪急巴士</span><strong>箕面萱野 → 勝尾寺</strong><span class="rs-meta">約15分</span><div class="rs-note"><span class="rs-warn">班次少（約一小時一班），出發前先查好時刻表</span>；錯過就搭計程車（約15分）</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚕</span><div class="rs-body"><span class="lb lb-taxi">計程車</span><strong>勝尾寺 → 箕面大瀑布（上方入口）</strong><span class="rs-meta">約10～15分</span><div class="rs-note"><span class="rs-warn">這段沒有順路公車</span>；登山道要走2.5小時，不建議。請寺方櫃台幫忙叫車即可</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>瀑布 → 滝道下山 → 阪急「箕面」駅</strong><span class="rs-meta">約40分，沿溪谷緩下坡</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-hankyu">阪急箕面線→宝塚線</span><strong>箕面 → 石橋阪大前（轉車）→ 大阪梅田</strong><span class="rs-meta">合計約30分・往「大阪梅田」方面</span><div class="rs-note"><span class="rs-warn">回程走阪急，和去程不同路線！</span>石橋阪大前同月台對面轉車</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">御堂筋線</span><strong>梅田 → なんば</strong><span class="rs-meta">約9分・往「なかもず」方面</span><div class="rs-note">趕 17:30 牛舌檸檬訂位——瀑布 15:30 前離開就接得上，別拖囉</div></div></div>
+                </div>
             </div>
 
             <div class="tip-box info">
@@ -790,8 +889,14 @@
             </div>
 
             <div class="transport-box">
-                <div class="transport-title">🚆 JR大和路線直達</div>
-                JR新今宮站 ➔ [JR大和路線] ➔ 直達 JR奈良站 ➔ [JR奈良線] ➔ 宇治站。
+                <div class="transport-title">🚆 今日交通・一步一步跟著走</div>
+                <div class="route-steps">
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-jr">JR大和路快速</span><strong>新今宮 → 奈良</strong><span class="rs-meta">約35分・往「奈良・加茂」方面，直達</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>JR奈良駅 → 奈良公園・東大寺</strong><span class="rs-meta">約20分（或站前搭市內巴士約7分）</span><div class="rs-note">沿三条通直走，途經中谷堂（現搗麻糬）很順路</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-jr">JR奈良線 みやこ路快速</span><strong>奈良 → 宇治</strong><span class="rs-meta">約30分・往「京都」方面</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>JR宇治駅 → 中村藤吉本店 → 平等院</strong><span class="rs-meta">約10分</span><div class="rs-note">先到中村藤吉抽整理券，再去逛平等院</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-jr">JR奈良線→京都線→環状線</span><strong>宇治 → 京都（轉新快速）→ 大阪（轉環状線）→ 新今宮</strong><span class="rs-meta">合計約75分</span><div class="rs-note">回程走京都方向比較快；大阪駅轉環状線搭「往西九条」方面</div></div></div>
+                </div>
             </div>
 
             <div class="tip-box warn">
@@ -838,8 +943,14 @@
             </div>
 
             <div class="transport-box">
-                <div class="transport-title">🚇 交通指南</div>
-                地下鐵動物園前站 ➔ [堺筋線] ➔ 堺筋本町 ➔ 轉乘 [中央線] ➔ 大阪港站 (步行約 5 分鐘)。
+                <div class="transport-title">🚇 今日交通・一步一步跟著走</div>
+                <div class="route-steps">
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">堺筋線</span><strong>動物園前 → 堺筋本町</strong><span class="rs-meta">約7分・往「北千里・高槻市」方面</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-chuo">中央線</span><strong>堺筋本町 → 大阪港</strong><span class="rs-meta">約10分・往「コスモスクエア」方面</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>大阪港駅 → 海遊館</strong><span class="rs-meta">約7分</span><div class="rs-note">1號出口出站，跟著海遊館指標走</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-chuo">中央線→堺筋線</span><strong>大阪港 → 堺筋本町（轉車）→ 恵美須町</strong><span class="rs-meta">合計約25分・堺筋線搭「往天下茶屋」方面</span><div class="rs-note">🎯 <span class="rs-warn">在「恵美須町」下車</span>，出站就是通天閣／新世界串炸，比坐到動物園前更近</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>新世界 → 住宿</strong><span class="rs-meta">約10分</span><div class="rs-note">吃飽散步消食剛剛好</div></div></div>
+                </div>
             </div>
 
             <div class="tip-box warn">
@@ -890,8 +1001,15 @@
             </div>
 
             <div class="transport-box">
-                <div class="transport-title">🛍️ 購物與機場動線</div>
-                飯店退房 ➔ 南海電鐵 [南海空港急行] 直達「臨空城站」放行李採買 ➔ 晚上搭一站電車抵達關西機場日航酒店。
+                <div class="transport-title">🛍️ 今日交通・一步一步跟著走</div>
+                <div class="route-steps">
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>住宿 → 木津卸売市場</strong><span class="rs-meta">約15分</span><div class="rs-note">就在大国町旁邊，走路就到，不用搭車！</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>市場 → 回住宿拿行李退房 → 南海「新今宮」駅</strong><span class="rs-meta">約15分＋8分</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海空港急行</span><strong>新今宮 → りんくうタウン</strong><span class="rs-meta">約40分・往「関西空港」方面</span><div class="rs-note"><span class="rs-warn">站名是片假名「りんくうタウン」</span>（= 臨空城），英文 Rinku Town，別坐過站</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>りんくうタウン駅 → Outlet</strong><span class="rs-meta">約6分，車站直結</span><div class="rs-note">行李先放車站置物櫃再逛</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海空港線</span><strong>りんくうタウン → 関西空港</strong><span class="rs-meta">1站約6分</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>関西空港駅 → 日航酒店</strong><span class="rs-meta">約5分，空橋直結</span></div></div>
+                </div>
             </div>
 
             <div class="timeline">
@@ -942,19 +1060,23 @@
             </div>
 
             <div class="transport-box">
-                <div class="transport-title">✈️ 航班資訊 & 報到提醒</div>
-                <strong>樂桃航空 MM023</strong> (大阪關西 07:50 ➔ 台北桃園 09:55)<br>
-                📌 <strong>登機動線：</strong> 請於 05:50 之前起床，從日航酒店步行至 Aeroplaza 搭乘免費接駁車前往 <strong>第2航廈 (T2)</strong> 辦理報到與托運行李。
+                <div class="transport-title">✈️ 航班資訊 & 登機動線</div>
+                <strong>樂桃航空 MM023</strong> (大阪關西 07:50 ➔ 台北桃園 09:55)，第2航廈 (T2) 出發
+                <div class="route-steps">
+                    <div class="route-step"><span class="rs-mode">⏰</span><div class="rs-body"><strong>05:30 起床、06:00 前出門</strong><div class="rs-note"><span class="rs-warn">樂桃國際線報到約於起飛前 60 分鐘截止（06:50 前要完成）</span>，多留緩衝</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>日航酒店 → Aeroplaza 接駁站</strong><span class="rs-meta">約3分</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚌</span><div class="rs-body"><span class="lb lb-bus">免費接駁巴士</span><strong>Aeroplaza → T2</strong><span class="rs-meta">約10分，清晨也有班次</span></div></div>
+                </div>
             </div>
 
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-time">05:50 - 06:30</div>
+                    <div class="timeline-time">06:20 - 06:50</div>
                     <div class="spot-card">
                         <div class="spot-header">
                             <span class="spot-name">機場 T2 報到與安檢</span>
                         </div>
-                        <div class="spot-desc">辦理自主報到手續與託運行李。</div>
+                        <div class="spot-desc">辦理自主報到手續與託運行李，06:50 前完成最保險。</div>
                     </div>
                 </div>
 
