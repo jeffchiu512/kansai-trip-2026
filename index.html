@@ -286,6 +286,49 @@
             font-weight: 600;
         }
 
+        /* Tip / Alert Boxes */
+        .tip-box {
+            border-radius: var(--radius);
+            padding: 12px 14px;
+            margin: 12px 0 16px 0;
+            font-size: 0.85rem;
+            border: 1px solid;
+        }
+
+        .tip-box.warn {
+            background: #fdf3f1;
+            border-color: #eac5bd;
+            color: #7c2d1c;
+        }
+
+        .tip-box.info {
+            background: #f4f7f6;
+            border-color: #d3e0dc;
+            color: #33544a;
+        }
+
+        .tip-box .tip-title {
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Reservation Tags */
+        .rsv-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin: 6px 6px 0 0;
+        }
+
+        .rsv-must { background: #fbeae7; color: var(--torii-red); border: 1px solid #eac5bd; }
+        .rsv-free { background: #eef4f0; color: var(--matcha-green); border: 1px solid #cfe0d6; }
+        .rsv-ticket { background: #fdf6e7; color: #9a7a1f; border: 1px solid #ecd9a8; }
+
         /* Checklist Page */
         .food-grid {
             display: grid;
@@ -473,6 +516,16 @@
                 <div class="hotel-tag">🏨 住宿：關西機場日航酒店 (Hotel Nikko Kansai Airport)</div>
             </div>
 
+            <div class="tip-box warn">
+                <div class="tip-title">⚠️ 全程重要提醒：正好卡到日本三連休</div>
+                10/12 (一) 是日本「運動之日」，10/10 (六) ～ 10/12 (一) 連成三天連假。Day 4 海遊館、Day 5 奈良宇治、Day 6 箕面都落在連假中，日本人也會全家出遊。這三天熱門景點請盡量「開門就到」，越早越舒服。
+            </div>
+
+            <div class="tip-box info">
+                <div class="tip-title">🍁 紅葉期待值提醒</div>
+                10 月中的關西平地通常還沒紅葉（京阪奈楓紅高峰在 11 月中下旬，箕面滿山楓紅也要等 11 月）。這趟的「秋」是舒服的天氣與初秋光影，不是滿山紅葉，先有個底喔！
+            </div>
+
             <div class="transport-box">
                 <div class="transport-title">✈️ 航班資訊 & 交通指南</div>
                 <strong>樂桃航空 MM028</strong> (台北桃園 18:15 ➔ 大阪關西 22:00)<br>
@@ -537,8 +590,9 @@
                             <span class="spot-name">敘敘苑 LUCUA大阪店 (商業午餐)</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=敘敘苑+LUCUA大阪店" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">高 CP 值超值燒肉商業午餐，享受優質和牛與梅田繁華景色。</div>
-                        <span class="food-tag-inline">🍱 必吃：敘敘苑商業午餐</span>
+                        <div class="spot-desc">高 CP 值超值燒肉商業午餐，享受優質和牛與梅田繁華景色。午餐時段 11:00–15:00，梅田中午人多，先訂較安心（訂位只保留座位，餐點當天現點）。</div>
+                        <span class="food-tag-inline">🍱 必吃：敘敘苑商業午餐</span><br>
+                        <span class="rsv-tag rsv-must">🔴 建議訂位：06-6347-0809 或「一休.com」線上訂</span>
                     </div>
                 </div>
 
@@ -550,8 +604,14 @@
                             <a href="https://www.google.com/maps/search/?api=1&query=GARIGUETTE+Osaka" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
                         <div class="spot-desc">位於 Grand Front Osaka 1F，現點現做外酥內濃郁的熱門法式千層酥！</div>
-                        <span class="food-tag-inline">🍰 必吃：烤布蕾千層酥</span>
+                        <span class="food-tag-inline">🍰 必吃：烤布蕾千層酥</span><br>
+                        <span class="rsv-tag rsv-free">🟢 免訂位，人多時現場稍等即可</span>
                     </div>
+                </div>
+
+                <div class="tip-box info">
+                    <div class="tip-title">➕ 加碼順遊（時間有餘裕再去）</div>
+                    下午茶到逛街之間有空檔：可順遊梅田旁的 <strong>中崎町</strong>（老宅改造的咖啡小巷，很適合慢慢晃），或傍晚上 <strong>梅田藍天大廈空中庭園</strong> 看夕陽再下難波。
                 </div>
 
                 <div class="timeline-item">
@@ -565,6 +625,11 @@
                         <span class="food-tag-inline">🍻 必吃：居酒屋 / 拉麵</span>
                     </div>
                 </div>
+            </div>
+
+            <div class="tip-box info">
+                <div class="tip-title">🍢 住宿旁的寶藏：新世界串炸（任何一晚都適用）</div>
+                住的新今宮走路就到 <strong>新世界 & 通天閣</strong> —— 大阪串炸（串カツ）大本營。哪天玩累了不想跑遠，晚上散步過去配生啤吃串炸就好，是全程最方便的「機動晚餐」選項。
             </div>
         </section>
 
@@ -618,6 +683,11 @@
                     </div>
                 </div>
             </div>
+
+            <div class="tip-box info">
+                <div class="tip-title">😌 輕鬆風提醒</div>
+                這天 08:00–18:30 是全程排最滿的一天。傍晚累了就直接跳過花見小路，別硬撐；中間想補點心的話，<strong>錦市場</strong> 邊走邊吃很順路（四條附近）。
+            </div>
         </section>
 
         <!-- Day 4 -->
@@ -643,8 +713,13 @@
                             <span class="spot-name">大阪海遊館 & 天保山</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=海遊館" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">世界級水族館！觀賞巨大的鯨鯊與可愛水獺，可順遊天保山大摩天輪。</div>
+                        <div class="spot-desc">世界級水族館！觀賞巨大的鯨鯊與可愛水獺，可順遊天保山大摩天輪。連假週六人多，建議開門就到。</div>
                     </div>
+                </div>
+
+                <div class="tip-box info">
+                    <div class="tip-title">🎡 下午空檔建議（14:00–17:30 很彈性）</div>
+                    可以待到傍晚搭 <strong>天保山大摩天輪</strong> 看夕陽海景，或乾脆早點回飯店休息（連假逛完水族館通常也累了），完全符合輕鬆調性。
                 </div>
 
                 <div class="timeline-item">
@@ -654,8 +729,9 @@
                             <span class="spot-name">新宿燒肉 牛舌的檸檬 (大阪本店)</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=新宿燒肉+牛舌的檸檬+大阪本店" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">極厚切炭烤牛舌搭上清爽檸檬，高人氣話題燒肉！（建議提前預約）</div>
-                        <span class="food-tag-inline">🍋 必吃：檸檬牛舌</span>
+                        <div class="spot-desc">極厚切炭烤牛舌搭上清爽檸檬，高人氣話題燒肉！排隊名店且這天是連假週六晚上的尖峰，不訂位大概要站著等。</div>
+                        <span class="food-tag-inline">🍋 必吃：檸檬牛舌</span><br>
+                        <span class="rsv-tag rsv-must">🔴 必訂位：TableCheck 搜「beeflemon-nanba」或電話預約</span>
                     </div>
                 </div>
 
@@ -688,16 +764,21 @@
                 JR新今宮站 ➔ [JR大和路線] ➔ 直達 JR奈良站 ➔ [JR奈良線] ➔ 宇治站。
             </div>
 
+            <div class="tip-box warn">
+                <div class="tip-title">⚠️ 連假週日：早上先衝奈良，下午退宇治</div>
+                這天是三連休的週日，奈良公園會非常滿。順序已調成「早上先奈良、下午再到相對清幽的宇治」——既順 JR 路線（新今宮直達奈良，再轉奈良線到宇治），又能在人潮起來前餵完鹿、看完大佛，節奏舒服很多。
+            </div>
+
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-time">09:00 - 12:30</div>
                     <div class="spot-card">
                         <div class="spot-header">
-                            <span class="spot-name">宇治散策 (平等院 & 宇治川)</span>
-                            <a href="https://www.google.com/maps/search/?api=1&query=平等院" target="_blank" class="map-btn">📍 地圖</a>
+                            <span class="spot-name">奈良公園 & 東大寺</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=奈良公園" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">參觀世界遺產平等院鳳凰堂，品嚐極致純正的宇治抹茶霜霜與抹茶芭菲。</div>
-                        <span class="food-tag-inline">🍵 必吃：宇治抹茶甜點 / 抹茶蕎麥麵</span>
+                        <div class="spot-desc">買仙貝體驗與小鹿互動，參訪氣勢恢宏的東大寺大佛殿。加碼：<strong>中谷堂</strong> 看現搗麻糬表演、<strong>奈良町</strong> 古巷散步。</div>
+                        <span class="food-tag-inline">🍱 必吃：平宗柿葉壽司 / 中谷堂麻糬</span>
                     </div>
                 </div>
 
@@ -705,11 +786,12 @@
                     <div class="timeline-time">13:30 - 17:30</div>
                     <div class="spot-card">
                         <div class="spot-header">
-                            <span class="spot-name">奈良公園 & 東大寺</span>
-                            <a href="https://www.google.com/maps/search/?api=1&query=奈良公園" target="_blank" class="map-btn">📍 地圖</a>
+                            <span class="spot-name">宇治散策 (平等院 & 宇治川)</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=平等院" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">買仙貝體驗與小鹿互動，參訪氣勢恢宏的東大寺大佛殿。</div>
-                        <span class="food-tag-inline">🍱 必吃：平宗柿葉壽司 / 迴轉壽司</span>
+                        <div class="spot-desc">參觀世界遺產平等院鳳凰堂，品嚐極致純正的宇治抹茶。抹茶推薦 <strong>中村藤吉本店</strong>（招牌抹茶生茶凍）：咖啡座不可預約，一到宇治先去抽整理券、再回頭逛平等院，時間才不會卡死；連假週日等位更久，想坐得舒服可查限土日祝的「お座敷カフェ」和室座位（需預約）。</div>
+                        <span class="food-tag-inline">🍵 必吃：中村藤吉抹茶生茶凍 / 抹茶蕎麥麵</span><br>
+                        <span class="rsv-tag rsv-ticket">🟡 中村藤吉：不可訂位，到店先抽整理券</span>
                     </div>
                 </div>
             </div>
@@ -749,7 +831,7 @@
                             <span class="spot-name">箕面大瀑布大自然踏青</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=箕面大瀑布" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">在日本百選名瀑下享受森林負離子，沿著溪谷步道一路散步下山。</div>
+                        <div class="spot-desc">在日本百選名瀑下享受森林負離子，沿著溪谷步道一路散步下山。小提醒：當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 很有趣，可以買來吃！</div>
                     </div>
                 </div>
 
@@ -760,9 +842,15 @@
                             <span class="spot-name">とんかつ KATSU 華 (日式豬排)</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=とんかつ+KATSU華" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">位於堺筋本町，米其林推薦名店！外皮香酥、肉質極致柔軟的頂級炸豬排。</div>
-                        <span class="food-tag-inline">🥩 必吃：KATSU華 炸豬排</span>
+                        <div class="spot-desc"><strong style="color:var(--torii-red);">⚠️ 週一（10/12）沒有晚餐時段，這天直接來會撲空！</strong>最新營業時間：午餐 11:00–16:00 僅週日・週一；晚餐 18:00–23:00 僅週三～週五；週二・週六公休。約 15 席小店、不接受訂位、午餐必排隊。</div>
+                        <span class="food-tag-inline">🥩 必吃：KATSU華 炸豬排</span><br>
+                        <span class="rsv-tag rsv-must">🔴 建議改到 10/8 (四) 晚餐</span>
                     </div>
+                </div>
+
+                <div class="tip-box warn">
+                    <div class="tip-title">🔄 KATSU華 怎麼改？</div>
+                    建議把 KATSU華 移到 <strong>Day 2（10/8 週四）晚餐</strong>——堺筋本町離難波只有 1–2 站，原本 Day 2 的居酒屋/章魚燒挪到別晚即可。Day 6 當晚替代方案：住宿旁的 <strong>新世界串炸</strong> 或難波居酒屋。小店營業時間常變動，行前務必再看它的 Instagram 確認現況。
                 </div>
             </div>
         </section>
@@ -938,7 +1026,7 @@
                     <input type="checkbox" onchange="toggleFood(this, 'item-9')">
                     <div class="food-info">
                         <div class="food-title">🐖 炸豬排</div>
-                        <div class="food-sub">とんかつ KATSU 華 (10/12 晚餐)</div>
+                        <div class="food-sub">とんかつ KATSU 華 (建議改 10/8 四晚餐・週一無晚餐時段)</div>
                     </div>
                 </label>
 
@@ -978,6 +1066,15 @@
 
         <!-- Info Page -->
         <section id="info-page" class="section-panel">
+            <div class="info-card">
+                <div class="info-title">📋 訂位總表（一頁掌握）</div>
+                <div class="info-row">🔴 <span class="info-label">敘敘苑 LUCUA（10/8 四・午餐）：</span>建議訂位 — 電話 06-6347-0809 或「一休.com」線上訂（只保留座位，餐點現點）</div>
+                <div class="info-row">🔴 <span class="info-label">牛舌的檸檬 大阪本店（10/10 六・晚餐）：</span>必訂 — TableCheck 搜「beeflemon-nanba」或電話；連假週六晚上是尖峰</div>
+                <div class="info-row">🟡 <span class="info-label">中村藤吉本店 宇治（10/11 日）：</span>咖啡座不可預約，10:00 起發整理券，一到宇治先抽再逛平等院；限土日祝「お座敷カフェ」和室座位可查詢預約</div>
+                <div class="info-row">🔴 <span class="info-label">KATSU華（原排 10/12 一）：</span>週一無晚餐時段 → 建議改 10/8（四）晚餐；不接受訂位、約 15 席，行前看 Instagram 確認</div>
+                <div class="info-row">🟢 <span class="info-label">GARIGUETTE（10/8 四・下午茶）：</span>免訂位，現場稍候即可</div>
+            </div>
+
             <div class="info-card">
                 <div class="info-title">✈️ 航班備忘資訊</div>
                 <div class="info-row"><span class="info-label">去程：</span>10/07 (三) 樂桃 MM028 (18:15 TPE ➔ 22:00 KIX T2)</div>
