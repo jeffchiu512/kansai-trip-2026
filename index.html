@@ -2,10 +2,11 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>關西食光散策 · 8日行程隨身導覽</title>
     <style>
         :root {
+            --header-height: 92px;
             --bg-paper: #fcfaf2;
             --card-bg: #ffffff;
             --text-main: #2b2b2b;
@@ -30,7 +31,7 @@
         body {
             background-color: var(--bg-paper);
             color: var(--text-main);
-            padding-bottom: 80px;
+            padding-bottom: calc(80px + env(safe-area-inset-bottom));
             font-size: 15px;
             line-height: 1.6;
         }
@@ -68,7 +69,7 @@
             overflow-x: auto;
             white-space: nowrap;
             position: sticky;
-            top: 65px;
+            top: var(--header-height);
             z-index: 99;
             scrollbar-width: none; /* Firefox */
         }
@@ -125,6 +126,10 @@
             display: block;
         }
 
+        .section-panel {
+            scroll-margin-top: calc(var(--header-height) + 68px);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
@@ -156,6 +161,45 @@
             padding: 2px 8px;
             border-radius: 4px;
             font-weight: 600;
+        }
+
+        .today-badge {
+            background: var(--indigo-blue);
+            color: #ffffff;
+            margin-left: 6px;
+        }
+
+        /* At-a-glance daily summary */
+        .day-summary {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin: -4px 0 16px;
+        }
+
+        .summary-item {
+            min-width: 0;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 9px 10px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .summary-label {
+            display: block;
+            color: var(--text-sub);
+            font-size: 0.72rem;
+            line-height: 1.3;
+            margin-bottom: 2px;
+        }
+
+        .summary-value {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.84rem;
+            font-weight: 700;
+            line-height: 1.4;
         }
 
         .hotel-tag {
@@ -242,6 +286,7 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 6px;
+            gap: 8px;
         }
 
         .spot-name {
@@ -261,7 +306,22 @@
             padding: 4px 8px;
             border-radius: 6px;
             font-weight: 600;
+            white-space: nowrap;
+            min-height: 32px;
             transition: background 0.2s;
+        }
+
+        .map-actions {
+            display: flex;
+            flex: 0 0 auto;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .route-btn {
+            background: #eef4f0;
+            color: var(--matcha-green);
         }
 
         .map-btn:active {
@@ -452,6 +512,28 @@
             box-shadow: var(--shadow-light);
         }
 
+        .info-card.notice-card {
+            border-left: 5px solid var(--torii-red);
+        }
+
+        .info-card.guide-card {
+            border-left: 5px solid var(--matcha-green);
+        }
+
+        .notice-card .info-title {
+            color: var(--torii-red);
+        }
+
+        .guide-card .info-title {
+            color: var(--matcha-green);
+        }
+
+        .info-card-body {
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            line-height: 1.75;
+        }
+
         .info-title {
             font-weight: 700;
             color: var(--indigo-blue);
@@ -490,7 +572,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 60px;
+            height: calc(60px + env(safe-area-inset-bottom));
+            padding-bottom: env(safe-area-inset-bottom);
             background: #ffffff;
             border-top: 1px solid var(--border-color);
             display: flex;
@@ -511,6 +594,11 @@
             background: none;
             border: none;
             cursor: pointer;
+            align-self: stretch;
+            flex: 1;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
         }
 
         .b-nav-item.active {
@@ -520,6 +608,26 @@
         .b-nav-icon {
             font-size: 1.2rem;
             margin-bottom: 2px;
+        }
+
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 3px solid #2b6cb0;
+            outline-offset: 3px;
+        }
+
+        @media (min-width: 520px) {
+            .day-summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
@@ -535,7 +643,7 @@
     </header>
 
     <!-- Day Navigation Scroller -->
-    <nav class="nav-scroller">
+    <nav class="nav-scroller" aria-label="選擇行程日期">
         <div class="nav-tabs" id="dayTabs">
             <button class="tab-btn active" onclick="switchDay('d1', this)">
                 <span>D1</span>
@@ -583,17 +691,6 @@
                     <span class="day-badge">夜間啟航</span>
                 </div>
                 <div class="hotel-tag">🏨 住宿：關西機場日航酒店 (Hotel Nikko Kansai Airport)</div>
-            </div>
-
-            <div class="tip-box warn">
-                <div class="tip-title">⚠️ 全程重要提醒：正好卡到日本三連休</div>
-                10/12 (一) 是日本「運動之日」，10/10 (六) ～ 10/12 (一) 連成三天連假。Day 4 箕面、Day 5 奈良宇治、Day 6 海遊館都落在連假中，日本人也會全家出遊。這三天熱門景點請盡量「開門就到」，越早越舒服。行程已依人潮做過優化：戶外的箕面排週六、室內的海遊館排連假最後一天。
-            </div>
-
-            <div class="tip-box info">
-                <div class="tip-title">🚉 站名怎麼認？</div>
-                日本車站指標以「日文漢字」為主（多數和中文寫法相同，直接認得），並附英文拼音。本導覽的交通步驟一律用<strong>現地實際站名</strong>標示，少數寫法不同要特別記：<strong>稲荷</strong>＝稻荷、<strong>恵美須町</strong>＝惠美須町、<strong>関西空港</strong>＝關西機場；另外大阪地鐵/南海的難波站標示是平假名「<strong>なんば</strong>」、臨空城站是片假名「<strong>りんくうタウン</strong>」，不是漢字！<br><br>
-                🎨 <strong>找月台看「路線色＋字母」</strong>：交通步驟裡的彩色徽章就是現場指標的顏色。口訣：先找公司 logo 進站（藍色 <strong>JR</strong>、南海、阪急、京阪、Metro），再照顏色字母找月台——JR：紅<span class="lb lb-jro">Ⓞ 環状線</span>藍<span class="lb lb-jra">Ⓐ 京都線</span>茶<span class="lb lb-jrd">Ⓓ 奈良線</span>綠<span class="lb lb-jrq">Ⓠ 大和路線</span>；地鐵：紅<span class="lb lb-mido">Ⓜ 御堂筋線</span>棕<span class="lb lb-sakai">Ⓚ 堺筋線</span>綠<span class="lb lb-chuo">Ⓒ 中央線</span>。Google Maps 上顯示的也是這套路線色。
             </div>
 
             <div class="transport-box">
@@ -1258,6 +1355,19 @@
 
         <!-- Info Page -->
         <section id="info-page" class="section-panel">
+            <div class="info-card notice-card">
+                <div class="info-title">⚠️ 三連休重要提醒</div>
+                <div class="info-card-body">10/12 (一) 是日本「運動之日」，10/10 (六) ～ 10/12 (一) 連成三天連假。Day 4 箕面、Day 5 奈良宇治、Day 6 海遊館都落在連假中，日本人也會全家出遊。這三天熱門景點請盡量「開門就到」，越早越舒服。行程已依人潮做過優化：戶外的箕面排週六、室內的海遊館排連假最後一天。</div>
+            </div>
+
+            <div class="info-card guide-card">
+                <div class="info-title">🚉 站名與路線辨識</div>
+                <div class="info-card-body">
+                    日本車站指標以「日文漢字」為主（多數和中文寫法相同，直接認得），並附英文拼音。本導覽的交通步驟一律用<strong>現地實際站名</strong>標示，少數寫法不同要特別記：<strong>稲荷</strong>＝稻荷、<strong>恵美須町</strong>＝惠美須町、<strong>関西空港</strong>＝關西機場；另外大阪地鐵/南海的難波站標示是平假名「<strong>なんば</strong>」、臨空城站是片假名「<strong>りんくうタウン</strong>」，不是漢字！<br><br>
+                    🎨 <strong>找月台看「路線色＋字母」</strong>：交通步驟裡的彩色徽章就是現場指標的顏色。口訣：先找公司 logo 進站（藍色 <strong>JR</strong>、南海、阪急、京阪、Metro），再照顏色字母找月台——JR：紅<span class="lb lb-jro">Ⓞ 環状線</span>藍<span class="lb lb-jra">Ⓐ 京都線</span>茶<span class="lb lb-jrd">Ⓓ 奈良線</span>綠<span class="lb lb-jrq">Ⓠ 大和路線</span>；地鐵：紅<span class="lb lb-mido">Ⓜ 御堂筋線</span>棕<span class="lb lb-sakai">Ⓚ 堺筋線</span>綠<span class="lb lb-chuo">Ⓒ 中央線</span>。Google Maps 上顯示的也是這套路線色。
+                </div>
+            </div>
+
             <div class="info-card">
                 <div class="info-title">📋 訂位總表（一頁掌握）</div>
                 <div class="info-row">🔴 <span class="info-label">敘敘苑 LUCUA（10/8 四・午餐）：</span>建議訂位 — 電話 06-6347-0809 或「一休.com」線上訂（只保留座位，餐點現點）</div>
@@ -1297,7 +1407,7 @@
     </main>
 
     <!-- Bottom Fixed Nav -->
-    <nav class="bottom-nav">
+    <nav class="bottom-nav" aria-label="主要功能">
         <button class="b-nav-item active" id="bnav-trip" onclick="switchMainNav('trip')">
             <span class="b-nav-icon">⛩️</span>
             <span>每日行程</span>
@@ -1313,6 +1423,52 @@
     </nav>
 
     <script>
+        const tripDates = {
+            d1: '2026-10-07', d2: '2026-10-08', d3: '2026-10-09', d4: '2026-10-10',
+            d5: '2026-10-11', d6: '2026-10-12', d7: '2026-10-13', d8: '2026-10-14'
+        };
+
+        const daySummaries = {
+            d1: [['⏰ 行程開始', '18:15 桃園起飛'], ['📍 主要區域', '關西機場 T2'], ['🥾 體力', '輕鬆・抵達日'], ['⭐ 今日關鍵', '入境後搭免費接駁']],
+            d2: [['⏰ 建議出門', '09:30 前'], ['📍 主要區域', '梅田・難波'], ['🥾 體力', '中等・逛街日'], ['⭐ 今日關鍵', '敘敘苑訂位／KATSU華早到']],
+            d3: [['⏰ 建議出門', '06:40'], ['📍 主要區域', '伏見稻荷・東山'], ['🥾 體力', '較高・長距離步行'], ['⭐ 今日關鍵', '奈良線普通車才停稲荷']],
+            d4: [['⏰ 建議出門', '08:00'], ['📍 主要區域', '勝尾寺・箕面'], ['🥾 體力', '中高・步道下坡'], ['⭐ 今日關鍵', '先查巴士／預約計程車']],
+            d5: [['⏰ 建議出門', '08:00'], ['📍 主要區域', '奈良・宇治'], ['🥾 體力', '中高・跨城移動'], ['⭐ 今日關鍵', '宇治先抽整理券']],
+            d6: [['⏰ 建議出門', '08:30 左右'], ['📍 主要區域', '海遊館・新世界'], ['🥾 體力', '中等・室內為主'], ['⭐ 今日關鍵', '先買指定時段電子票']],
+            d7: [['⏰ 建議出門', '08:15 左右'], ['📍 主要區域', '木津市場・臨空城'], ['🥾 體力', '中等・帶行李移動'], ['⭐ 今日關鍵', 'Outlet 先寄放行李']],
+            d8: [['⏰ 最晚出門', '06:00 前'], ['📍 主要區域', '關西機場 T2'], ['🥾 體力', '輕鬆・返程日'], ['⭐ 今日關鍵', '06:50 前完成報到']]
+        };
+
+        const dayRouteOrigins = {
+            d1: 'Kansai International Airport Terminal 2',
+            d2: 'Hotel Nikko Kansai Airport',
+            d3: 'Apartment Hotel 11 Shinimamiya 3',
+            d4: 'Apartment Hotel 11 Shinimamiya 3',
+            d5: 'Apartment Hotel 11 Shinimamiya 3',
+            d6: 'Apartment Hotel 11 Shinimamiya 3',
+            d7: 'Apartment Hotel 11 Shinimamiya 3',
+            d8: 'Hotel Nikko Kansai Airport'
+        };
+
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        function scrollMode() {
+            return prefersReducedMotion.matches ? 'auto' : 'smooth';
+        }
+
+        function syncHeaderHeight() {
+            const header = document.querySelector('.header');
+            if(header) {
+                document.documentElement.style.setProperty('--header-height', `${Math.ceil(header.getBoundingClientRect().height)}px`);
+            }
+        }
+
+        function setPanelState(activeId) {
+            document.querySelectorAll('.section-panel').forEach(panel => {
+                panel.setAttribute('aria-hidden', panel.id === activeId ? 'false' : 'true');
+            });
+        }
+
         // Switch between Day Tabs
         function switchDay(dayId, btnElement) {
             // Hide all section panels
@@ -1332,7 +1488,13 @@
             });
             if(btnElement) {
                 btnElement.classList.add('active');
+                document.querySelectorAll('#dayTabs .tab-btn').forEach(btn => btn.removeAttribute('aria-current'));
+                btnElement.setAttribute('aria-current', 'date');
             }
+
+            setPanelState(dayId);
+            try { localStorage.setItem('lastTripDay', dayId); } catch(error) { /* private mode */ }
+            history.replaceState(null, '', `#${dayId}`);
 
             // Ensure bottom nav is set to 'trip'
             setBottomNavActive('bnav-trip');
@@ -1340,10 +1502,10 @@
 
             // Scroll tab into view
             if(btnElement) {
-                btnElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                btnElement.scrollIntoView({ behavior: scrollMode(), block: 'nearest', inline: 'center' });
             }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: scrollMode() });
         }
 
         // Switch main bottom tabs (Trip / Food / Info)
@@ -1359,30 +1521,122 @@
                 // Activate whichever day tab is selected
                 const activeDayBtn = document.querySelector('#dayTabs .tab-btn.active');
                 if(activeDayBtn) {
-                    const dayId = activeDayBtn.getAttribute('onclick').match(/'([^']+)'/)[1];
+                    const dayId = activeDayBtn.dataset.day;
                     document.getElementById(dayId).classList.add('active');
+                    setPanelState(dayId);
                 } else {
                     document.getElementById('d1').classList.add('active');
+                    setPanelState('d1');
                 }
                 setBottomNavActive('bnav-trip');
             } else if(type === 'food') {
                 dayScroller.style.display = 'none';
                 document.getElementById('food-page').classList.add('active');
+                setPanelState('food-page');
                 setBottomNavActive('bnav-food');
             } else if(type === 'info') {
                 dayScroller.style.display = 'none';
                 document.getElementById('info-page').classList.add('active');
+                setPanelState('info-page');
                 setBottomNavActive('bnav-info');
             }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: scrollMode() });
         }
 
         function setBottomNavActive(id) {
             document.querySelectorAll('.b-nav-item').forEach(item => {
                 item.classList.remove('active');
+                item.removeAttribute('aria-current');
             });
-            document.getElementById(id).classList.add('active');
+            const activeItem = document.getElementById(id);
+            activeItem.classList.add('active');
+            activeItem.setAttribute('aria-current', 'page');
+        }
+
+        function buildDaySummaries() {
+            Object.entries(daySummaries).forEach(([dayId, items]) => {
+                const panel = document.getElementById(dayId);
+                const headerCard = panel?.querySelector('.day-header-card');
+                if(!headerCard || panel.querySelector('.day-summary')) return;
+
+                const summary = document.createElement('div');
+                summary.className = 'day-summary';
+                summary.setAttribute('aria-label', '今日摘要');
+                items.forEach(([label, value]) => {
+                    const item = document.createElement('div');
+                    item.className = 'summary-item';
+                    item.innerHTML = `<span class="summary-label">${label}</span><span class="summary-value">${value}</span>`;
+                    summary.appendChild(item);
+                });
+                headerCard.insertAdjacentElement('afterend', summary);
+            });
+        }
+
+        function enhanceMapLinks() {
+            Object.keys(tripDates).forEach(dayId => {
+                const panel = document.getElementById(dayId);
+                let previousPlace = dayRouteOrigins[dayId];
+
+                panel?.querySelectorAll('.spot-header .map-btn').forEach(mapLink => {
+                    mapLink.rel = 'noopener noreferrer';
+                    mapLink.setAttribute('aria-label', `在 Google 地圖查看 ${mapLink.closest('.spot-header').querySelector('.spot-name')?.textContent || '景點'}`);
+
+                    const destination = new URL(mapLink.href).searchParams.get('query');
+                    const actions = document.createElement('span');
+                    actions.className = 'map-actions';
+                    mapLink.parentNode.insertBefore(actions, mapLink);
+                    actions.appendChild(mapLink);
+
+                    if(previousPlace && destination) {
+                        const routeLink = document.createElement('a');
+                        routeLink.className = 'map-btn route-btn';
+                        routeLink.target = '_blank';
+                        routeLink.rel = 'noopener noreferrer';
+                        routeLink.textContent = '↗ 路線';
+                        routeLink.setAttribute('aria-label', `從上一站導航至 ${destination}`);
+                        routeLink.href = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(previousPlace)}&destination=${encodeURIComponent(destination)}&dir_action=navigate`;
+                        actions.appendChild(routeLink);
+                    }
+                    if(destination) previousPlace = destination;
+                });
+            });
+
+            document.querySelectorAll('a[target="_blank"]').forEach(link => {
+                link.rel = 'noopener noreferrer';
+            });
+        }
+
+        function initializeNavigation() {
+            const today = new Date();
+            const localDate = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, '0'), String(today.getDate()).padStart(2, '0')].join('-');
+            const todayDay = Object.keys(tripDates).find(dayId => tripDates[dayId] === localDate);
+            const hashDay = location.hash.slice(1);
+            let savedDay = null;
+            try { savedDay = localStorage.getItem('lastTripDay'); } catch(error) { /* private mode */ }
+            const initialDay = todayDay || (tripDates[hashDay] && hashDay) || (tripDates[savedDay] && savedDay) || 'd1';
+
+            document.querySelectorAll('#dayTabs .tab-btn').forEach((button, index) => {
+                const dayId = `d${index + 1}`;
+                button.dataset.day = dayId;
+                button.setAttribute('aria-controls', dayId);
+                button.setAttribute('aria-label', `第 ${index + 1} 天，${button.querySelector('.tab-date')?.textContent || ''}`);
+                if(dayId === todayDay) {
+                    const todayLabel = document.createElement('span');
+                    todayLabel.className = 'day-badge today-badge';
+                    todayLabel.textContent = '今天';
+                    button.appendChild(todayLabel);
+                }
+            });
+
+            document.querySelectorAll('.b-nav-item').forEach(button => button.setAttribute('type', 'button'));
+            document.querySelectorAll('#dayTabs .tab-btn').forEach(button => button.setAttribute('type', 'button'));
+
+            const initialButton = document.querySelector(`#dayTabs .tab-btn[data-day="${initialDay}"]`);
+            switchDay(initialDay, initialButton);
+            if(todayDay) {
+                document.querySelector(`#${todayDay} .day-title`)?.insertAdjacentHTML('beforeend', '<span class="day-badge today-badge">今天</span>');
+            }
         }
 
         // Checklist State Handling with localStorage
@@ -1397,8 +1651,15 @@
             }
         }
 
-        // Restore food checklist states on load
+        // Prepare responsive navigation, route links and persistent checklist state
         window.addEventListener('DOMContentLoaded', () => {
+            syncHeaderHeight();
+            if('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe(document.querySelector('.header'));
+            window.addEventListener('orientationchange', syncHeaderHeight);
+            buildDaySummaries();
+            enhanceMapLinks();
+            initializeNavigation();
+
             const foodItems = document.querySelectorAll('.food-item');
             foodItems.forEach(item => {
                 const itemId = item.id;
