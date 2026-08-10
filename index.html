@@ -574,6 +574,187 @@
             color: #aaa;
         }
 
+        /* Shopping Checklist */
+        .shopping-summary {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .shopping-progress-track {
+            flex: 1;
+            height: 8px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: #e8e3da;
+        }
+
+        .shopping-progress-bar {
+            display: block;
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--matcha-green);
+            transition: width 0.2s ease;
+        }
+
+        .shopping-progress-text {
+            color: var(--text-sub);
+            font-size: 0.78rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .shopping-grid {
+            display: grid;
+            gap: 14px;
+        }
+
+        .shopping-item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 112px minmax(0, 1fr);
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        .shopping-photo-link {
+            min-height: 154px;
+            background: #f5f2ec;
+        }
+
+        .shopping-photo {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 154px;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .shopping-item-body {
+            min-width: 0;
+            padding: 13px 12px;
+        }
+
+        .shopping-item-head {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .shopping-check {
+            width: 22px;
+            height: 22px;
+            margin: 0;
+            flex: 0 0 auto;
+            accent-color: var(--matcha-green);
+            cursor: pointer;
+        }
+
+        .shopping-name {
+            color: var(--text-main);
+            font-size: 0.94rem;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .shopping-jp {
+            margin-top: 3px;
+            color: var(--text-sub);
+            font-size: 0.72rem;
+            line-height: 1.4;
+        }
+
+        .shopping-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .shopping-tag {
+            padding: 3px 7px;
+            border-radius: 999px;
+            background: #f3efe8;
+            color: var(--text-sub);
+            font-size: 0.68rem;
+            font-weight: 700;
+        }
+
+        .shopping-note {
+            margin-top: 8px;
+            color: var(--text-sub);
+            font-size: 0.76rem;
+            line-height: 1.55;
+        }
+
+        .shopping-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quantity-control {
+            display: inline-flex;
+            align-items: center;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            border-radius: 9px;
+            background: #fff;
+        }
+
+        .quantity-control button {
+            width: 34px;
+            height: 34px;
+            border: 0;
+            background: #f5f2ec;
+            color: var(--text-main);
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .quantity-value {
+            min-width: 34px;
+            text-align: center;
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+
+        .shopping-store {
+            color: var(--matcha-green);
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-align: right;
+        }
+
+        .shopping-item.checked {
+            opacity: 0.68;
+        }
+
+        .shopping-item.checked .shopping-name {
+            text-decoration: line-through;
+        }
+
+        @media (max-width: 360px) {
+            .shopping-item {
+                grid-template-columns: 96px minmax(0, 1fr);
+            }
+
+            .shopping-footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .shopping-store { text-align: left; }
+        }
+
         /* Info Card */
         .info-card {
             background: #ffffff;
@@ -1159,7 +1340,7 @@
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-chuo">Ⓒ 中央線</span><strong>堺筋本町 → 大阪港</strong><span class="rs-meta">約10分・往「コスモスクエア」方面</span></div></div>
                     <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>大阪港駅 → 海遊館</strong><span class="rs-meta">約7分</span><div class="rs-note">1號出口出站，跟著海遊館指標走</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-chuo">Ⓒ 中央線</span><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>大阪港 → 堺筋本町（轉車）→ 恵美須町</strong><span class="rs-meta">合計約25分・堺筋線搭「往天下茶屋」方面</span><div class="rs-note">🎯 <span class="rs-warn">在「恵美須町」下車</span>，出站就是通天閣／新世界串炸，比坐到動物園前更近</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>新世界 → 住宿</strong><span class="rs-meta">約10分</span><div class="rs-note">吃飽散步消食剛剛好</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🛍️</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>新世界串炸 → SUGI 通天閣店／MEGA 唐吉訶德 → 住宿</strong><span class="rs-meta">採買後步行約5～10分回住宿</span><div class="rs-note">先買藥品、保健品與保養品，再到唐吉訶德補零食和伴手禮；大量採買留到今晚，買完直接回房整理行李</div></div></div>
                 </div>
             </div>
 
@@ -1195,6 +1376,18 @@
                         <div class="spot-desc">從住宿走路就到的大阪串炸（串カツ）大本營！挑一間順眼的老店，串炸配生啤，飯後散步看通天閣點燈——連假最後一晚就用最道地、最不折騰的方式收尾。</div>
                         <span class="food-tag-inline">🍢 必吃：串カツ配生啤酒</span><br>
                         <span class="rsv-tag rsv-free">🟢 免訂位，走路即到</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">19:30 - 21:00・彈性</div>
+                    <div class="spot-card">
+                        <div class="spot-header">
+                            <span class="spot-name">住宿附近藥妝 & 伴手禮採買</span>
+                            <a href="https://www.google.com/maps/dir/?api=1&origin=%E9%80%9A%E5%A4%A9%E9%96%A3&destination=MEGA%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86%E6%96%B0%E4%B8%96%E7%95%8C%E5%BA%97&waypoints=%E3%82%B9%E3%82%AE%E3%83%89%E3%83%A9%E3%83%83%E3%82%B0%E9%80%9A%E5%A4%A9%E9%96%A3%E5%BA%97&travelmode=walking" target="_blank" class="map-btn">↗ 路線</a>
+                        </div>
+                        <div class="spot-desc">串炸晚餐後沿新世界商圈順路採買：先到 <strong>SUGI 藥局通天閣店</strong>找藥品、保健品與日系保養品，再視需要到<strong>MEGA 唐吉訶德新世界店</strong>補零食、伴手禮和生活用品。兩店皆可辦理免稅，記得攜帶護照；價格、營業時間及免稅規則以當日門市公告為準。買完直接步行回住宿，不必提著戰利品跑其他景點。</div>
+                        <span class="food-tag-inline">🧳 採買原則：今晚買齊，回房立即整理行李與確認重量</span>
                     </div>
                 </div>
             </div>
@@ -1450,6 +1643,82 @@
             </div>
         </section>
 
+        <!-- Shopping Checklist Page -->
+        <section id="shopping-page" class="section-panel">
+            <div class="day-header-card">
+                <div class="day-title">
+                    <span>🛍️ 日本採買清單</span>
+                    <span class="day-badge">D6 購買</span>
+                </div>
+                <div class="spot-desc" style="margin-top:6px;">點照片可放大給店員看；勾選與數量會自動保存在這台裝置。</div>
+                <div class="shopping-summary" aria-label="購物進度">
+                    <span class="shopping-progress-track"><span class="shopping-progress-bar" id="shoppingProgressBar"></span></span>
+                    <span class="shopping-progress-text" id="shoppingProgressText">0 / 3 已買</span>
+                </div>
+            </div>
+
+            <div class="shopping-grid" id="shoppingGrid">
+                <article class="shopping-item" id="shopping-1">
+                    <a class="shopping-photo-link" href="https://www.matsukiyococokara-online.com/store/catalog/product/view/id/4987241195695" target="_blank" aria-label="前往松本清查看 V樂敦 Gold 40 爽快MAX 商品圖">
+                        <img class="shopping-photo" src="https://www.matsukiyococokara-online.com/store/media/catalog/product/4/9/4987241195695_01_d68b066f7367bcf3ab64c825fae24509.jpg" alt="松本清網站的 V樂敦 Gold 40 爽快MAX 20mL 商品圖">
+                    </a>
+                    <div class="shopping-item-body">
+                        <div class="shopping-item-head">
+                            <input class="shopping-check" type="checkbox" onchange="toggleShopping(this, 'shopping-1')" aria-label="標記 V樂敦 Gold 40 爽快MAX 已購買">
+                            <div><div class="shopping-name">V樂敦 Gold 40 爽快MAX</div><div class="shopping-jp">Vロートゴールド40爽快MAX・20mL</div></div>
+                        </div>
+                        <div class="shopping-tags"><span class="shopping-tag">眼藥水</span><span class="shopping-tag">第3類醫藥品</span></div>
+                        <div class="shopping-note">認包裝關鍵字「爽快MAX」與 20mL；購買及使用前確認標示。</div>
+                        <div class="shopping-footer">
+                            <div class="quantity-control" aria-label="V樂敦購買數量"><button type="button" onclick="changeShoppingQuantity('shopping-1', -1)" aria-label="減少數量">−</button><span class="quantity-value" data-quantity>1</span><button type="button" onclick="changeShoppingQuantity('shopping-1', 1)" aria-label="增加數量">＋</button></div>
+                            <span class="shopping-store">SUGI 優先</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="shopping-item" id="shopping-2">
+                    <a class="shopping-photo-link" href="https://www.matsukiyococokara-online.com/store/catalog/product/view/id/4909978204440" target="_blank" aria-label="前往松本清查看資生堂 MOILIP 商品圖">
+                        <img class="shopping-photo" src="https://www.matsukiyococokara-online.com/store/media/catalog/product/4/9/4909978204440_01_1d5a4d50d038847753bb36f31493d552.jpg" alt="松本清網站的資生堂 MOILIP 藥用護唇膏商品圖">
+                    </a>
+                    <div class="shopping-item-body">
+                        <div class="shopping-item-head">
+                            <input class="shopping-check" type="checkbox" onchange="toggleShopping(this, 'shopping-2')" aria-label="標記資生堂 MOILIP 已購買">
+                            <div><div class="shopping-name">資生堂 MOILIP</div><div class="shopping-jp">資生堂 モアリップ・8g</div></div>
+                        </div>
+                        <div class="shopping-tags"><span class="shopping-tag">藥用護唇</span><span class="shopping-tag">第3類醫藥品</span></div>
+                        <div class="shopping-note">黃色盒、藍色「モアリップ」字樣；是管狀款，與下方曼秀雷敦罐裝款不同。</div>
+                        <div class="shopping-footer">
+                            <div class="quantity-control" aria-label="MOILIP 購買數量"><button type="button" onclick="changeShoppingQuantity('shopping-2', -1)" aria-label="減少數量">−</button><span class="quantity-value" data-quantity>1</span><button type="button" onclick="changeShoppingQuantity('shopping-2', 1)" aria-label="增加數量">＋</button></div>
+                            <span class="shopping-store">SUGI 優先</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="shopping-item" id="shopping-3">
+                    <a class="shopping-photo-link" href="https://www.matsukiyococokara-online.com/store/catalog/product/view/id/4987241108145" target="_blank" aria-label="前往松本清查看曼秀雷敦 Medical Lip b 商品圖">
+                        <img class="shopping-photo" src="https://www.matsukiyococokara-online.com/store/media/catalog/product/4/9/4987241108145_01_6f18b0fc9f04682d74c366efe93d9ef8.jpg" alt="松本清網站的曼秀雷敦 Medical Lip b 護唇藥商品圖">
+                    </a>
+                    <div class="shopping-item-body">
+                        <div class="shopping-item-head">
+                            <input class="shopping-check" type="checkbox" onchange="toggleShopping(this, 'shopping-3')" aria-label="標記曼秀雷敦 Medical Lip b 已購買">
+                            <div><div class="shopping-name">曼秀雷敦 Medical Lip b</div><div class="shopping-jp">メンソレータム メディカルリップb・8.5g</div></div>
+                        </div>
+                        <div class="shopping-tags"><span class="shopping-tag">藥用護唇</span><span class="shopping-tag">薄荷罐裝</span><span class="shopping-tag">第3類醫藥品</span></div>
+                        <div class="shopping-note">綠色盒、白色圓罐，商品名結尾是「b」；想要照片中的涼感款別拿成管狀 nc。</div>
+                        <div class="shopping-footer">
+                            <div class="quantity-control" aria-label="Medical Lip b 購買數量"><button type="button" onclick="changeShoppingQuantity('shopping-3', -1)" aria-label="減少數量">−</button><span class="quantity-value" data-quantity>1</span><button type="button" onclick="changeShoppingQuantity('shopping-3', 1)" aria-label="增加數量">＋</button></div>
+                            <span class="shopping-store">SUGI 優先</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="tip-box info" style="margin-top:16px;">
+                <div class="tip-title">🧾 採買順序</div>
+                D6 串炸後先到 <strong>SUGI 藥局通天閣店</strong>找齊三項；缺貨再到 MEGA 唐吉訶德新世界店。三項皆屬醫藥品，請依包裝說明使用；有慢性病、過敏、正在用藥或症狀持續時，先詢問藥師或醫師。
+            </div>
+        </section>
+
         <!-- Info Page -->
         <section id="info-page" class="section-panel">
             <div class="info-card notice-card">
@@ -1547,6 +1816,10 @@
             <span class="b-nav-icon">🍱</span>
             <span>美食打卡</span>
         </button>
+        <button class="b-nav-item" id="bnav-shopping" onclick="switchMainNav('shopping')">
+            <span class="b-nav-icon">🛍️</span>
+            <span>購物清單</span>
+        </button>
         <button class="b-nav-item" id="bnav-info" onclick="switchMainNav('info')">
             <span class="b-nav-icon">ℹ️</span>
             <span>旅途資訊</span>
@@ -1639,7 +1912,7 @@
             window.scrollTo({ top: 0, behavior: scrollMode() });
         }
 
-        // Switch main bottom tabs (Trip / Food / Info)
+        // Switch main bottom tabs (Trip / Food / Shopping / Info)
         function switchMainNav(type) {
             document.querySelectorAll('.section-panel').forEach(panel => {
                 panel.classList.remove('active');
@@ -1665,6 +1938,11 @@
                 document.getElementById('food-page').classList.add('active');
                 setPanelState('food-page');
                 setBottomNavActive('bnav-food');
+            } else if(type === 'shopping') {
+                dayScroller.style.display = 'none';
+                document.getElementById('shopping-page').classList.add('active');
+                setPanelState('shopping-page');
+                setBottomNavActive('bnav-shopping');
             } else if(type === 'info') {
                 dayScroller.style.display = 'none';
                 document.getElementById('info-page').classList.add('active');
@@ -1782,6 +2060,35 @@
             }
         }
 
+        function updateShoppingProgress() {
+            const items = [...document.querySelectorAll('.shopping-item')];
+            const completed = items.filter(item => item.classList.contains('checked')).length;
+            const progressText = document.getElementById('shoppingProgressText');
+            const progressBar = document.getElementById('shoppingProgressBar');
+            if(progressText) progressText.textContent = `${completed} / ${items.length} 已買`;
+            if(progressBar) progressBar.style.width = `${items.length ? completed / items.length * 100 : 0}%`;
+        }
+
+        function toggleShopping(checkbox, itemId) {
+            const item = document.getElementById(itemId);
+            if(!item) return;
+            item.classList.toggle('checked', checkbox.checked);
+            try {
+                if(checkbox.checked) localStorage.setItem(`${itemId}-checked`, 'true');
+                else localStorage.removeItem(`${itemId}-checked`);
+            } catch(error) { /* private mode */ }
+            updateShoppingProgress();
+        }
+
+        function changeShoppingQuantity(itemId, delta) {
+            const item = document.getElementById(itemId);
+            const valueElement = item?.querySelector('[data-quantity]');
+            if(!valueElement) return;
+            const nextValue = Math.min(20, Math.max(1, Number(valueElement.textContent) + delta));
+            valueElement.textContent = nextValue;
+            try { localStorage.setItem(`${itemId}-quantity`, String(nextValue)); } catch(error) { /* private mode */ }
+        }
+
         // Prepare responsive navigation, route links and persistent checklist state
         window.addEventListener('DOMContentLoaded', () => {
             syncHeaderHeight();
@@ -1800,6 +2107,20 @@
                     if(checkbox) checkbox.checked = true;
                 }
             });
+
+            document.querySelectorAll('.shopping-item').forEach(item => {
+                const checkbox = item.querySelector('.shopping-check');
+                const quantity = item.querySelector('[data-quantity]');
+                try {
+                    if(localStorage.getItem(`${item.id}-checked`) === 'true') {
+                        item.classList.add('checked');
+                        if(checkbox) checkbox.checked = true;
+                    }
+                    const savedQuantity = Number(localStorage.getItem(`${item.id}-quantity`));
+                    if(quantity && savedQuantity >= 1 && savedQuantity <= 20) quantity.textContent = savedQuantity;
+                } catch(error) { /* private mode */ }
+            });
+            updateShoppingProgress();
         });
     </script>
 </body>
