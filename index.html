@@ -459,6 +459,77 @@
         .rsv-free { background: #eef4f0; color: var(--matcha-green); border: 1px solid #cfe0d6; }
         .rsv-ticket { background: #fdf6e7; color: #9a7a1f; border: 1px solid #ecd9a8; }
 
+        .reservation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .reservation-item {
+            display: grid;
+            grid-template-columns: 54px minmax(0, 1fr) auto;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: #fcfbf8;
+        }
+
+        .reservation-date {
+            color: var(--indigo-blue);
+            font-size: 0.76rem;
+            font-weight: 800;
+            line-height: 1.35;
+            text-align: center;
+        }
+
+        .reservation-date span {
+            display: block;
+            color: var(--text-sub);
+            font-size: 0.68rem;
+            font-weight: 600;
+        }
+
+        .reservation-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .reservation-note {
+            color: var(--text-sub);
+            font-size: 0.76rem;
+            line-height: 1.5;
+            margin-top: 2px;
+        }
+
+        .reservation-status {
+            display: inline-block;
+            margin-right: 4px;
+            font-weight: 700;
+        }
+
+        .status-must { color: var(--torii-red); }
+        .status-walkin { color: var(--matcha-green); }
+        .status-ticket { color: #9a7a1f; }
+
+        .reservation-action {
+            min-width: 74px;
+            justify-content: center;
+        }
+
+        @media (max-width: 420px) {
+            .reservation-item {
+                grid-template-columns: 48px minmax(0, 1fr);
+            }
+
+            .reservation-action {
+                grid-column: 2;
+                justify-self: start;
+            }
+        }
+
         /* Checklist Page */
         .food-grid {
             display: grid;
@@ -747,7 +818,8 @@
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">Ⓜ 御堂筋線</span><strong>動物園前 → 梅田</strong><span class="rs-meta">約15分・往「千里中央・箕面萱野」方面</span><div class="rs-note">梅田駅直結 LUCUA（敘敘苑）；Grand Front（GARIGUETTE）步行約5分</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">Ⓜ 御堂筋線</span><strong>梅田 → 動物園前</strong><span class="rs-meta">約15分・往「なかもず」方面</span><div class="rs-note">16:00 左右離開梅田，回新今宮領行李並辦理入住</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>動物園前 → 堺筋本町</strong><span class="rs-meta">約7分・往「北千里・高槻市」方面</span><div class="rs-note">17:25 前出發，預留步行時間，準時赴 KATSU華 18:00 訂位</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>堺筋本町 → 日本橋（夜遊）→ 動物園前（回住宿）</strong><span class="rs-meta">約4～8分・往「天下茶屋」方面</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>KATSU華 → 心齋橋 → 道頓堀</strong><span class="rs-meta">邊逛邊走約25～35分</span><div class="rs-note">大丸心齋橋 1F 的 Shake Shack 正好順路；只想喝奶昔再停，吃飽就直接略過</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>日本橋 → 動物園前（回住宿）</strong><span class="rs-meta">約4分・往「天下茶屋」方面</span></div></div>
                 </div>
             </div>
 
@@ -822,11 +894,13 @@
                     <div class="timeline-time">20:00 - 21:30</div>
                     <div class="spot-card">
                         <div class="spot-header">
-                            <span class="spot-name">道頓堀夜遊 & 章魚燒宵夜</span>
+                            <span class="spot-name">心齋橋順遊 → 道頓堀夜遊</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=道頓堀" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">飯後散步回道頓堀看霓虹夜景，嘴饞再來份章魚燒（會津屋、築地銀章魚）或到街角居酒屋小酌收尾。</div>
-                        <span class="food-tag-inline">🐙 選吃：章魚燒 / 居酒屋小酌</span>
+                        <div class="spot-desc">從 KATSU華 往南步行，途中會經過大丸心齋橋 1F 的 Shake Shack，可視食量外帶一杯奶昔；再沿心齋橋筋走到道頓堀看霓虹夜景。若還吃得下，再選章魚燒（會津屋、築地銀章魚）或街角居酒屋，三者都屬彈性加碼，不必硬吃。</div>
+                        <span class="food-tag-inline">🥤 順路選吃：Shake Shack 奶昔</span><br>
+                        <span class="food-tag-inline">🐙 彈性宵夜：章魚燒 / 居酒屋小酌</span><br>
+                        <span class="rsv-tag rsv-free">🟢 Shake Shack 最後點餐 21:30；當日仍以門市公告為準</span>
                     </div>
                 </div>
             </div>
@@ -896,11 +970,23 @@
                         <div class="spot-desc">漫步藝妓風情的花見小路，傍晚坐在鴨川河畔感受京都獨有的悠閒氛圍。</div>
                     </div>
                 </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">19:45 後・彈性</div>
+                    <div class="spot-card">
+                        <div class="spot-header">
+                            <span class="spot-name">回新今宮後的拉麵晚餐</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=ラーメン+新今宮駅" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="spot-desc">從祇園四条搭京阪到京橋，再轉大阪環狀線回新今宮；下車後再依當晚營業狀況挑車站或動物園前附近的拉麵店，不需額外搭車。若京都午餐吃得晚、走累了或已先吃晚餐，就直接回住宿休息。</div>
+                        <span class="food-tag-inline">🍜 彈性晚餐：新今宮站周邊拉麵</span>
+                    </div>
+                </div>
             </div>
 
             <div class="tip-box info">
                 <div class="tip-title">😌 輕鬆風提醒</div>
-                這天 08:00–18:30 是全程排最滿的一天。傍晚累了就直接跳過花見小路，從祇園四条搭車回大阪；<strong>錦市場不在這條東山步行線上，而且多數店家傍晚前結束營業，因此不再列入加碼行程。</strong>
+                這天 08:00–18:30 是全程排最滿的一天。傍晚累了就直接跳過花見小路，從祇園四条搭車回大阪。
             </div>
         </section>
 
@@ -1234,91 +1320,11 @@
 
             <div class="food-grid" id="foodGrid">
                 <!-- Checkboxes populated dynamically / structured -->
-                <label class="food-item" id="item-1">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-1')">
-                    <div class="food-info">
-                        <div class="food-title">🍋 檸檬牛舌</div>
-                        <div class="food-sub">新宿燒肉 牛舌的檸檬 (10/10 晚餐)</div>
-                    </div>
-                </label>
-
                 <label class="food-item" id="item-2">
                     <input type="checkbox" onchange="toggleFood(this, 'item-2')">
                     <div class="food-info">
                         <div class="food-title">🥩 敘敘苑商業午餐</div>
                         <div class="food-sub">LUCUA大阪店 (10/8 午餐)</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-3">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-3')">
-                    <div class="food-info">
-                        <div class="food-title">🍱 鰻魚飯</div>
-                        <div class="food-sub">京都老店 (10/9) / 木津市場 川上商店 (10/13)</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-4">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-4')">
-                    <div class="food-info">
-                        <div class="food-title">🍲 壽喜燒</div>
-                        <div class="food-sub">京都東山 / 大阪市區</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-5">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-5')">
-                    <div class="food-info">
-                        <div class="food-title">🍜 拉麵</div>
-                        <div class="food-sub">市區深夜拉麵探索</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-6">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-6')">
-                    <div class="food-info">
-                        <div class="food-title">🐙 章魚燒</div>
-                        <div class="food-sub">難波 / 道頓堀地道小吃</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-7">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-7')">
-                    <div class="food-info">
-                        <div class="food-title">🥞 大阪燒</div>
-                        <div class="food-sub">千房 / 美津の</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-8">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-8')">
-                    <div class="food-info">
-                        <div class="food-title">🍣 海鮮丼 / 市場壽司</div>
-                        <div class="food-sub">木津卸売市場 (10/13 早餐・魚市食堂/まるよし)</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-9">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-9')">
-                    <div class="food-info">
-                        <div class="food-title">🐖 炸豬排</div>
-                        <div class="food-sub">とんかつ KATSU 華 (10/8 四 18:00・建議 TableCheck 預約)</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-10">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-10')">
-                    <div class="food-info">
-                        <div class="food-title">🥤 Shake Shack 奶昔</div>
-                        <div class="food-sub">心齋橋店 (10/8 逛街順路)</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-11">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-11')">
-                    <div class="food-info">
-                        <div class="food-title">🍳 漢堡排</div>
-                        <div class="food-sub">東洋亭 京都Porta店 (10/11 晚餐・回程轉車時)</div>
                     </div>
                 </label>
 
@@ -1330,19 +1336,75 @@
                     </div>
                 </label>
 
+                <label class="food-item" id="item-10">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-10')">
+                    <div class="food-info">
+                        <div class="food-title">🥤 Shake Shack 奶昔</div>
+                        <div class="food-sub">心齋橋店 (10/8 逛街順路)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-9">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-9')">
+                    <div class="food-info">
+                        <div class="food-title">🐖 炸豬排</div>
+                        <div class="food-sub">とんかつ KATSU 華 (10/8 四 18:00・建議 TableCheck 預約)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-6">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-6')">
+                    <div class="food-info">
+                        <div class="food-title">🐙 章魚燒</div>
+                        <div class="food-sub">難波 / 道頓堀 (10/8 宵夜或 10/10 晚間)</div>
+                    </div>
+                </label>
+
                 <label class="food-item" id="item-13">
                     <input type="checkbox" onchange="toggleFood(this, 'item-13')">
                     <div class="food-info">
                         <div class="food-title">🍶 居酒屋小酌</div>
-                        <div class="food-sub">難波 / 心齋橋街角居酒屋</div>
+                        <div class="food-sub">難波 / 心齋橋街角居酒屋 (10/8 宵夜備選)</div>
                     </div>
                 </label>
 
-                <label class="food-item" id="item-14">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-14')">
+                <label class="food-item" id="item-3">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-3')">
                     <div class="food-info">
-                        <div class="food-title">🍢 新世界串炸</div>
-                        <div class="food-sub">新世界 & 通天閣 (10/12 晚餐・住宿旁)</div>
+                        <div class="food-title">🍱 鰻魚飯</div>
+                        <div class="food-sub">京都老店 (10/9 午餐備選) / 木津市場川上商店 (10/13)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-4">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-4')">
+                    <div class="food-info">
+                        <div class="food-title">🍲 壽喜燒</div>
+                        <div class="food-sub">京都東山 (10/9 午餐備選)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-16">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-16')">
+                    <div class="food-info">
+                        <div class="food-title">🍁 紅葉天婦羅</div>
+                        <div class="food-sub">箕面滝道 (10/10 散步途中・當地名物)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-1">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-1')">
+                    <div class="food-info">
+                        <div class="food-title">🍋 檸檬牛舌</div>
+                        <div class="food-sub">新宿燒肉 牛舌的檸檬 (10/10 晚餐)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-7">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-7')">
+                    <div class="food-info">
+                        <div class="food-title">🥞 大阪燒</div>
+                        <div class="food-sub">千房 / 美津の (10/10 晚間)</div>
                     </div>
                 </label>
 
@@ -1354,11 +1416,35 @@
                     </div>
                 </label>
 
-                <label class="food-item" id="item-16">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-16')">
+                <label class="food-item" id="item-11">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-11')">
                     <div class="food-info">
-                        <div class="food-title">🍁 紅葉天婦羅</div>
-                        <div class="food-sub">箕面滝道 (10/10 散步途中・當地名物)</div>
+                        <div class="food-title">🍳 漢堡排</div>
+                        <div class="food-sub">東洋亭 京都Porta店 (10/11 晚餐・回程轉車時)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-14">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-14')">
+                    <div class="food-info">
+                        <div class="food-title">🍢 新世界串炸</div>
+                        <div class="food-sub">新世界 & 通天閣 (10/12 晚餐・住宿旁)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-8">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-8')">
+                    <div class="food-info">
+                        <div class="food-title">🍣 海鮮丼 / 市場壽司</div>
+                        <div class="food-sub">木津卸売市場 (10/13 早餐・魚市食堂/まるよし)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-5">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-5')">
+                    <div class="food-info">
+                        <div class="food-title">🍜 拉麵</div>
+                        <div class="food-sub">新今宮站周邊 (10/9 回大阪後・彈性晚餐)</div>
                     </div>
                 </label>
             </div>
@@ -1381,14 +1467,48 @@
 
             <div class="info-card">
                 <div class="info-title">📋 訂位總表（一頁掌握）</div>
-                <div class="info-row">🔴 <span class="info-label">敘敘苑 LUCUA（10/8 四・午餐）：</span>建議訂位 — 電話 06-6347-0809 或「一休.com」線上訂（只保留座位，餐點現點）</div>
-                <div class="info-row">🔴 <span class="info-label">牛舌的檸檬 大阪本店（10/10 六・晚餐）：</span>必訂 — TableCheck 搜「beeflemon-nanba」或電話；連假週六尖峰，<strong>建議訂 18:30</strong>（替山區接駁與塞車留緩衝）</div>
-                <div class="info-row">🟡 <span class="info-label">中村藤吉本店 宇治（10/11 日）：</span>咖啡座不可預約，10:00 起發整理券，一到宇治先抽再逛平等院；限土日祝「お座敷カフェ」和室座位可查詢預約</div>
-                <div class="info-row">🔴 <span class="info-label">KATSU華（10/8 四・晚餐 18:00）：</span>可預約 — <a href="https://www.tablecheck.com/ja/katsuhana/reserve/landing" target="_blank">TableCheck 線上訂位</a>；60分鐘制、每人一份定食、僅收現金，行前再看 Instagram 確認臨時休業資訊</div>
-                <div class="info-row">🎫 <span class="info-label">海遊館（10/12 一）：</span>行前在官網買「指定日期時間」電子票，開館就進場</div>
-                <div class="info-row">🟢 <span class="info-label">東洋亭 京都Porta店（10/11 日・晚餐）：</span>免訂位，京都駅直結，尖峰時段現場稍候</div>
-                <div class="info-row">🟢 <span class="info-label">GARIGUETTE（10/8 四・下午茶）：</span>免訂位，現場稍候即可</div>
-                <div class="info-row">🟢 <span class="info-label">新世界串炸（10/12 一・晚餐）：</span>免訂位，住宿走路即到</div>
+                <div class="reservation-list">
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/8<span>四・午餐</span></div>
+                        <div><div class="reservation-name">敘敘苑 LUCUA大阪店</div><div class="reservation-note"><span class="reservation-status status-must">● 建議訂位</span>11:30；只保留座位，餐點現點。電話 06-6347-0809</div></div>
+                        <a href="https://booking.resty.jp/webrsv/search/s014005101/3981" target="_blank" class="map-btn reservation-action">線上訂位</a>
+                    </div>
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/8<span>四・下午茶</span></div>
+                        <div><div class="reservation-name">GARIGUETTE Osaka</div><div class="reservation-note"><span class="reservation-status status-walkin">● 免訂位</span>現場排隊入店，視人潮彈性縮短停留</div></div>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=GARIGUETTE+Osaka" target="_blank" class="map-btn reservation-action">查看地圖</a>
+                    </div>
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/8<span>四・晚餐</span></div>
+                        <div><div class="reservation-name">とんかつ KATSU華</div><div class="reservation-note"><span class="reservation-status status-must">● 建議訂位</span>18:00；60分鐘制、每人一份定食、僅收現金</div></div>
+                        <a href="https://www.tablecheck.com/ja/katsuhana/reserve/landing" target="_blank" class="map-btn reservation-action">TableCheck</a>
+                    </div>
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/10<span>六・晚餐</span></div>
+                        <div><div class="reservation-name">牛舌的檸檬 大阪本店</div><div class="reservation-note"><span class="reservation-status status-must">● 必須訂位</span>建議 18:30，替山區交通保留緩衝</div></div>
+                        <a href="https://tabelog.com/osaka/A2701/A270202/27143533/" target="_blank" class="map-btn reservation-action">線上訂位</a>
+                    </div>
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/11<span>日・下午茶</span></div>
+                        <div><div class="reservation-name">中村藤吉本店 宇治</div><div class="reservation-note"><span class="reservation-status status-ticket">● 現場候位</span>不可預約；抵達先抽整理券，候位超過90分鐘就換店</div></div>
+                        <a href="https://tokichi.jp/pages/stores" target="_blank" class="map-btn reservation-action">店家資訊</a>
+                    </div>
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/11<span>日・晚餐</span></div>
+                        <div><div class="reservation-name">東洋亭 京都Porta店</div><div class="reservation-note"><span class="reservation-status status-walkin">● 免訂位</span>京都駅直結，尖峰時段現場候位</div></div>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=東洋亭+京都ポルタ店" target="_blank" class="map-btn reservation-action">查看地圖</a>
+                    </div>
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/12<span>一・上午</span></div>
+                        <div><div class="reservation-name">大阪海遊館</div><div class="reservation-note"><span class="reservation-status status-ticket">● 預先購票</span>購買最早可選的日期指定電子票</div></div>
+                        <a href="https://www.kaiyukan.com/about/news/20582.html" target="_blank" class="map-btn reservation-action">官方購票</a>
+                    </div>
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/12<span>一・晚餐</span></div>
+                        <div><div class="reservation-name">新世界串炸</div><div class="reservation-note"><span class="reservation-status status-walkin">● 免訂位</span>當晚依排隊狀況現場選店</div></div>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=新世界+串炸" target="_blank" class="map-btn reservation-action">查看地圖</a>
+                    </div>
+                </div>
             </div>
 
             <div class="info-card">
