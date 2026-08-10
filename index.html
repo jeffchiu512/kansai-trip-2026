@@ -231,6 +231,19 @@
             gap: 6px;
         }
 
+        .transport-overview {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: var(--text-sub);
+            line-height: 1.55;
+        }
+
+        .transport-overview::before {
+            content: '🧭';
+            flex: 0 0 auto;
+        }
+
         /* Timeline Items */
         .timeline {
             position: relative;
@@ -264,6 +277,59 @@
             background: var(--torii-red);
             border: 2px solid #ffffff;
             box-shadow: 0 0 0 2px var(--torii-red);
+        }
+
+        .inline-transport {
+            position: relative;
+            margin: -8px 0 16px;
+            padding-left: 0;
+        }
+
+        .inline-transport::before {
+            content: '↓';
+            position: absolute;
+            left: -20px;
+            top: 9px;
+            width: 14px;
+            color: var(--matcha-green);
+            background: var(--page-bg);
+            text-align: center;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .inline-transport-card {
+            background: #f4f7f6;
+            border: 1px solid #d3e0dc;
+            border-radius: 10px;
+            padding: 9px 10px;
+        }
+
+        .inline-transport-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .inline-transport-title {
+            color: var(--matcha-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .inline-transport .route-steps {
+            margin-top: 0;
+        }
+
+        .inline-transport .route-step {
+            padding: 7px 8px;
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .inline-transport .route-btn {
+            min-height: 30px;
         }
 
         .timeline-time {
@@ -411,6 +477,7 @@
         .lb-keihan { background: #d70029; } /* 京阪本線路線圖為紅色（公司品牌色是綠） */
         .lb-nankai { background: #005bab; }
         .lb-hankyu { background: #59332e; }
+        .lb-hankai { background: #008c4a; }
         .lb-bus { background: #c29b38; }
         .lb-walk { background: #8a8a8a; }
         .lb-taxi { background: #444444; }
@@ -985,7 +1052,7 @@
             <div class="day-header-card">
                 <div class="day-title">
                     <span>Day 2 : 大阪市區漫遊 & 購物</span>
-                    <span class="day-badge">梅田 · 難波</span>
+                    <span class="day-badge">心齋橋 · 大阪城 · 天滿</span>
                 </div>
                 <div class="hotel-tag">🏨 住宿：住一新今宮3號店 (Apartment Hotel 11 Shinimamiya 3)</div>
             </div>
@@ -996,11 +1063,11 @@
                     <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>日航酒店 → 南海「関西空港」駅</strong><span class="rs-meta">約5分</span><div class="rs-note">走空橋回航廈方向，跟著「南海電車 Nankai」指標</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海空港急行</span><strong>関西空港 → 新今宮</strong><span class="rs-meta">約43分・往「なんば」方面</span><div class="rs-note">直達不用轉車！別搭到特急ラピート（要加價）</div></div></div>
                     <div class="route-step"><span class="rs-mode">🧳</span><div class="rs-body"><strong>新今宮駅置物櫃寄放行李</strong><span class="rs-meta">預留15～20分</span><div class="rs-note"><span class="rs-warn">住宿已確認無法提前寄放</span>；優先使用南海／JR 新今宮站置物櫃，若滿櫃再到附近大型置物櫃</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">Ⓜ 御堂筋線</span><strong>動物園前 → 梅田</strong><span class="rs-meta">約15分・往「千里中央・箕面萱野」方面</span><div class="rs-note">梅田駅直結 LUCUA（敘敘苑）；Grand Front（GARIGUETTE）步行約5分</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">Ⓜ 御堂筋線</span><strong>梅田 → 動物園前</strong><span class="rs-meta">約15分・往「なかもず」方面</span><div class="rs-note">16:00 左右離開梅田，回新今宮領行李並辦理入住</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>動物園前 → 堺筋本町</strong><span class="rs-meta">約7分・往「北千里・高槻市」方面</span><div class="rs-note">17:25 前出發，預留步行時間，準時赴 KATSU華 18:00 訂位</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>KATSU華 → 心齋橋 → 道頓堀</strong><span class="rs-meta">邊逛邊走約25～35分</span><div class="rs-note">大丸心齋橋 1F 的 Shake Shack 正好順路；只想喝奶昔再停，吃飽就直接略過</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>日本橋 → 動物園前（回住宿）</strong><span class="rs-meta">約4分・往「天下茶屋」方面</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">Ⓜ 御堂筋線</span><strong>動物園前 → 心齋橋</strong><span class="rs-meta">約8分・往「千里中央・箕面萱野」方面</span><div class="rs-note">心齋橋站地下道直結大丸；先上本館 9F 寶可夢中心，再到 10F 吃敘敘苑午餐</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><strong>心齋橋 → 森ノ宮</strong><span class="rs-meta">長堀鶴見綠地線約12分・往「門真南」方面</span><div class="rs-note">從森ノ宮站 3-B 出口進大阪城公園，步行至天守閣約20分</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><strong>谷町四丁目 → 南森町</strong><span class="rs-meta">谷町線約6分・往「大日」方面</span><div class="rs-note">大阪城由西側離場，從谷町四丁目站搭車；南森町 4 號出口步行約3分到大阪天滿宮</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>南森町 → 堺筋本町</strong><span class="rs-meta">約5分・往「天下茶屋」方面</span><div class="rs-note">17:10 左右離開天滿宮，預留步行與找店時間，準時赴 KATSU華 18:00 訂位</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>堺筋本町 → 動物園前</strong><span class="rs-meta">約7分・往「天下茶屋」方面</span><div class="rs-note">豬排晚餐後才回新今宮站領行李，再步行至住宿自助入住</div></div></div>
                 </div>
             </div>
 
@@ -1012,7 +1079,19 @@
                             <span class="spot-name">新今宮站寄放行李</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=新今宮駅" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">住宿已確認無法提前寄放；抵達新今宮後直接使用南海／JR 車站置物櫃，再從動物園前站前往梅田。</div>
+                        <div class="spot-desc">住宿已確認無法提前寄放；抵達新今宮後直接使用南海／JR 車站置物櫃，再從動物園前站前往心齋橋。</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">10:00 - 11:15</div>
+                    <div class="spot-card">
+                        <div class="spot-header">
+                            <span class="spot-name">寶可夢中心 OSAKA DX</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Pok%C3%A9mon+Center+OSAKA+DX" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="spot-desc">寄好行李後從動物園前搭御堂筋線到心齋橋，利用地下道直達大丸心齋橋店。先到本館 9F 的寶可夢官方商店逛限定商品與拍照；<strong>11:15 前結帳離開</strong>，搭電梯上 10F 準備午餐。這裡只逛商店，不排需要另外預約的寶可夢咖啡廳。</div>
+                        <span class="food-tag-inline">⚡ 同棟順遊：9F 寶可夢中心 → 10F 敘敘苑</span>
                     </div>
                 </div>
 
@@ -1020,42 +1099,43 @@
                     <div class="timeline-time">11:30 - 13:30</div>
                     <div class="spot-card">
                         <div class="spot-header">
-                            <span class="spot-name">敘敘苑 LUCUA大阪店 (商業午餐)</span>
-                            <a href="https://www.google.com/maps/search/?api=1&query=敘敘苑+LUCUA大阪店" target="_blank" class="map-btn">📍 地圖</a>
+                            <span class="spot-name">敘敘苑 大丸心齋橋店 (商業午餐)</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=敘敘苑+大丸心齋橋店" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">高 CP 值超值燒肉商業午餐，享受優質和牛與梅田繁華景色。<strong>首選 ¥4,700 綜合午餐</strong>，包含赤身里肌、カルビ、烤蝦，以及醃菜、沙拉、拌菜、白飯、湯、甜點與飲料；若想控制預算，再選 ¥3,700 燒肉午餐。午餐時段 11:00–15:00，梅田中午人多，先訂較安心（訂位只保留座位，餐點當天現點；價格與內容以現場菜單為準）。</div>
+                        <div class="spot-desc">高 CP 值燒肉商業午餐，就在大丸本館 10F。<strong>首選 ¥4,700 綜合午餐</strong>，包含赤身里肌、カルビ、烤蝦，以及醃菜、沙拉、拌菜、白飯、湯、甜點與飲料；若想控制預算，再選 ¥3,700 燒肉午餐。平日午餐時段 11:00–15:00，先訂較安心（訂位只保留座位，餐點當天現點；價格與內容以現場菜單為準）。</div>
                         <span class="food-tag-inline">🍱 首選：¥4,700 綜合午餐</span><br>
-                        <span class="rsv-tag rsv-must">🔴 建議訂位：06-6347-0809 或「一休.com」線上訂</span>
+                        <a href="https://booking.resty.jp/webrsv/search/s014005101/20410" target="_blank" class="rsv-tag rsv-must">🔴 建議訂位：06-6227-8947 或線上預約</a>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">14:30 - 16:00</div>
+                    <div class="timeline-time">13:30 - 15:40</div>
                     <div class="spot-card">
                         <div class="spot-header">
-                            <span class="spot-name">GARIGUETTE Osaka (烤布蕾千層酥)</span>
-                            <a href="https://www.google.com/maps/search/?api=1&query=GARIGUETTE+Osaka" target="_blank" class="map-btn">📍 地圖</a>
+                            <span class="spot-name">大阪城公園 & 大阪城天守閣</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=大阪城天守閣" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">位於 Grand Front Osaka 1F，現點現做外酥內濃郁的熱門法式千層酥！</div>
-                        <span class="food-tag-inline">🍰 必吃：烤布蕾千層酥</span><br>
-                        <span class="rsv-tag rsv-free">🟢 免訂位，人多時現場稍等即可</span>
+                        <div class="spot-desc">午餐後從心齋橋站搭長堀鶴見綠地線到森ノ宮，穿過大阪城公園前往天守閣。建議<strong>先線上購票</strong>，約 14:05 入館、15:15 前離開天守閣，再由西側走向谷町四丁目站；官方開館時間為 09:00–18:00、最後入館 17:30，但今天仍要保留天滿宮與晚餐緩衝。</div>
+                        <span class="food-tag-inline">🏯 重點：天守閣展覽、頂樓展望台、城郭外觀</span><br>
+                        <a href="https://www.osakacastle.net/guide/" target="_blank" class="rsv-tag rsv-must">🎫 建議事先購買天守閣電子票</a>
                     </div>
-                </div>
-
-                <div class="tip-box info">
-                    <div class="tip-title">➕ 加碼順遊（時間有餘裕再去）</div>
-                    下午茶後必須先回新今宮領行李並入住。若午餐或下午茶提早結束，可在梅田附近短暫逛街；不建議再排中崎町或空中庭園，以免壓縮入住與晚餐時間。
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">16:15 - 17:20</div>
+                    <div class="timeline-time">16:00 - 17:10</div>
                     <div class="spot-card">
                         <div class="spot-header">
-                            <span class="spot-name">領行李 & 住宿 Check-in</span>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Apartment+Hotel+11+Shinimamiya+3" target="_blank" class="map-btn">📍 地圖</a>
+                            <span class="spot-name">大阪天滿宮</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=大阪天滿宮" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">從梅田返回新今宮領取寄放行李，正式辦理入住。17:20 前從動物園前搭堺筋線前往堺筋本町。</div>
+                        <div class="spot-desc">從谷町四丁目搭谷町線到南森町，前往供奉學問之神菅原道真的大阪天滿宮參拜。境內約 30～40 分鐘即可；若前段延誤，最少保留 20 分鐘參拜，<strong>17:10 左右離開</strong>，再從南森町搭堺筋線直達堺筋本町。</div>
+                        <span class="food-tag-inline">⛩️ 重點：本殿參拜、御守／御朱印依現場時間</span>
                     </div>
+                </div>
+
+                <div class="tip-box warning">
+                    <div class="tip-title">⏱️ 今天的時間底線</div>
+                    大阪城與天滿宮都要去，因此寶可夢中心最晚 11:15 離開、敘敘苑午餐最晚 13:30 結束。大阪城若遇排隊，優先縮短館內停留，不要壓縮 <strong>18:00 KATSU華訂位</strong>；行李可安心留在新今宮站，晚餐後再領。
                 </div>
 
                 <div class="timeline-item">
@@ -1072,16 +1152,14 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">20:00 - 21:30</div>
+                    <div class="timeline-time">19:30 - 20:30</div>
                     <div class="spot-card">
                         <div class="spot-header">
-                            <span class="spot-name">心齋橋順遊 → 道頓堀夜遊</span>
-                            <a href="https://www.google.com/maps/search/?api=1&query=道頓堀" target="_blank" class="map-btn">📍 地圖</a>
+                            <span class="spot-name">新今宮站領行李 & 住宿自助入住</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Apartment+Hotel+11+Shinimamiya+3" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">從 KATSU華 往南步行，途中會經過大丸心齋橋 1F 的 Shake Shack，可視食量外帶一杯奶昔；再沿心齋橋筋走到道頓堀看霓虹夜景。若還吃得下，再選章魚燒（會津屋、築地銀章魚）或街角居酒屋，三者都屬彈性加碼，不必硬吃。</div>
-                        <span class="food-tag-inline">🥤 順路選吃：Shake Shack 奶昔</span><br>
-                        <span class="food-tag-inline">🐙 彈性宵夜：章魚燒 / 居酒屋小酌</span><br>
-                        <span class="rsv-tag rsv-free">🟢 Shake Shack 最後點餐 21:30；當日仍以門市公告為準</span>
+                        <div class="spot-desc">吃完豬排後從堺筋本町搭堺筋線到動物園前，步行至新今宮站領取早上寄放的行李，再到住宿依密碼／入住指示直接進房。今天景點密集，入住後以休息為主；住宿採自助入住，不必趕櫃台。</div>
+                        <span class="food-tag-inline">🧳 離開置物櫃前確認沒有遺漏小件行李</span>
                     </div>
                 </div>
             </div>
@@ -1188,8 +1266,8 @@
                     <div class="route-step"><span class="rs-mode">🚌</span><div class="rs-body"><span class="lb lb-bus">阪急巴士</span><strong>箕面萱野 → 勝尾寺</strong><span class="rs-meta">車程及等候以當日官方時刻為準</span><div class="rs-note"><span class="rs-warn">班次少，三連休可能排隊</span>；整段轉乘預留30～45分，錯過班次就改搭計程車</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚕</span><div class="rs-body"><span class="lb lb-taxi">計程車</span><strong>勝尾寺 → 大滝上駐車場</strong><span class="rs-meta">平時約15分，連假另留塞車緩衝</span><div class="rs-note"><span class="rs-warn">行前先預約12:00左右接送，勿只依賴現場叫車</span>；若叫不到車就放棄瀑布，搭車返回箕面萱野，切勿沿無人行道的車道步行</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>瀑布 → 滝道下山 → 阪急「箕面」駅</strong><span class="rs-meta">約40分，沿溪谷緩下坡</span></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-hankyu">阪急箕面線→宝塚線</span><strong>箕面 → 石橋阪大前（轉車）→ 大阪梅田</strong><span class="rs-meta">合計約30分・往「大阪梅田」方面</span><div class="rs-note"><span class="rs-warn">回程走阪急，和去程不同路線！</span>石橋阪大前同月台對面轉車</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">Ⓜ 御堂筋線</span><strong>梅田 → なんば</strong><span class="rs-meta">約9分・往「なかもず」方面</span><div class="rs-note">牛舌檸檬統一建議訂 <strong>18:30</strong>，保留連假交通緩衝</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-hankyu">阪急箕面線→宝塚線</span><strong>箕面 → 石橋阪大前（轉車）→ 大阪梅田</strong><span class="rs-meta">合計約30分・往「大阪梅田」方面</span><div class="rs-note"><span class="rs-warn">回程走阪急，和去程不同路線！</span>石橋阪大前同月台對面轉車；抵達大阪梅田後依「Osaka Metro 御堂筋線」指標轉乘</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">Ⓜ 御堂筋線</span><strong>梅田 → なんば</strong><span class="rs-meta">約9分・往「なかもず」方面</span><div class="rs-note">從南側出口往南海難波／なんばパークス方向步行約7～10分，上 3F 前往 HARBS</div></div></div>
                 </div>
             </div>
 
@@ -1218,6 +1296,19 @@
                             <a href="https://www.google.com/maps/search/?api=1&query=箕面大瀑布" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
                         <div class="spot-desc">在日本百選名瀑下享受森林負離子，沿著溪谷步道一路散步下山。小提醒：當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 很有趣，可以買來吃！</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">16:45 - 17:45</div>
+                    <div class="spot-card">
+                        <div class="spot-header">
+                            <span class="spot-name">HARBS Namba Parks 店</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=HARBS+なんばパークス店" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="spot-desc">從箕面回到大阪梅田後，直接搭御堂筋線到難波，前往 Namba Parks 3F 吃招牌水果千層蛋糕。堂食營業至 20:00、最後點餐 19:30；連假午後可能排隊，<strong>候位超過約 30 分鐘就改外帶</strong>。17:45 前離開，步行約 10～15 分鐘即可抵達牛舌店，不必再搭車。</div>
+                        <span class="food-tag-inline">🍰 首選：ミルクレープ（水果千層蛋糕）</span><br>
+                        <span class="rsv-tag rsv-free">🟢 不接受訂位・現場候位</span>
                     </div>
                 </div>
 
@@ -1327,8 +1418,8 @@
         <section id="d6" class="section-panel">
             <div class="day-header-card">
                 <div class="day-title">
-                    <span>Day 6 : 大阪港灣風情與浪漫海洋</span>
-                    <span class="day-badge">海遊館 · 天保山</span>
+                    <span>Day 6 : 海洋、古社與大阪夜景</span>
+                    <span class="day-badge">海遊館 · 住吉 · 阿倍野</span>
                 </div>
                 <div class="hotel-tag">🏨 住宿：住一新今宮3號店</div>
             </div>
@@ -1339,7 +1430,10 @@
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>動物園前 → 堺筋本町</strong><span class="rs-meta">約7分・往「北千里・高槻市」方面</span></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-chuo">Ⓒ 中央線</span><strong>堺筋本町 → 大阪港</strong><span class="rs-meta">約10分・往「コスモスクエア」方面</span></div></div>
                     <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>大阪港駅 → 海遊館</strong><span class="rs-meta">約7分</span><div class="rs-note">1號出口出站，跟著海遊館指標走</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-chuo">Ⓒ 中央線</span><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>大阪港 → 堺筋本町（轉車）→ 恵美須町</strong><span class="rs-meta">合計約25分・堺筋線搭「往天下茶屋」方面</span><div class="rs-note">🎯 <span class="rs-warn">在「恵美須町」下車</span>，出站就是通天閣／新世界串炸，比坐到動物園前更近</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-chuo">Ⓒ 中央線</span><span class="lb lb-jro">Ⓞ JR環状線</span><span class="lb lb-nankai">南海</span><strong>大阪港 → 弁天町 → 新今宮 → 住吉大社</strong><span class="rs-meta">含轉乘約35～45分</span><div class="rs-note">中央線到弁天町，轉 JR 環狀線到新今宮，再搭南海本線<strong>普通車</strong>到住吉大社；急行不停靠</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚋</span><div class="rs-body"><span class="lb lb-hankai">阪堺電車</span><strong>住吉鳥居前 → 天王寺駅前</strong><span class="rs-meta">約20～25分</span><div class="rs-note">從住吉大社正門過馬路就是「住吉鳥居前」站，搭往「天王寺駅前」方向</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>天王寺駅前 → HARUKAS 300</strong><span class="rs-meta">約5～8分</span><div class="rs-note">進阿倍野 HARUKAS 後先到 16F 售票／入場處，出示電子票 QR Code</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">Ⓜ 御堂筋線</span><strong>天王寺 → 動物園前</strong><span class="rs-meta">1站約2分</span><div class="rs-note">從 1 號出口步行約8分進入新世界；若體力足，也可從 HARUKAS 直接步行約20分</div></div></div>
                     <div class="route-step"><span class="rs-mode">🛍️</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>新世界串炸 → SUGI 通天閣店／MEGA 唐吉訶德 → 住宿</strong><span class="rs-meta">採買後步行約5～10分回住宿</span><div class="rs-note">先買藥品、保健品與保養品，再到唐吉訶德補零食和伴手禮；大量採買留到今晚，買完直接回房整理行李</div></div></div>
                 </div>
             </div>
@@ -1351,36 +1445,56 @@
 
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-time">依電子票指定時段 - 14:00</div>
+                    <div class="timeline-time">依電子票指定時段 - 13:30</div>
                     <div class="spot-card">
                         <div class="spot-header">
                             <span class="spot-name">大阪海遊館 & 天保山</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=海遊館" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">世界級水族館！觀賞巨大的鯨鯊與可愛水獺。入場時間以購票時官方營業日曆與電子票指定時段為準，優先選當日最早可購買時段；天保山摩天輪維持選配。</div>
+                        <div class="spot-desc">世界級水族館！觀賞巨大的鯨鯊與可愛水獺。入場時間以購票時官方營業日曆與電子票指定時段為準，優先選當日最早可購買時段；<strong>13:30 準時離開</strong>，前往住吉大社。</div>
                     </div>
                 </div>
 
-                <div class="tip-box info">
-                    <div class="tip-title">🎡 下午空檔建議（14:00–17:00 很彈性）</div>
-                    可以待到傍晚搭 <strong>天保山大摩天輪</strong> 看夕陽海景，或乾脆早點回飯店休息（連假逛完水族館通常也累了），完全符合輕鬆調性。
+                <div class="timeline-item">
+                    <div class="timeline-time">14:30 - 15:50</div>
+                    <div class="spot-card">
+                        <div class="spot-header">
+                            <span class="spot-name">住吉大社</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=住吉大社" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="spot-desc">參拜全國住吉神社總本社，走過朱紅色反橋，依序參拜第一至第四本宮。10 月外周門 16:00 關閉、御垣內 17:00 關閉，因此<strong>15:50 前往正門離場</strong>；御守授與所到 17:00，若要購買請先處理。</div>
+                        <span class="food-tag-inline">⛩️ 重點：反橋、住吉造本殿、四座本宮</span>
+                    </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">17:30 - 19:30</div>
+                    <div class="timeline-time">16:30 - 18:30</div>
+                    <div class="spot-card">
+                        <div class="spot-header">
+                            <span class="spot-name">HARUKAS 300 阿倍野夜景</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=HARUKAS+300" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="spot-desc">搭阪堺路面電車直達天王寺，登上 60F 展望台俯瞰大阪。10/12 日落約 <strong>17:28</strong>，16:30 左右入場可一次看到白天、夕陽與夜景；通常營業 09:00–22:00，連假傍晚建議先買電子票並預留電梯排隊時間。</div>
+                        <span class="food-tag-inline">🌇 最佳節奏：16:30 入場 → 17:28 日落 → 18:15 後夜景</span><br>
+                        <a href="https://www.abenoharukas-300.jp/observatory/information.html" target="_blank" class="rsv-tag rsv-ticket">🎫 建議預先購買官方電子票</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">18:45 - 20:15</div>
                     <div class="spot-card">
                         <div class="spot-header">
                             <span class="spot-name">新世界串炸 & 通天閣夜景</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=新世界+通天閣" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">從住宿走路就到的大阪串炸（串カツ）大本營！挑一間順眼的老店，串炸配生啤，飯後散步看通天閣點燈——連假最後一晚就用最道地、最不折騰的方式收尾。</div>
+                        <div class="spot-desc">看完 HARUKAS 夜景後搭御堂筋線一站到動物園前，進入大阪串炸（串カツ）大本營。挑一間順眼的老店，串炸配生啤，飯後散步看通天閣點燈——連假最後一晚用最道地的方式收尾。</div>
                         <span class="food-tag-inline">🍢 必吃：串カツ配生啤酒</span><br>
                         <span class="rsv-tag rsv-free">🟢 免訂位，走路即到</span>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">19:30 - 21:00・彈性</div>
+                    <div class="timeline-time">20:15 - 21:15・彈性</div>
                     <div class="spot-card">
                         <div class="spot-header">
                             <span class="spot-name">住宿附近藥妝 & 伴手禮採買</span>
@@ -1397,8 +1511,8 @@
         <section id="d7" class="section-panel">
             <div class="day-header-card">
                 <div class="day-title">
-                    <span>Day 7 : 地道早市巡禮 & 臨空城血拚</span>
-                    <span class="day-badge">早市 · Outlet</span>
+                    <span>Day 7 : 地道早市、招福參拜 & 臨空城血拚</span>
+                    <span class="day-badge">木津 · 難波 · Outlet</span>
                 </div>
                 <div class="hotel-tag">🏨 住宿：關西機場日航酒店 (Hotel Nikko Kansai Airport)</div>
             </div>
@@ -1408,7 +1522,8 @@
                 <div class="route-steps">
                     <div class="route-step"><span class="rs-mode">🧳</span><div class="rs-body"><strong>07:45 前退房 → 新今宮駅置物櫃</strong><span class="rs-meta">先處理行李再去市場</span><div class="rs-note"><span class="rs-warn">住宿10:00前必須退房</span>；不要逛完市場才回住宿</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>新今宮駅 → 木津卸売市場</strong><span class="rs-meta">約15～20分</span><div class="rs-note">08:30 左右抵達，店家最齊全</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>市場 → 新今宮駅領行李</strong><span class="rs-meta">10:00 離場，約10:20回車站</span></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>木津市場 → 難波八阪神社</strong><span class="rs-meta">向北約10分</span><div class="rs-note">10:00 離開市場，順路參觀巨大獅子殿，不需先折返回新今宮</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海電車</span><strong>なんば → 新今宮</strong><span class="rs-meta">1站約2分</span><div class="rs-note">神社步行至南海難波站約12分，回新今宮領取早上寄放的行李</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海空港急行</span><strong>新今宮 → りんくうタウン</strong><span class="rs-meta">約40分・往「関西空港」方面</span><div class="rs-note"><span class="rs-warn">站名是片假名「りんくうタウン」</span>（= 臨空城），英文 Rinku Town，別坐過站</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>りんくうタウン駅 → Outlet</strong><span class="rs-meta">約6分，車站直結</span><div class="rs-note">行李放臨空城站置物櫃；若滿櫃，改用 Outlet 服務區置物櫃</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海空港線</span><strong>りんくうタウン → 関西空港</strong><span class="rs-meta">1站約6分</span></div></div>
@@ -1418,7 +1533,7 @@
 
             <div class="tip-box info">
                 <div class="tip-title">🧳 退房與行李動線</div>
-                這天的原則是「先退房、再逛市場」。新今宮與臨空城各寄放一次行李，雖多一道手續，但能避免超過10:00退房時間，也能在 Outlet 10:00 開門後提早抵達、完整利用購物時間。
+                這天的原則是「先退房、再逛市場」。行李先放新今宮站，木津市場結束後<strong>向北順遊難波八阪神社</strong>，再從南海難波搭一站回新今宮領行李；之後前往臨空城再寄放一次。雖多一道手續，但能避免提著行李逛市場與神社。
             </div>
 
             <div class="timeline">
@@ -1429,19 +1544,31 @@
                             <span class="spot-name">木津卸売市場 (木津市場早市)</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=木津卸売市場" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">感受在地人的熱情市場！必吃：<strong>木津魚市食堂</strong>海鮮丼（賣完收攤）、<strong>まるよし</strong>平價握壽司、<strong>天はな</strong>天丼、老舖食堂<strong>当志郎</strong>的名物「肉吸い」。多數店家約11:00前陸續收攤，08:30–10:00 是最適合的早市時段；10:00 準時離開回新今宮領行李。</div>
+                        <div class="spot-desc">感受在地人的熱情市場！必吃：<strong>木津魚市食堂</strong>海鮮丼（賣完收攤）、<strong>まるよし</strong>平價握壽司、<strong>天はな</strong>天丼、老舖食堂<strong>当志郎</strong>的名物「肉吸い」。多數店家約11:00前陸續收攤，08:30–10:00 是最適合的早市時段；10:00 準時離開，直接步行前往難波八阪神社。</div>
                         <span class="food-tag-inline">🍣 必吃：海鮮丼 / 握壽司 / 天丼 / 肉吸い</span>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">12:00 - 18:30</div>
+                    <div class="timeline-time">10:10 - 10:45</div>
+                    <div class="spot-card">
+                        <div class="spot-header">
+                            <span class="spot-name">難波八阪神社</span>
+                            <a href="https://www.google.com/maps/search/?api=1&query=難波八阪神社" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="spot-desc">從木津市場向北步行約 10 分鐘，參觀張開巨口、約 12 公尺高的獅子殿，祈求招福納勝。停留約 30 分鐘後步行至南海難波站，搭一站回新今宮領行李；這段比 D2 特地繞到難波更順路。</div>
+                        <span class="food-tag-inline">⛩️ 免費參拜・重點拍獅子殿</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">12:30 - 18:30</div>
                     <div class="spot-card">
                         <div class="spot-header">
                             <span class="spot-name">臨空城 Outlet (Rinku Premium Outlets)</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=Rinku+Premium+Outlets" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">關西最大 Outlet！商場 10:00 開門，午前抵達後可從容吃午餐、逛各大品牌，傍晚欣賞海景夕陽；18:30 左右離場，避免隔天早班機前一晚太晚入住。</div>
+                        <div class="spot-desc">關西最大 Outlet！神社參拜、回新今宮領行李後，預計 12:15～12:30 抵達；先寄放行李，再從容吃午餐、逛各大品牌，傍晚欣賞海景夕陽。18:30 左右離場，避免隔天早班機前一晚太晚入住。</div>
                     </div>
                 </div>
 
@@ -1517,23 +1644,7 @@
                     <input type="checkbox" onchange="toggleFood(this, 'item-2')">
                     <div class="food-info">
                         <div class="food-title">🥩 敘敘苑商業午餐</div>
-                        <div class="food-sub">LUCUA大阪店 (10/8 午餐・首選 ¥4,700 綜合午餐)</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-12">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-12')">
-                    <div class="food-info">
-                        <div class="food-title">🥐 烤布蕾千層酥</div>
-                        <div class="food-sub">GARIGUETTE Osaka (10/8 下午茶)</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-10">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-10')">
-                    <div class="food-info">
-                        <div class="food-title">🥤 Shake Shack 奶昔</div>
-                        <div class="food-sub">心齋橋店 (10/8 逛街順路)</div>
+                        <div class="food-sub">大丸心齋橋店 (10/8 午餐・首選 ¥4,700 綜合午餐)</div>
                     </div>
                 </label>
 
@@ -1542,22 +1653,6 @@
                     <div class="food-info">
                         <div class="food-title">🐖 炸豬排</div>
                         <div class="food-sub">とんかつ KATSU 華 (10/8 四 18:00・建議 TableCheck 預約)</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-6">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-6')">
-                    <div class="food-info">
-                        <div class="food-title">🐙 章魚燒</div>
-                        <div class="food-sub">難波 / 道頓堀 (10/8 宵夜或 10/10 晚間)</div>
-                    </div>
-                </label>
-
-                <label class="food-item" id="item-13">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-13')">
-                    <div class="food-info">
-                        <div class="food-title">🍶 居酒屋小酌</div>
-                        <div class="food-sub">難波 / 心齋橋街角居酒屋 (10/8 宵夜備選)</div>
                     </div>
                 </label>
 
@@ -1585,11 +1680,27 @@
                     </div>
                 </label>
 
+                <label class="food-item" id="item-17">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-17')">
+                    <div class="food-info">
+                        <div class="food-title">🍰 HARBS 水果千層蛋糕</div>
+                        <div class="food-sub">Namba Parks 店 (10/10 下午・牛舌晚餐前順遊)</div>
+                    </div>
+                </label>
+
                 <label class="food-item" id="item-1">
                     <input type="checkbox" onchange="toggleFood(this, 'item-1')">
                     <div class="food-info">
                         <div class="food-title">🍋 檸檬牛舌</div>
                         <div class="food-sub">新宿燒肉 牛舌的檸檬 (10/10 晚餐)</div>
+                    </div>
+                </label>
+
+                <label class="food-item" id="item-6">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-6')">
+                    <div class="food-info">
+                        <div class="food-title">🐙 章魚燒</div>
+                        <div class="food-sub">難波 / 道頓堀 (10/10 晚間)</div>
                     </div>
                 </label>
 
@@ -1739,18 +1850,18 @@
                 <div class="reservation-list">
                     <div class="reservation-item">
                         <div class="reservation-date">10/8<span>四・午餐</span></div>
-                        <div><div class="reservation-name">敘敘苑 LUCUA大阪店</div><div class="reservation-note"><span class="reservation-status status-must">● 建議訂位</span>11:30；只保留座位，餐點現點。電話 06-6347-0809</div></div>
-                        <a href="https://booking.resty.jp/webrsv/search/s014005101/3981" target="_blank" class="map-btn reservation-action">線上訂位</a>
-                    </div>
-                    <div class="reservation-item">
-                        <div class="reservation-date">10/8<span>四・下午茶</span></div>
-                        <div><div class="reservation-name">GARIGUETTE Osaka</div><div class="reservation-note"><span class="reservation-status status-walkin">● 免訂位</span>現場排隊入店，視人潮彈性縮短停留</div></div>
-                        <a href="https://www.google.com/maps/search/?api=1&amp;query=GARIGUETTE+Osaka" target="_blank" class="map-btn reservation-action">查看地圖</a>
+                        <div><div class="reservation-name">敘敘苑 大丸心齋橋店</div><div class="reservation-note"><span class="reservation-status status-must">● 建議訂位</span>11:30；只保留座位，餐點現點。電話 06-6227-8947</div></div>
+                        <a href="https://booking.resty.jp/webrsv/search/s014005101/20410" target="_blank" class="map-btn reservation-action">線上訂位</a>
                     </div>
                     <div class="reservation-item">
                         <div class="reservation-date">10/8<span>四・晚餐</span></div>
                         <div><div class="reservation-name">とんかつ KATSU華</div><div class="reservation-note"><span class="reservation-status status-must">● 建議訂位</span>18:00；60分鐘制、每人一份定食、僅收現金</div></div>
                         <a href="https://www.tablecheck.com/ja/katsuhana/reserve/landing" target="_blank" class="map-btn reservation-action">TableCheck</a>
+                    </div>
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/10<span>六・下午茶</span></div>
+                        <div><div class="reservation-name">HARBS Namba Parks 店</div><div class="reservation-note"><span class="reservation-status status-walkin">● 現場候位</span>16:45 左右；不可訂位，候位超過約30分鐘改外帶</div></div>
+                        <a href="https://www.harbs.co.jp/shop_kansai/" target="_blank" class="map-btn reservation-action">店家資訊</a>
                     </div>
                     <div class="reservation-item">
                         <div class="reservation-date">10/10<span>六・晚餐</span></div>
@@ -1771,6 +1882,11 @@
                         <div class="reservation-date">10/12<span>一・上午</span></div>
                         <div><div class="reservation-name">大阪海遊館</div><div class="reservation-note"><span class="reservation-status status-ticket">● 預先購票</span>購買最早可選的日期指定電子票</div></div>
                         <a href="https://www.kaiyukan.com/about/news/20582.html" target="_blank" class="map-btn reservation-action">官方購票</a>
+                    </div>
+                    <div class="reservation-item">
+                        <div class="reservation-date">10/12<span>一・傍晚</span></div>
+                        <div><div class="reservation-name">HARUKAS 300 展望台</div><div class="reservation-note"><span class="reservation-status status-ticket">● 建議購票</span>16:30 左右入場，銜接 17:28 日落與夜景</div></div>
+                        <a href="https://www.abenoharukas-300.jp/observatory/information.html" target="_blank" class="map-btn reservation-action">官方購票</a>
                     </div>
                     <div class="reservation-item">
                         <div class="reservation-date">10/12<span>一・晚餐</span></div>
@@ -1834,12 +1950,12 @@
 
         const daySummaries = {
             d1: [['⏰ 行程開始', '18:15 桃園起飛'], ['📍 主要區域', '關西機場 T2'], ['🥾 體力', '輕鬆・抵達日'], ['⭐ 今日關鍵', '入境後搭免費接駁']],
-            d2: [['⏰ 建議出門', '08:15 左右'], ['📍 主要區域', '梅田・難波'], ['🥾 體力', '中等・逛街日'], ['⭐ 今日關鍵', '新今宮站寄放行李']],
+            d2: [['⏰ 建議出門', '08:15 左右'], ['📍 主要區域', '心齋橋・大阪城・天滿'], ['🥾 體力', '較高・跨區步行'], ['⭐ 今日關鍵', '晚餐後再領行李']],
             d3: [['⏰ 建議出門', '06:40'], ['📍 主要區域', '伏見稻荷・東山'], ['🥾 體力', '較高・長距離步行'], ['⭐ 今日關鍵', '奈良線普通車才停稲荷']],
             d4: [['⏰ 建議出門', '07:30'], ['📍 主要區域', '勝尾寺・箕面'], ['🥾 體力', '中高・步道下坡'], ['⭐ 今日關鍵', '預約計程車／瀑布可取消']],
             d5: [['⏰ 建議出門', '08:00'], ['📍 主要區域', '奈良・宇治'], ['🥾 體力', '中高・跨城移動'], ['⭐ 今日關鍵', '先抽整理券／內部參觀選配']],
-            d6: [['⏰ 建議出門', '依電子票反推'], ['📍 主要區域', '海遊館・新世界'], ['🥾 體力', '中等・室內為主'], ['⭐ 今日關鍵', '先買最早指定時段']],
-            d7: [['⏰ 退房時間', '07:45 前'], ['📍 主要區域', '木津市場・臨空城'], ['🥾 體力', '中等・帶行李移動'], ['⭐ 今日關鍵', '先退房再逛市場']],
+            d6: [['⏰ 建議出門', '依電子票反推'], ['📍 主要區域', '海遊館・住吉・阿倍野'], ['🥾 體力', '中高・跨區移動'], ['⭐ 今日關鍵', '15:50 前離開住吉大社']],
+            d7: [['⏰ 退房時間', '07:45 前'], ['📍 主要區域', '木津・難波・臨空城'], ['🥾 體力', '中等・帶行李移動'], ['⭐ 今日關鍵', '市場後順遊八阪神社']],
             d8: [['⏰ 最晚出門', '06:00 前'], ['📍 主要區域', '關西機場 T2'], ['🥾 體力', '輕鬆・返程日'], ['⭐ 今日關鍵', '06:50 前完成報到']]
         };
 
@@ -1852,6 +1968,68 @@
             d6: 'Apartment Hotel 11 Shinimamiya 3',
             d7: 'Apartment Hotel 11 Shinimamiya 3',
             d8: 'Hotel Nikko Kansai Airport'
+        };
+
+        const transportOverviews = {
+            d1: '免費接駁巴士＋步行；抵達後依序完成入境、前往 Aeroplaza 與飯店。',
+            d2: '南海電車＋Osaka Metro；行李寄放新今宮站，晚餐後再領取。',
+            d3: 'JR＋京阪電車；京都市區以步行串連東山景點。',
+            d4: 'Osaka Metro＋巴士／計程車＋阪急；山區回程與去程路線不同。',
+            d5: 'JR 大和路線＋奈良線＋京都線；跨奈良、宇治與京都移動。',
+            d6: 'Osaka Metro＋JR＋南海＋阪堺電車；海遊館後一路往住吉、阿倍野與新世界。',
+            d7: '步行＋南海電車；新今宮與臨空城各寄放一次行李。',
+            d8: '步行＋免費接駁巴士；06:50 前完成 T2 報到。'
+        };
+
+        // Each entry places existing detailed route steps immediately before a destination card.
+        // target: zero-based timeline card index; -1 means after the final card.
+        const inlineTransportPlan = {
+            d1: [{ target: 1, steps: [0, 1, 2] }],
+            d2: [
+                { target: 0, steps: [0, 1, 2] },
+                { target: 1, steps: [3] },
+                { target: 2, steps: [], note: '同棟移動：從本館 9F 寶可夢中心搭電梯至 10F 敘敘苑。' },
+                { target: 3, steps: [4] },
+                { target: 4, steps: [5] },
+                { target: 5, steps: [6] },
+                { target: 6, steps: [7] }
+            ],
+            d3: [
+                { target: 0, steps: [0, 1, 2] },
+                { target: 1, steps: [3, 4, 5] },
+                { target: 2, steps: [6] },
+                { target: 3, steps: [7, 8] }
+            ],
+            d4: [
+                { target: 0, steps: [0, 1] },
+                { target: 1, steps: [2] },
+                { target: 2, steps: [3, 4, 5] },
+                { target: 3, steps: [], note: '步行約 10～15 分鐘：從 Namba Parks 向北穿過難波商圈，前往千日前的牛舌的檸檬大阪本店。' },
+                { target: 4, steps: [], note: '步行移動：晚餐後留在難波商圈，依食量彈性挑選章魚燒或大阪燒。' }
+            ],
+            d5: [
+                { target: 0, steps: [0, 1] },
+                { target: 1, steps: [2, 3] },
+                { target: 2, steps: [4, 5] },
+                { target: -1, steps: [6, 7], label: '返回新今宮住宿', href: 'https://www.google.com/maps/dir/?api=1&origin=京都駅&destination=Apartment+Hotel+11+Shinimamiya+3&dir_action=navigate' }
+            ],
+            d6: [
+                { target: 0, steps: [0, 1, 2] },
+                { target: 1, steps: [3] },
+                { target: 2, steps: [4, 5] },
+                { target: 3, steps: [6] },
+                { target: 4, steps: [7] }
+            ],
+            d7: [
+                { target: 0, steps: [0, 1] },
+                { target: 1, steps: [2] },
+                { target: 2, steps: [3, 4, 5] },
+                { target: 3, steps: [6, 7] }
+            ],
+            d8: [
+                { target: 0, steps: [0, 1, 2] },
+                { target: 1, steps: [], note: '完成報到與安檢後，依航班螢幕確認登機門並預留步行時間。' }
+            ]
         };
 
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -1982,6 +2160,81 @@
             });
         }
 
+        function arrangeInlineTransport() {
+            Object.entries(inlineTransportPlan).forEach(([dayId, groups]) => {
+                const panel = document.getElementById(dayId);
+                const transportBox = panel?.querySelector('.transport-box');
+                const sourceList = transportBox?.querySelector('.route-steps');
+                const timeline = panel?.querySelector('.timeline');
+                if(!transportBox || !sourceList || !timeline || panel.querySelector('.inline-transport')) return;
+
+                const sourceSteps = [...sourceList.querySelectorAll(':scope > .route-step')];
+                const timelineItems = [...timeline.querySelectorAll(':scope > .timeline-item')];
+
+                transportBox.querySelector('.transport-title').textContent = dayId === 'd1' || dayId === 'd8'
+                    ? '✈️ 今日交通摘要'
+                    : '🚦 今日交通摘要';
+                const overview = document.createElement('div');
+                overview.className = 'transport-overview';
+                overview.textContent = transportOverviews[dayId];
+                transportBox.appendChild(overview);
+
+                groups.forEach(group => {
+                    const destinationItem = group.target >= 0 ? timelineItems[group.target] : null;
+                    const destinationName = destinationItem?.querySelector('.spot-name')?.textContent.trim();
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'inline-transport';
+                    wrapper.setAttribute('role', 'group');
+                    wrapper.setAttribute('aria-label', group.label || `前往 ${destinationName}`);
+
+                    const card = document.createElement('div');
+                    card.className = 'inline-transport-card';
+                    const head = document.createElement('div');
+                    head.className = 'inline-transport-head';
+                    const title = document.createElement('span');
+                    title.className = 'inline-transport-title';
+                    title.textContent = `🚶‍➡️ ${group.label || `前往 ${destinationName}`}`;
+                    head.appendChild(title);
+
+                    let routeButton = destinationItem?.querySelector('.route-btn')
+                        || destinationItem?.querySelector('.spot-header .map-btn[href*="/dir/"]');
+                    if(!routeButton && group.href) {
+                        routeButton = document.createElement('a');
+                        routeButton.className = 'map-btn route-btn';
+                        routeButton.href = group.href;
+                        routeButton.target = '_blank';
+                        routeButton.rel = 'noopener noreferrer';
+                        routeButton.textContent = '↗ 路線';
+                        routeButton.setAttribute('aria-label', group.label || '開啟返回住宿路線');
+                    }
+                    if(routeButton) head.appendChild(routeButton);
+                    card.appendChild(head);
+
+                    if(group.steps.length) {
+                        const routeList = document.createElement('div');
+                        routeList.className = 'route-steps';
+                        group.steps.forEach(stepIndex => {
+                            if(sourceSteps[stepIndex]) routeList.appendChild(sourceSteps[stepIndex]);
+                        });
+                        card.appendChild(routeList);
+                    }
+
+                    if(group.note) {
+                        const note = document.createElement('div');
+                        note.className = 'rs-note';
+                        note.textContent = group.note;
+                        card.appendChild(note);
+                    }
+
+                    wrapper.appendChild(card);
+                    if(destinationItem) timeline.insertBefore(wrapper, destinationItem);
+                    else timeline.appendChild(wrapper);
+                });
+
+                sourceList.remove();
+            });
+        }
+
         function enhanceMapLinks() {
             Object.keys(tripDates).forEach(dayId => {
                 const panel = document.getElementById(dayId);
@@ -2096,6 +2349,7 @@
             window.addEventListener('orientationchange', syncHeaderHeight);
             buildDaySummaries();
             enhanceMapLinks();
+            arrangeInlineTransport();
             initializeNavigation();
 
             const foodItems = document.querySelectorAll('.food-item');
