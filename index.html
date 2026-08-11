@@ -329,7 +329,7 @@
         }
 
         .inline-transport .route-btn {
-            min-height: 30px;
+            min-height: 44px;
         }
 
         .timeline-time {
@@ -373,7 +373,7 @@
             border-radius: 6px;
             font-weight: 600;
             white-space: nowrap;
-            min-height: 32px;
+            min-height: 44px;
             transition: background 0.2s;
         }
 
@@ -445,6 +445,17 @@
             font-weight: 400;
         }
 
+        .rs-fare {
+            display: inline-block;
+            margin-right: 4px;
+            padding: 1px 6px;
+            border-radius: 999px;
+            background: #fff4d6;
+            color: #8a6200;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
         .rs-note {
             font-size: 0.78rem;
             color: var(--text-sub);
@@ -472,8 +483,10 @@
         .lb-jrd { background: #8b5a2b; } /* JR奈良線 D */
         .lb-jrq { background: #339438; } /* 大和路線 Q */
         .lb-mido { background: #e5171f; }
+        .lb-tanimachi { background: #522886; }
         .lb-sakai { background: #814721; }
         .lb-chuo { background: #019a66; }
+        .lb-nagahori { background: #a9cc51; color: #24320f; }
         .lb-keihan { background: #d70029; } /* 京阪本線路線圖為紅色（公司品牌色是綠） */
         .lb-nankai { background: #005bab; }
         .lb-hankyu { background: #59332e; }
@@ -513,13 +526,15 @@
 
         /* Reservation Tags */
         .rsv-tag {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             text-decoration: none;
             font-size: 0.75rem;
             font-weight: 700;
             padding: 3px 8px;
             border-radius: 6px;
             margin: 6px 6px 0 0;
+            min-height: 44px;
         }
 
         .rsv-must { background: #fbeae7; color: var(--torii-red); border: 1px solid #eac5bd; }
@@ -1064,8 +1079,8 @@
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海空港急行</span><strong>関西空港 → 新今宮</strong><span class="rs-meta">約43分・往「なんば」方面</span><div class="rs-note">直達不用轉車！別搭到特急ラピート（要加價）</div></div></div>
                     <div class="route-step"><span class="rs-mode">🧳</span><div class="rs-body"><strong>新今宮駅置物櫃寄放行李</strong><span class="rs-meta">預留15～20分</span><div class="rs-note"><span class="rs-warn">住宿已確認無法提前寄放</span>；優先使用南海／JR 新今宮站置物櫃，若滿櫃再到附近大型置物櫃</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-mido">Ⓜ 御堂筋線</span><strong>動物園前 → 心齋橋</strong><span class="rs-meta">約8分・往「千里中央・箕面萱野」方面</span><div class="rs-note">心齋橋站地下道直結大丸；先上本館 9F 寶可夢中心，再到 10F 吃敘敘苑午餐</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><strong>心齋橋 → 森ノ宮</strong><span class="rs-meta">長堀鶴見綠地線約12分・往「門真南」方面</span><div class="rs-note">從森ノ宮站 3-B 出口進大阪城公園，步行至天守閣約20分</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><strong>谷町四丁目 → 南森町</strong><span class="rs-meta">谷町線約6分・往「大日」方面</span><div class="rs-note">大阪城由西側離場，從谷町四丁目站搭車；南森町 4 號出口步行約3分到大阪天滿宮</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nagahori">Ⓝ 長堀鶴見綠地線</span><strong>心齋橋 → 森ノ宮</strong><span class="rs-meta">約12分・往「門真南」方面</span><div class="rs-note">從森ノ宮站 3-B 出口進大阪城公園，步行至天守閣約20分</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-tanimachi">Ⓣ 谷町線</span><strong>谷町四丁目 → 南森町</strong><span class="rs-meta">約6分・往「大日」方面</span><div class="rs-note">大阪城由西側離場，從谷町四丁目站搭車；南森町 4 號出口步行約3分到大阪天滿宮</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>南森町 → 堺筋本町</strong><span class="rs-meta">約5分・往「天下茶屋」方面</span><div class="rs-note">17:10 左右離開天滿宮，預留步行與找店時間，準時赴 KATSU華 18:00 訂位</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-sakai">Ⓚ 堺筋線</span><strong>堺筋本町 → 動物園前</strong><span class="rs-meta">約7分・往「天下茶屋」方面</span><div class="rs-note">豬排晚餐後才回新今宮站領行李，再步行至住宿自助入住</div></div></div>
                 </div>
@@ -1133,7 +1148,7 @@
                     </div>
                 </div>
 
-                <div class="tip-box warning">
+                <div class="tip-box warn">
                     <div class="tip-title">⏱️ 今天的時間底線</div>
                     大阪城與天滿宮都要去，因此寶可夢中心最晚 11:15 離開、敘敘苑午餐最晚 13:30 結束。大阪城若遇排隊，優先縮短館內停留，不要壓縮 <strong>18:00 KATSU華訂位</strong>；行李可安心留在新今宮站，晚餐後再領。
                 </div>
@@ -1520,10 +1535,11 @@
             <div class="transport-box">
                 <div class="transport-title">🛍️ 今日交通・一步一步跟著走</div>
                 <div class="route-steps">
-                    <div class="route-step"><span class="rs-mode">🧳</span><div class="rs-body"><strong>07:45 前退房 → 新今宮駅置物櫃</strong><span class="rs-meta">先處理行李再去市場</span><div class="rs-note"><span class="rs-warn">住宿10:00前必須退房</span>；不要逛完市場才回住宿</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>新今宮駅 → 木津卸売市場</strong><span class="rs-meta">約15～20分</span><div class="rs-note">08:30 左右抵達，店家最齊全</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>木津市場 → 難波八阪神社</strong><span class="rs-meta">向北約10分</span><div class="rs-note">10:00 離開市場，順路參觀巨大獅子殿，不需先折返回新今宮</div></div></div>
-                    <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海電車</span><strong>なんば → 新今宮</strong><span class="rs-meta">1站約2分</span><div class="rs-note">神社步行至南海難波站約12分，回新今宮領取早上寄放的行李</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>住宿 → 木津卸売市場</strong><span class="rs-meta">約15～20分</span><div class="rs-note">行李先留在房內，07:35 左右輕裝出門</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>木津市場 → 難波八阪神社</strong><span class="rs-meta">向北約10分</span><div class="rs-note">08:50 離開市場，順路參觀巨大獅子殿</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>難波八阪神社 → 住宿</strong><span class="rs-meta">約20分</span><div class="rs-note">最晚 09:20 離開神社，直接步行回住宿</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🧳</span><div class="rs-body"><strong>住宿取行李並退房</strong><span class="rs-meta">09:40～10:00</span><div class="rs-note"><span class="rs-warn">住宿10:00前必須退房</span>；前一晚先整理好行李，回房後拿了就走</div></div></div>
+                    <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>住宿 → 南海「新今宮」駅</strong><span class="rs-meta">約5～10分</span></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海空港急行</span><strong>新今宮 → りんくうタウン</strong><span class="rs-meta">約40分・往「関西空港」方面</span><div class="rs-note"><span class="rs-warn">站名是片假名「りんくうタウン」</span>（= 臨空城），英文 Rinku Town，別坐過站</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚶</span><div class="rs-body"><span class="lb lb-walk">步行</span><strong>りんくうタウン駅 → Outlet</strong><span class="rs-meta">約6分，車站直結</span><div class="rs-note">行李放臨空城站置物櫃；若滿櫃，改用 Outlet 服務區置物櫃</div></div></div>
                     <div class="route-step"><span class="rs-mode">🚃</span><div class="rs-body"><span class="lb lb-nankai">南海空港線</span><strong>りんくうタウン → 関西空港</strong><span class="rs-meta">1站約6分</span></div></div>
@@ -1533,42 +1549,54 @@
 
             <div class="tip-box info">
                 <div class="tip-title">🧳 退房與行李動線</div>
-                這天的原則是「先退房、再逛市場」。行李先放新今宮站，木津市場結束後<strong>向北順遊難波八阪神社</strong>，再從南海難波搭一站回新今宮領行李；之後前往臨空城再寄放一次。雖多一道手續，但能避免提著行李逛市場與神社。
+                這天改成「<strong>行李留房內，輕裝逛市場與神社，再回住宿退房</strong>」。前一晚先把行李整理好，07:35 左右出門；難波八阪神社最晚 09:20 離開，09:40 左右回房取行李，確保 10:00 前完成退房。這樣不用在新今宮站寄放，也不必拖行李逛早市。
             </div>
 
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-time">08:30 - 10:00</div>
+                    <div class="timeline-time">07:50 - 08:50</div>
                     <div class="spot-card">
                         <div class="spot-header">
                             <span class="spot-name">木津卸売市場 (木津市場早市)</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=木津卸売市場" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">感受在地人的熱情市場！必吃：<strong>木津魚市食堂</strong>海鮮丼（賣完收攤）、<strong>まるよし</strong>平價握壽司、<strong>天はな</strong>天丼、老舖食堂<strong>当志郎</strong>的名物「肉吸い」。多數店家約11:00前陸續收攤，08:30–10:00 是最適合的早市時段；10:00 準時離開，直接步行前往難波八阪神社。</div>
+                        <div class="spot-desc">感受在地人的熱情市場！必吃：<strong>木津魚市食堂</strong>海鮮丼（賣完收攤）、<strong>まるよし</strong>平價握壽司、<strong>天はな</strong>天丼、老舖食堂<strong>当志郎</strong>的名物「肉吸い」。行李留在房內，輕裝逛早市；08:50 準時離開，直接步行前往難波八阪神社。</div>
                         <span class="food-tag-inline">🍣 必吃：海鮮丼 / 握壽司 / 天丼 / 肉吸い</span>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">10:10 - 10:45</div>
+                    <div class="timeline-time">09:00 - 09:20</div>
                     <div class="spot-card">
                         <div class="spot-header">
                             <span class="spot-name">難波八阪神社</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=難波八阪神社" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">從木津市場向北步行約 10 分鐘，參觀張開巨口、約 12 公尺高的獅子殿，祈求招福納勝。停留約 30 分鐘後步行至南海難波站，搭一站回新今宮領行李；這段比 D2 特地繞到難波更順路。</div>
+                        <div class="spot-desc">從木津市場向北步行約 10 分鐘，參觀張開巨口、約 12 公尺高的獅子殿，祈求招福納勝。停留約 20 分鐘後直接步行回住宿取行李；09:20 必須離開，才能從容趕上 10:00 退房期限。</div>
                         <span class="food-tag-inline">⛩️ 免費參拜・重點拍獅子殿</span>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-time">12:30 - 18:30</div>
+                    <div class="timeline-time">09:40 - 10:00</div>
+                    <div class="spot-card">
+                        <div class="spot-header">
+                            <span class="spot-name">回住宿取行李 & 退房</span>
+                            <a href="https://www.google.com/maps/search/?api=1&amp;query=Apartment+Hotel+11+Shinimamiya+3" target="_blank" class="map-btn">📍 地圖</a>
+                        </div>
+                        <div class="spot-desc">前一晚完成打包，回房後確認護照、錢包、充電器與冰箱，拿行李直接退房。接著步行到南海新今宮站，搭空港急行前往臨空城。</div>
+                        <span class="food-tag-inline">⏰ 10:00 前完成退房</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-time">11:15 - 18:30</div>
                     <div class="spot-card">
                         <div class="spot-header">
                             <span class="spot-name">臨空城 Outlet (Rinku Premium Outlets)</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=Rinku+Premium+Outlets" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">關西最大 Outlet！神社參拜、回新今宮領行李後，預計 12:15～12:30 抵達；先寄放行李，再從容吃午餐、逛各大品牌，傍晚欣賞海景夕陽。18:30 左右離場，避免隔天早班機前一晚太晚入住。</div>
+                        <div class="spot-desc">關西最大 Outlet！回住宿退房後直接從新今宮搭車，預計 11:00～11:15 抵達；先寄放行李，再從容吃午餐、逛各大品牌，傍晚欣賞海景夕陽。18:30 左右離場，避免隔天早班機前一晚太晚入住。</div>
                     </div>
                 </div>
 
@@ -1672,6 +1700,14 @@
                     </div>
                 </label>
 
+                <label class="food-item" id="item-5">
+                    <input type="checkbox" onchange="toggleFood(this, 'item-5')">
+                    <div class="food-info">
+                        <div class="food-title">🍜 拉麵</div>
+                        <div class="food-sub">新今宮站周邊 (10/9 回大阪後・彈性晚餐)</div>
+                    </div>
+                </label>
+
                 <label class="food-item" id="item-16">
                     <input type="checkbox" onchange="toggleFood(this, 'item-16')">
                     <div class="food-info">
@@ -1744,13 +1780,6 @@
                     </div>
                 </label>
 
-                <label class="food-item" id="item-5">
-                    <input type="checkbox" onchange="toggleFood(this, 'item-5')">
-                    <div class="food-info">
-                        <div class="food-title">🍜 拉麵</div>
-                        <div class="food-sub">新今宮站周邊 (10/9 回大阪後・彈性晚餐)</div>
-                    </div>
-                </label>
             </div>
         </section>
 
@@ -1835,6 +1864,11 @@
             <div class="info-card notice-card">
                 <div class="info-title">⚠️ 三連休重要提醒</div>
                 <div class="info-card-body">10/12 (一) 是日本「運動之日」，10/10 (六) ～ 10/12 (一) 連成三天連假。Day 4 箕面、Day 5 奈良宇治、Day 6 海遊館都落在連假中，日本人也會全家出遊。這三天熱門景點請盡量「開門就到」，越早越舒服。行程已依人潮做過優化：戶外的箕面排週六、室內的海遊館排連假最後一天。</div>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">💴 交通費怎麼看？</div>
+                <div class="info-card-body">每段路線的黃色標籤是<strong>成人每人單程估價</strong>，以一般 IC 卡／普通車規劃；「通算票價內」代表同一次進站轉乘，不要重複加總。每日摘要是當日估計合計，未包含置物櫃、特急指定席及臨時改搭計程車。票價可能調整，出發前請再用官方票價搜尋確認。</div>
             </div>
 
             <div class="info-card guide-card">
@@ -1971,14 +2005,14 @@
         };
 
         const transportOverviews = {
-            d1: '免費接駁巴士＋步行；抵達後依序完成入境、前往 Aeroplaza 與飯店。',
-            d2: '南海電車＋Osaka Metro；行李寄放新今宮站，晚餐後再領取。',
-            d3: 'JR＋京阪電車；京都市區以步行串連東山景點。',
-            d4: 'Osaka Metro＋巴士／計程車＋阪急；山區回程與去程路線不同。',
-            d5: 'JR 大和路線＋奈良線＋京都線；跨奈良、宇治與京都移動。',
-            d6: 'Osaka Metro＋JR＋南海＋阪堺電車；海遊館後一路往住吉、阿倍野與新世界。',
-            d7: '步行＋南海電車；新今宮與臨空城各寄放一次行李。',
-            d8: '步行＋免費接駁巴士；06:50 前完成 T2 報到。'
+            d1: '免費接駁巴士＋步行；今日交通約 ¥0／人。',
+            d2: '南海電車＋Osaka Metro；今日交通約 ¥2,070／人（不含置物櫃）。',
+            d3: 'JR＋京阪電車；今日交通約 ¥1,880／人。',
+            d4: 'Metro＋巴士＋阪急約 ¥1,860／人，另加計程車約 ¥2,500～3,500／車。',
+            d5: 'JR 大和路線＋奈良線＋京都線；今日交通約 ¥2,320／人。',
+            d6: 'Osaka Metro＋JR＋南海＋阪堺電車；今日交通約 ¥1,310／人。',
+            d7: '步行＋南海電車；今日交通約 ¥1,150／人（不含臨空城置物櫃）。',
+            d8: '步行＋免費接駁巴士；今日交通約 ¥0／人。'
         };
 
         // Each entry places existing detailed route steps immediately before a destination card.
@@ -2021,15 +2055,51 @@
                 { target: 4, steps: [7] }
             ],
             d7: [
-                { target: 0, steps: [0, 1] },
-                { target: 1, steps: [2] },
-                { target: 2, steps: [3, 4, 5] },
-                { target: 3, steps: [6, 7] }
+                { target: 0, steps: [0] },
+                { target: 1, steps: [1] },
+                { target: 2, steps: [2, 3] },
+                { target: 3, steps: [4, 5, 6] },
+                { target: 4, steps: [7, 8] }
             ],
             d8: [
                 { target: 0, steps: [0, 1, 2] },
                 { target: 1, steps: [], note: '完成報到與安檢後，依航班螢幕確認登機門並預留步行時間。' }
             ]
+        };
+
+        // Adult IC-card planning estimates. Through-fare labels prevent transfers from being counted twice.
+        const estimatedFares = {
+            'T2 → 第1航廈／Aeroplaza': '免費',
+            '関西空港 → 新今宮': '約 ¥970／人',
+            '動物園前 → 心齋橋': '約 ¥240／人',
+            '心齋橋 → 森ノ宮': '約 ¥240／人',
+            '谷町四丁目 → 南森町': '約 ¥190／人',
+            '南森町 → 堺筋本町': '約 ¥190／人',
+            '堺筋本町 → 動物園前': '約 ¥240／人',
+            '新今宮 → 大阪': 'JR 通算約 ¥990／人',
+            '大阪 → 京都': '通算票價內',
+            '京都 → 稲荷': '通算票價內',
+            '伏見稲荷 → 清水五条': '約 ¥230／人',
+            '祇園四条 → 京橋': '約 ¥430／人',
+            '京橋 → 新今宮': '約 ¥230／人',
+            '動物園前 → 箕面萱野（終點站）': '約 ¥530／人',
+            '箕面萱野 → 勝尾寺': '約 ¥800／人',
+            '勝尾寺 → 大滝上駐車場': '約 ¥2,500～3,500／車',
+            '箕面 → 石橋阪大前（轉車）→ 大阪梅田': '約 ¥290／人',
+            '梅田 → なんば': '約 ¥240／人',
+            '新今宮 → 奈良': '約 ¥580／人',
+            '奈良 → 宇治': '約 ¥510／人',
+            '宇治 → 京都': '約 ¥240／人',
+            '京都 → 大阪': 'JR 通算約 ¥990／人',
+            '大阪 → 新今宮': '通算票價內',
+            '動物園前 → 堺筋本町': 'Metro 通算約 ¥290／人',
+            '堺筋本町 → 大阪港': '通算票價內',
+            '大阪港 → 弁天町 → 新今宮 → 住吉大社': '約 ¥590／人',
+            '住吉鳥居前 → 天王寺駅前': '約 ¥240／人',
+            '天王寺 → 動物園前': '約 ¥190／人',
+            '新今宮 → りんくうタウン': '約 ¥760／人',
+            'りんくうタウン → 関西空港': '約 ¥390／人',
+            'Aeroplaza → T2': '免費'
         };
 
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -2157,6 +2227,21 @@
                     summary.appendChild(item);
                 });
                 headerCard.insertAdjacentElement('afterend', summary);
+            });
+        }
+
+        function addEstimatedFares() {
+            document.querySelectorAll('.transport-box .route-step').forEach(step => {
+                const routeName = step.querySelector('strong')?.textContent.trim();
+                const isWalk = Boolean(step.querySelector('.lb-walk'));
+                const fareText = estimatedFares[routeName] || (isWalk ? '免費' : '');
+                const meta = step.querySelector('.rs-meta');
+                if(!fareText || !meta || meta.querySelector('.rs-fare')) return;
+
+                const fare = document.createElement('span');
+                fare.className = 'rs-fare';
+                fare.textContent = fareText;
+                meta.prepend(fare);
             });
         }
 
@@ -2348,6 +2433,7 @@
             if('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe(document.querySelector('.header'));
             window.addEventListener('orientationchange', syncHeaderHeight);
             buildDaySummaries();
+            addEstimatedFares();
             enhanceMapLinks();
             arrangeInlineTransport();
             initializeNavigation();
