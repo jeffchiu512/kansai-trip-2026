@@ -547,6 +547,7 @@
         .rsv-must { background: #fbeae7; color: var(--torii-red); border: 1px solid #eac5bd; }
         .rsv-free { background: #eef4f0; color: var(--matcha-green); border: 1px solid #cfe0d6; }
         .rsv-ticket { background: #fdf6e7; color: #9a7a1f; border: 1px solid #ecd9a8; }
+        .rsv-done { background: #e9f2f8; color: #1f5f7a; border: 1px solid #c2dcea; }
 
         .reservation-list {
             display: flex;
@@ -602,6 +603,7 @@
         .status-must { color: var(--torii-red); }
         .status-walkin { color: var(--matcha-green); }
         .status-ticket { color: #9a7a1f; }
+        .status-done { color: #1f5f7a; }
 
         .reservation-action {
             min-width: 74px;
@@ -1119,7 +1121,7 @@
                             <span class="spot-name">寶可夢中心 OSAKA DX</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=Pok%C3%A9mon+Center+OSAKA+DX" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">寄好行李後從動物園前搭御堂筋線到心齋橋，利用地下道直達大丸心齋橋店。先到本館 9F 的寶可夢官方商店逛限定商品與拍照；<strong>11:15 前結帳離開</strong>，搭電梯上 10F 準備午餐。這裡只逛商店，不排需要另外預約的寶可夢咖啡廳。</div>
+                        <div class="spot-desc">寄好行李後從動物園前搭御堂筋線到心齋橋，利用地下道直達大丸心齋橋店。先到本館 9F 的寶可夢官方商店逛限定商品與拍照；<strong>11:15 前結帳離開</strong>，搭電梯上 10F 排隊候位（午餐不能訂位，早到才不用久等）。這裡只逛商店，不排需要另外預約的寶可夢咖啡廳。</div>
                         <span class="food-tag-inline">⚡ 同棟順遊：9F 寶可夢中心 → 10F 敘敘苑</span>
                     </div>
                 </div>
@@ -1131,9 +1133,9 @@
                             <span class="spot-name">敘敘苑 大丸心齋橋店 (商業午餐)</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=敘敘苑+大丸心齋橋店" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">高 CP 值燒肉商業午餐，就在大丸本館 10F。<strong>首選 ¥4,700 綜合午餐</strong>，包含赤身里肌、カルビ、烤蝦，以及醃菜、沙拉、拌菜、白飯、湯、甜點與飲料；若想控制預算，再選 ¥3,700 燒肉午餐。平日午餐時段 11:00–15:00，先訂較安心（訂位只保留座位，餐點當天現點；價格與內容以現場菜單為準）。</div>
+                        <div class="spot-desc">高 CP 值燒肉商業午餐，就在大丸本館 10F。<strong>首選 ¥4,700 綜合午餐</strong>，包含赤身里肌、カルビ、烤蝦，以及醃菜、沙拉、拌菜、白飯、湯、甜點與飲料；若想控制預算，再選 ¥3,700 燒肉午餐。平日午餐時段 11:00–15:00（L.O.），<strong>午間不接受訂位</strong>，一律現場候位——大丸開店後直接上 10F 登記，11:30 前到最保險，越接近 12:00 排越久（價格與內容以現場菜單為準）。</div>
                         <span class="food-tag-inline">🍱 首選：¥4,700 綜合午餐</span><br>
-                        <a href="https://booking.resty.jp/webrsv/search/s014005101/20410" target="_blank" class="rsv-tag rsv-must">🔴 建議訂位：06-6227-8947 或線上預約</a>
+                        <span class="rsv-tag rsv-free">🟢 午間不可訂位・現場候位（線上預約僅限晚餐）</span>
                     </div>
                 </div>
 
@@ -1164,7 +1166,7 @@
 
                 <div class="tip-box warn">
                     <div class="tip-title">⏱️ 今天的時間底線</div>
-                    大阪城與天滿宮都要去，因此寶可夢中心最晚 11:15 離開、敘敘苑午餐最晚 13:30 結束。大阪城若遇排隊，優先縮短館內停留，不要壓縮 <strong>18:00 KATSU華訂位</strong>；行李寄放在住宿（或備案的新今宮站置物櫃），晚餐後再領。
+                    大阪城與天滿宮都要去，因此寶可夢中心最晚 11:15 離開、敘敘苑午餐最晚 13:30 結束。敘敘苑午間不能訂位，若 11:30 到現場候位超過 40 分鐘，就先改吃同棟其他餐廳，別讓整天往後推。大阪城若遇排隊，優先縮短館內停留，不要壓縮 <strong>18:00 KATSU華訂位</strong>；行李寄放在住宿（或備案的新今宮站置物櫃），晚餐後再領。
                 </div>
 
                 <div class="timeline-item">
@@ -1348,9 +1350,9 @@
                             <span class="spot-name">新宿燒肉 牛舌的檸檬 (大阪本店)</span>
                             <a href="https://www.google.com/maps/search/?api=1&query=新宿燒肉+牛舌的檸檬+大阪本店" target="_blank" class="map-btn">📍 地圖</a>
                         </div>
-                        <div class="spot-desc">極厚切炭烤牛舌搭上清爽檸檬，高人氣話題燒肉！排隊名店且這天是連假週六晚上的尖峰，不訂位大概要站著等。<strong>建議統一訂 18:30</strong>，替山區接駁與連假塞車保留緩衝。</div>
+                        <div class="spot-desc">極厚切炭烤牛舌搭上清爽檸檬，高人氣話題燒肉！<strong>已訂位 18:30</strong>，山區接駁與連假塞車都留了緩衝。連假週六晚上尖峰，請準時報到；若箕面下山延誤，務必提前打電話告知店家。</div>
                         <span class="food-tag-inline">🍋 必吃：檸檬牛舌</span><br>
-                        <span class="rsv-tag rsv-must">🔴 必訂位：TableCheck 搜「beeflemon-nanba」，建議訂 18:30</span>
+                        <span class="rsv-tag rsv-done">✅ 已訂位：10/10（六）18:30</span>
                     </div>
                 </div>
 
@@ -1898,8 +1900,8 @@
                 <div class="reservation-list">
                     <div class="reservation-item">
                         <div class="reservation-date">10/8<span>四・午餐</span></div>
-                        <div><div class="reservation-name">敘敘苑 大丸心齋橋店</div><div class="reservation-note"><span class="reservation-status status-must">● 建議訂位</span>11:30；只保留座位，餐點現點。電話 06-6227-8947</div></div>
-                        <a href="https://booking.resty.jp/webrsv/search/s014005101/20410" target="_blank" class="map-btn reservation-action">線上訂位</a>
+                        <div><div class="reservation-name">敘敘苑 大丸心齋橋店</div><div class="reservation-note"><span class="reservation-status status-walkin">● 現場候位</span>午間不接受訂位（線上預約僅限晚餐）；11:30 前到 10F 登記</div></div>
+                        <a href="https://www.daimaru.co.jp/shinsaibashi/restaurant/jojoen.html" target="_blank" class="map-btn reservation-action">店家資訊</a>
                     </div>
                     <div class="reservation-item">
                         <div class="reservation-date">10/8<span>四・晚餐</span></div>
@@ -1913,8 +1915,8 @@
                     </div>
                     <div class="reservation-item">
                         <div class="reservation-date">10/10<span>六・晚餐</span></div>
-                        <div><div class="reservation-name">牛舌的檸檬 大阪本店</div><div class="reservation-note"><span class="reservation-status status-must">● 必須訂位</span>建議 18:30，替山區交通保留緩衝</div></div>
-                        <a href="https://tabelog.com/osaka/A2701/A270202/27143533/" target="_blank" class="map-btn reservation-action">線上訂位</a>
+                        <div><div class="reservation-name">牛舌的檸檬 大阪本店</div><div class="reservation-note"><span class="reservation-status status-done">● 已訂位</span>10/10（六）18:30 已確認，替山區交通保留緩衝</div></div>
+                        <a href="https://tabelog.com/osaka/A2701/A270202/27143533/" target="_blank" class="map-btn reservation-action">店家資訊</a>
                     </div>
                     <div class="reservation-item">
                         <div class="reservation-date">10/11<span>日・下午茶</span></div>
