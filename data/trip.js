@@ -398,7 +398,7 @@ export const trip = {
     {
       "id": "rsv-jojoen",
       "eventId": "d2-jojoen",
-      "periodLabel": "四・午餐",
+      "periodLabel": "午餐",
       "status": "walkIn",
       "method": "walkIn",
       "displayName": "敘敘苑 大丸心齋橋店",
@@ -413,7 +413,7 @@ export const trip = {
     {
       "id": "rsv-katsuhana",
       "eventId": "d2-katsuhana",
-      "periodLabel": "四・晚餐",
+      "periodLabel": "晚餐",
       "status": "recommended",
       "method": "tablecheck",
       "displayName": "とんかつ KATSU華",
@@ -428,7 +428,7 @@ export const trip = {
     {
       "id": "rsv-harbs",
       "eventId": "d4-harbs",
-      "periodLabel": "六・下午茶",
+      "periodLabel": "下午茶",
       "status": "walkIn",
       "method": "walkIn",
       "displayName": "HARBS Namba Parks 店",
@@ -443,7 +443,7 @@ export const trip = {
     {
       "id": "rsv-gyutan-lemon",
       "eventId": "d4-gyutan-lemon",
-      "periodLabel": "六・晚餐",
+      "periodLabel": "晚餐",
       "status": "confirmed",
       "method": "officialSite",
       "displayName": "牛舌的檸檬 大阪本店",
@@ -458,7 +458,7 @@ export const trip = {
     {
       "id": "rsv-nakamura-tokichi",
       "eventId": "d5-uji",
-      "periodLabel": "日・下午茶",
+      "periodLabel": "下午茶",
       "status": "ticketQueue",
       "method": "queueTicket",
       "displayName": "中村藤吉本店 宇治",
@@ -473,7 +473,7 @@ export const trip = {
     {
       "id": "rsv-toyotei",
       "eventId": "d5-toyotei",
-      "periodLabel": "日・晚餐",
+      "periodLabel": "晚餐",
       "status": "walkIn",
       "method": "walkIn",
       "displayName": "東洋亭 京都Porta店",
@@ -488,7 +488,7 @@ export const trip = {
     {
       "id": "rsv-kaiyukan",
       "eventId": "d6-kaiyukan",
-      "periodLabel": "一・上午",
+      "periodLabel": "上午",
       "status": "required",
       "method": "officialSite",
       "displayName": "大阪海遊館",
@@ -503,7 +503,7 @@ export const trip = {
     {
       "id": "rsv-harukas-300",
       "eventId": "d6-harukas-300",
-      "periodLabel": "一・傍晚",
+      "periodLabel": "傍晚",
       "status": "recommended",
       "method": "officialSite",
       "displayName": "HARUKAS 300 展望台",
@@ -518,7 +518,7 @@ export const trip = {
     {
       "id": "rsv-shinsekai-kushikatsu",
       "eventId": "d6-shinsekai-kushikatsu",
-      "periodLabel": "一・晚餐",
+      "periodLabel": "晚餐",
       "status": "walkIn",
       "method": "walkIn",
       "displayName": "新世界串炸",
