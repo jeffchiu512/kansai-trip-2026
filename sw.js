@@ -1,7 +1,11 @@
-const CACHE_VERSION = 'kansai-trip-v2';
+const CACHE_VERSION = 'kansai-trip-v5';
 const APP_SHELL = [
   './',
   './index.html',
+  './css/app.css?v=5',
+  './js/app.js?v=5',
+  './data/trip.js?v=5',
+  './data/validate.js?v=5',
   './manifest.webmanifest',
   './icons/favicon-32.png',
   './icons/apple-touch-icon.png',
@@ -52,14 +56,18 @@ self.addEventListener('fetch', (event) => {
 
   event.respondWith(
     caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request).then((response) => {
-        if (response.ok) {
-          const copy = response.clone();
-          caches.open(CACHE_VERSION).then((cache) => cache.put(event.request, copy));
-        }
-        return response;
-      });
+      const network = fetch(event.request)
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(CACHE_VERSION).then((cache) => cache.put(event.request, copy));
+          }
+          return response;
+        })
+        .catch(() => cached);
+
+      // Keep the app fast while refreshing CSS, JS and trip data in the background.
+      return cached || network;
     })
   );
 });
