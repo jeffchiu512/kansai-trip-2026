@@ -27,10 +27,10 @@ export function validateTrip(trip) {
   const accommodationIds = collectIds(trip.accommodations || [], "trip.accommodations", errors);
   const reservationIds = collectIds(trip.reservations || [], "trip.reservations", errors);
   const shoppingIds = collectIds(trip.shopping || [], "trip.shopping", errors);
-  const foodIds = collectIds(trip.foodChecklist || [], "trip.foodChecklist", errors);
   const placeIds = new Set(Object.keys(trip.places || {}));
   const journeyIds = new Set(Object.keys(trip.journeys || {}));
   const eventIds = new Set();
+  const dayIds = new Set((trip.days || []).map(day => day.id));
 
   let previousDate = "";
   (trip.days || []).forEach((day, dayIndex) => {
@@ -57,9 +57,6 @@ export function validateTrip(trip) {
       if (event.flightId && event.type !== "flight") errors.push(`${eventPath}.type: flightId requires type "flight"`);
       if (event.reservationId && !reservationIds.has(event.reservationId)) errors.push(`${eventPath}.reservationId: unknown reservation "${event.reservationId}"`);
       if (event.transportBeforeId && !journeyIds.has(event.transportBeforeId)) errors.push(`${eventPath}.transportBeforeId: unknown journey "${event.transportBeforeId}"`);
-      (event.foodChecklistIds || []).forEach(id => {
-        if (!foodIds.has(id)) errors.push(`${eventPath}.foodChecklistIds: unknown food item "${id}"`);
-      });
     });
   });
 
@@ -77,13 +74,9 @@ export function validateTrip(trip) {
 
   (trip.reservations || []).forEach((reservation, index) => {
     const path = `trip.reservations[${index}]`;
-    if (!eventIds.has(reservation.eventId)) errors.push(`${path}.eventId: unknown event "${reservation.eventId}"`);
-  });
-
-  (trip.foodChecklist || []).forEach((item, index) => {
-    (item.eventIds || []).forEach(id => {
-      if (!eventIds.has(id)) errors.push(`trip.foodChecklist[${index}].eventIds: unknown event "${id}"`);
-    });
+    if (!reservation.eventId && !reservation.dayId) errors.push(`${path}: requires eventId or dayId`);
+    if (reservation.eventId && !eventIds.has(reservation.eventId)) errors.push(`${path}.eventId: unknown event "${reservation.eventId}"`);
+    if (reservation.dayId && !dayIds.has(reservation.dayId)) errors.push(`${path}.dayId: unknown day "${reservation.dayId}"`);
   });
 
   (trip.shopping || []).forEach((item, index) => {

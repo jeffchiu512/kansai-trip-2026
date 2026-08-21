@@ -2,7 +2,7 @@
 
 狀態：提案版 v1
 適用專案：`kansai-trip-2026`
-最後更新：2026-08-20
+最後更新：2026-08-21
 
 ## 1. 文件目的
 
@@ -39,7 +39,6 @@
 | 訂位總表與 Event 標籤 | 訂位／購票資訊 | `Reservation` |
 | 航班資訊與 Day 1／8 | 航班 | `Flight` |
 | 住宿卡片與每日住宿 | 住宿 | `Accommodation` |
-| 美食打卡頁 | 可勾選美食 | `foodChecklist`，並由 `eventIds` 連回 Event |
 | 購物清單 | 商品內容 | `ShoppingItem` |
 | `localStorage` | 使用者勾選與數量 | `UserState`，不放進內容資料 |
 | 旅途資訊文章 | 長篇說明 | `InfoSection` 或暫留 HTML |
@@ -52,7 +51,6 @@ trip data
    ├── Day Timeline
    ├── Day Tabs / Header / Summary
    ├── Inline Transport
-   ├── Food Checklist
    ├── Reservation Summary
    ├── Flight / Accommodation Cards
    └── Shopping List
@@ -72,8 +70,7 @@ localStorage
 ```text
 Event: d2-katsuhana
   ├── primaryPlaceId → places.katsuhana
-  ├── reservationId → Reservation: rsv-katsuhana
-  └── foodChecklistIds → foodChecklist
+  └── reservationId → Reservation: rsv-katsuhana
 ```
 
 ### 3.2 結構化的判斷標準
@@ -150,9 +147,9 @@ data/
 
 ```javascript
 export const trip = {
-  schemaVersion: 1,
-  contentVersion: "1.0.0",
-  updatedAt: "2026-08-20",
+  schemaVersion: 2,
+  contentVersion: "2.0.0",
+  updatedAt: "2026-08-21",
 
   meta: {},
   flights: [],
@@ -161,7 +158,6 @@ export const trip = {
   reservations: [],
   days: [],
   journeys: {},
-  foodChecklist: [],
   shopping: [],
   infoSections: [],
   externalLinks: []
@@ -180,7 +176,6 @@ export const trip = {
 | `reservations` | `Reservation[]` | 是 | 訂位、候位與購票主資料。 |
 | `days` | `Day[]` | 是 | 每日行程，依日期排列。 |
 | `journeys` | `Record<string, Journey>` | 是 | 以 Journey ID 為 key 的交通字典。 |
-| `foodChecklist` | `FoodChecklistItem[]` | 是 | 依美食打卡頁順序排列，透過 Event ID 建立關聯。 |
 | `shopping` | `ShoppingItem[]` | 是 | 購物內容資料。 |
 | `infoSections` | `InfoSection[]` | 是 | 編輯型旅途資訊。 |
 | `externalLinks` | `ExternalLink[]` | 是 | Visit Japan Web 等救援連結。 |
@@ -370,8 +365,6 @@ Day 是 App 最核心的聚合單位。
     { icon: "🥩", text: "必吃：KATSU華 炸豬排" }
   ],
 
-  foodChecklistIds: ["food-katsuhana-tonkatsu"],
-
   actions: []
 }
 ```
@@ -389,7 +382,6 @@ Day 是 App 最核心的聚合單位。
 | `transportBeforeId` | string \| null | 是 | 顯示於此 Event 前的 Journey。 |
 | `reservationId` | string \| null | 是 | 訂位／購票資料。 |
 | `highlights` | `Highlight[]` | 是 | 現有 `.food-tag-inline` 的通用化資料。 |
-| `foodChecklistIds` | string[] | 是 | 指向頂層 `foodChecklist`；沒有項目時為空陣列。 |
 | `actions` | `Action[]` | 是 | 無法由 Place、Journey 或 Reservation 推導的額外按鈕。 |
 
 ### 8.1 Event.type
@@ -460,15 +452,7 @@ Event type 不決定完全不同的卡片結構；第一版仍由同一個 Event
 
 不再使用名稱帶有食物語意的 `.food-tag-inline` 作為資料概念。它只是通用的事件亮點。
 
-### 8.4 Food Checklist 關聯
-
-```javascript
-foodChecklistIds: ["food-harbs-mille-crepes"]
-```
-
-Event 只保存 ID，不重複保存打卡頁標題與副標題。實際項目由頂層 `foodChecklist` 提供，勾選狀態仍只存在 User State。
-
-### 8.5 Action
+### 8.4 Action
 
 ```javascript
 {
@@ -670,6 +654,7 @@ Route step 顯示標題由 `from` 與 `to` 自動組成。對「住宿寄放行�
 {
   id: "rsv-katsuhana",
   eventId: "d2-katsuhana",
+  dayId: null,
   periodLabel: "晚餐",
   status: "recommended",
   method: "tablecheck",
@@ -687,7 +672,8 @@ Route step 顯示標題由 `from` 與 `to` 自動組成。對「住宿寄放行�
 | 欄位 | 型別 | 必填 | 說明 |
 | --- | --- | --- | --- |
 | `id` | string | 是 | 全 Trip 唯一。 |
-| `eventId` | string | 是 | 必須指向一個 Event。 |
+| `eventId` | string \| null | 條件 | Event 卡片需要顯示標籤時，指向該 Event。 |
+| `dayId` | string \| null | 條件 | 沒有獨立 Event 的備案項目用此欄位指定日期。 |
 | `periodLabel` | string \| null | 是 | 午餐、晚餐、上午、傍晚等顯示分類。 |
 | `status` | enum | 是 | 決定標籤文字與樣式。 |
 | `method` | enum | 是 | 訂位或取得入場資格的方法。 |
@@ -718,7 +704,7 @@ queueTicket
 none
 ```
 
-Event 卡片與資訊頁訂位總表都讀取同一筆 Reservation。Renderer 可依 `status` 產生現有紅、黃、綠與完成樣式。
+`eventId` 與 `dayId` 至少需有一個。一般項目用 `eventId`，只有訂位總表需要獨立顯示、但不應成為行程事件的備案項目可改用 `dayId`。Renderer 可依 `status` 產生現有紅、黃、綠與完成樣式。
 
 ## 12. Flight
 
@@ -788,31 +774,9 @@ Event 卡片與資訊頁訂位總表都讀取同一筆 Reservation。Renderer �
 
 Accommodation 和 Place 的分工：Accommodation 保存住宿期間與聯絡資料；Place 保存地圖查詢。資訊頁的住宿卡片由 Accommodation 生成。
 
-## 14. Food Checklist
+## 14. 已移除：Food Checklist
 
-美食打卡項目保存在頂層陣列，陣列順序就是頁面順序；每個項目再用 `eventIds` 連回一個或多個 Event。這使「鰻魚飯」可同時連到京都午餐備選與木津市場，也不必在 Event 內重抄清單文字。
-
-```javascript
-{
-  id: "food-unagi",
-  title: "🍱 鰻魚飯",
-  subtitle: "京都老店（10/9 午餐備選）／木津市場川上商店（10/13）",
-  eventIds: ["d3-kiyomizu-higashiyama", "d7-kizu-market"]
-}
-```
-
-| 欄位 | 型別 | 必填 | 說明 |
-| --- | --- | --- | --- |
-| `id` | string | 是 | 同時作為使用者狀態 key 的一部分。 |
-| `title` | string | 是 | 打卡頁主要文字。 |
-| `subtitle` | string | 是 | 候選地點與日期說明。 |
-| `eventIds` | string[] | 是 | 至少一個有效 Event ID。 |
-
-Food 頁資料來源：
-
-```javascript
-const foodItems = trip.foodChecklist;
-```
+美食打卡功能已於 2026-08-21 移除。Trip、Event 與 UserState 不再保存相關欄位；餐廳與餐點資訊直接保留在每日 Event 中。
 
 ## 15. ShoppingItem
 
@@ -936,9 +900,6 @@ quantity
 const userState = {
   version: 1,
   lastDayId: "d3",
-  foodChecked: {
-    "food-katsuhana-tonkatsu": true
-  },
   shopping: {
     "shopping-rohto-gold40-max": {
       checked: true,
@@ -1092,7 +1053,6 @@ export const trip = {
           transportBeforeId: "tr-d3-fushimi-inari",
           reservationId: null,
           highlights: [],
-          foodChecklistIds: [],
           actions: []
         }
       ],
@@ -1111,7 +1071,6 @@ export const trip = {
     }
   },
 
-  foodChecklist: [],
   shopping: [],
   infoSections: [],
   externalLinks: []
@@ -1130,9 +1089,8 @@ export const trip = {
 - Event ID 在整趟 Trip 中唯一。
 - `places` 與 `journeys` 的 key 必須等於物件內的 `id`。
 - 所有 `placeId`、`accommodationId`、`flightId`、`reservationId`、`eventId`、`transportBeforeId`、`endingTransportId` 都能解析。
-- 一個 Reservation 只能指向一個 Event。
+- 一個 Reservation 必須指向一個 Event 或 Day。
 - 一個 Event 最多引用一筆 Reservation。
-- `foodChecklist.eventIds` 不可為空且都必須存在。
 
 ### 20.2 日期與時間
 
@@ -1158,7 +1116,7 @@ export const trip = {
 - 必填顯示文字去除前後空白後不可為空。
 - Event 至少應有 `primaryPlaceId`、`flightId` 或能說明無地點事件的 `type` 之一。
 - Event 有 `flightId` 時，`type` 必須是 `flight`。
-- Reservation 的 `eventId` 所指 Event 必須回指相同的 `reservationId`。
+- Reservation 使用 `eventId` 時，所指 Event 必須回指相同的 `reservationId`；純訂位總表備案可只使用 `dayId`。
 - Journey 必須至少有一個 TransportStep，或提供非空的 `noteHtml`。
 
 開發模式遇到驗證錯誤應在 console 明確指出完整資料路徑，例如：
@@ -1181,7 +1139,6 @@ trip.days[2].events[0].primaryPlaceId: unknown place "fushimi-inrai"
 - 由 Place 產生「地圖」按鈕。
 - 由 Journey 的起訖點產生「路線」按鈕。
 - 由 Reservation 產生 Event 標籤與訂位總表。
-- 由 `foodChecklist` 產生美食頁，並以 Event 的 `foodChecklistIds` 驗證雙向關聯。
 - 由 ShoppingItem 與 UserState 產生購物頁及進度。
 - 將費用、時間、日期與星期格式化為目前 UI 文字。
 

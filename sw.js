@@ -1,11 +1,11 @@
-const CACHE_VERSION = 'kansai-trip-v5';
+const CACHE_VERSION = 'kansai-trip-v10';
 const APP_SHELL = [
   './',
   './index.html',
-  './css/app.css?v=5',
-  './js/app.js?v=5',
-  './data/trip.js?v=5',
-  './data/validate.js?v=5',
+  './css/app.css?v=10',
+  './js/app.js?v=10',
+  './data/trip.js?v=10',
+  './data/validate.js?v=10',
   './manifest.webmanifest',
   './icons/favicon-32.png',
   './icons/apple-touch-icon.png',

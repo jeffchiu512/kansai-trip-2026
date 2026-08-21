@@ -1,7 +1,7 @@
 export const trip = {
-  "schemaVersion": 1,
-  "contentVersion": "1.0.0",
-  "updatedAt": "2026-08-20",
+  "schemaVersion": 3,
+  "contentVersion": "2.1.0",
+  "updatedAt": "2026-08-21",
   "meta": {
     "id": "kansai-2026",
     "title": "關西食光散策",
@@ -140,6 +140,28 @@ export const trip = {
       },
       "links": []
     },
+    "aozora-blue-daimaru-shinsaibashi": {
+      "id": "aozora-blue-daimaru-shinsaibashi",
+      "name": "青空blue 大丸心齋橋店",
+      "nameLocal": "青空blue 大丸心斎橋店",
+      "address": "〒542-8501 大阪府大阪市中央区心斎橋筋1-7-1 大丸心斎橋店 本館10F",
+      "map": {
+        "query": "青空blue 大丸心斎橋店",
+        "coordinates": null
+      },
+      "links": [
+        {
+          "id": "aozora-blue-daimaru-info",
+          "label": "店家資訊",
+          "url": "https://www.daimaru.co.jp/shinsaibashi/restaurant/aozorablue.html"
+        },
+        {
+          "id": "aozora-blue-daimaru-reserve",
+          "label": "官方預約",
+          "url": "https://www.aozora.blue/reserve/"
+        }
+      ]
+    },
     "osaka-castle": {
       "id": "osaka-castle",
       "name": "大阪城公園 & 大阪城天守閣",
@@ -195,6 +217,34 @@ export const trip = {
       },
       "links": []
     },
+    "junidanya-hanamikoji": {
+      "id": "junidanya-hanamikoji",
+      "name": "十二段家 花見小路店",
+      "nameLocal": "十二段家 花見小路店",
+      "address": "〒605-0074 京都府京都市東山区祇園町南側570-240",
+      "map": {
+        "query": "十二段家 花見小路店",
+        "coordinates": null
+      },
+      "links": []
+    },
+    "doi-unagi-gion-yasaka": {
+      "id": "doi-unagi-gion-yasaka",
+      "name": "土井活鰻 祇園八坂店",
+      "nameLocal": "土井活鰻 祇園八坂店",
+      "address": "〒605-0821 京都府京都市東山区清井町492-3",
+      "map": {
+        "query": "土井活鰻 祇園八坂店",
+        "coordinates": null
+      },
+      "links": [
+        {
+          "id": "doi-unagi-gion-yasaka-info",
+          "label": "官方店家資訊",
+          "url": "https://doikatsuman.net/"
+        }
+      ]
+    },
     "yasaka-shrine": {
       "id": "yasaka-shrine",
       "name": "八坂神社 ➔ 花見小路 ➔ 鴨川",
@@ -202,17 +252,6 @@ export const trip = {
       "address": null,
       "map": {
         "query": "八坂神社",
-        "coordinates": null
-      },
-      "links": []
-    },
-    "shinimamiya-ramen": {
-      "id": "shinimamiya-ramen",
-      "name": "回新今宮後的拉麵晚餐",
-      "nameLocal": null,
-      "address": null,
-      "map": {
-        "query": "ラーメン 新今宮駅",
         "coordinates": null
       },
       "links": []
@@ -382,6 +421,17 @@ export const trip = {
       },
       "links": []
     },
+    "shinsaibashi-shopping": {
+      "id": "shinsaibashi-shopping",
+      "name": "心齋橋商店街",
+      "nameLocal": "心斎橋筋商店街",
+      "address": null,
+      "map": {
+        "query": "心斎橋筋商店街",
+        "coordinates": null
+      },
+      "links": []
+    },
     "hotel-nikko-kix-place": {
       "id": "hotel-nikko-kix-place",
       "name": "關西機場日航酒店 Check-in",
@@ -397,18 +447,65 @@ export const trip = {
   "reservations": [
     {
       "id": "rsv-jojoen",
-      "eventId": "d2-jojoen",
+      "eventId": "d7-jojoen",
+      "dayId": null,
       "periodLabel": "午餐",
       "status": "walkIn",
       "method": "walkIn",
       "displayName": "敘敘苑 大丸心齋橋店",
       "summaryStatusLabel": "● 現場候位",
-      "note": "午間不接受訂位（線上預約僅限晚餐）；11:30 前到 10F 登記",
+      "note": "午間不接受訂位；11:15 到 10F 登記，候位過長時改備案",
       "action": {
         "label": "店家資訊",
         "url": "https://www.daimaru.co.jp/shinsaibashi/restaurant/jojoen.html"
       },
       "eventLabel": "🟢 午間不可訂位・現場候位（線上預約僅限晚餐）"
+    },
+    {
+      "id": "rsv-aozora-blue-daimaru",
+      "eventId": null,
+      "dayId": "d7",
+      "periodLabel": "午餐備案",
+      "status": "recommended",
+      "method": "officialSite",
+      "displayName": "青空blue 大丸心齋橋店",
+      "summaryStatusLabel": "● 平日午餐可預約",
+      "note": "敘敘苑候位過長時使用；同在本館 10F，午餐約 ¥1,650～¥2,500",
+      "action": {
+        "label": "官方預約",
+        "url": "https://www.aozora.blue/reserve/"
+      },
+      "eventLabel": null
+    },
+    {
+      "id": "rsv-junidanya-hanamikoji",
+      "eventId": "d3-junidanya-lunch",
+      "periodLabel": "午餐",
+      "status": "recommended",
+      "method": "phone",
+      "displayName": "十二段家 花見小路店",
+      "summaryStatusLabel": "● 建議電話確認",
+      "note": "13:30；電話確認能否預約與 2026 年 10 月營業時間",
+      "action": {
+        "label": "官方菜單",
+        "url": "https://junidanya-kyoto.com/menu/"
+      },
+      "eventLabel": "🔴 建議電話確認 13:30 座位（075-561-1655）"
+    },
+    {
+      "id": "rsv-doi-unagi-gion",
+      "eventId": "d3-doi-unagi-dinner",
+      "periodLabel": "晚餐",
+      "status": "walkIn",
+      "method": "walkIn",
+      "displayName": "土井活鰻 祇園八坂店",
+      "summaryStatusLabel": "● 現場候位",
+      "note": "17:00 開門即到；不接受訂位，降低候位風險",
+      "action": {
+        "label": "官方資訊",
+        "url": "https://doikatsuman.net/"
+      },
+      "eventLabel": "🟢 不接受訂位・17:00 開門即到"
     },
     {
       "id": "rsv-katsuhana",
@@ -583,7 +680,6 @@ export const trip = {
           "transportBeforeId": null,
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
@@ -603,7 +699,6 @@ export const trip = {
           "transportBeforeId": "tr-d1-omo-checkin",
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         }
       ],
@@ -613,8 +708,8 @@ export const trip = {
       "id": "d2",
       "dayNumber": 2,
       "date": "2026-10-08",
-      "title": "大阪市區漫遊 & 購物",
-      "badge": "心齋橋 · 大阪城 · 天滿",
+      "title": "臨空城精準採買 & 大阪市區漫遊",
+      "badge": "臨空城 · 大阪城 · 天滿",
       "overnight": {
         "type": "accommodation",
         "accommodationId": "shinimamiya-1"
@@ -625,13 +720,13 @@ export const trip = {
       },
       "summary": {
         "departureLabel": "建議出門",
-        "departure": "08:30 左右",
-        "area": "心齋橋・大阪城・天滿",
+        "departure": "08:45 左右",
+        "area": "臨空城・大阪城・天滿",
         "stamina": "較高・跨區步行",
-        "keyPoint": "先確認住宿寄物"
+        "keyPoint": "OMO 寄物後鎖定品牌採買"
       },
       "transportSummary": {
-        "displayText": "南海電車＋Osaka Metro；今日交通約 ¥1,880／人（不含可能的住宿寄物費／備案置物櫃）。"
+        "displayText": "南海電車＋Osaka Metro；臨空城往新今宮約 35～40 分鐘，下午保留大阪城、天滿宮與 18:00 晚餐。"
       },
       "notices": [
         {
@@ -645,95 +740,85 @@ export const trip = {
           "id": "notice-d2-time-limit",
           "position": "beforeEvent",
           "beforeEventId": "d2-katsuhana",
-          "contentHtml": "大阪城與天滿宮都要去，因此寶可夢中心最晚 11:15 離開、敘敘苑午餐最晚 13:30 結束。敘敘苑午間不能訂位，若 11:30 到現場候位超過 40 分鐘，就先改吃同棟其他餐廳，別讓整天往後推。大阪城若遇排隊，優先縮短館內停留，不要壓縮 <strong>18:00 KATSU華訂位</strong>；行李寄放在住宿（或備案的新今宮站置物櫃），晚餐後再領。",
+          "contentHtml": "Outlet 10:00 才開，今天只有約 2 小時 15 分鐘，請先列好品牌與店號，<strong>12:15 準時結帳</strong>。12:45 前回 OMO 領行李，13:05 左右搭南海空港急行往新今宮。大阪城若遇排隊，優先縮短館內停留，不要壓縮 <strong>18:00 KATSU華訂位</strong>。",
           "style": "warning",
           "title": "⏱️ 今天的時間底線"
         }
       ],
       "events": [
         {
-          "id": "d2-luggage-drop",
+          "id": "d2-omo-luggage-drop",
           "type": "logistics",
           "schedule": {
-            "start": "09:15",
-            "end": "10:00",
+            "start": "08:45",
+            "end": "09:15",
             "qualifier": "exact",
-            "displayLabel": "09:15 - 10:00"
+            "displayLabel": "08:45 - 09:15"
           },
-          "title": "住宿寄放行李",
-          "descriptionHtml": "抵達新今宮後先步行約 2 分鐘到住宿寄放行李，再走約 5 分鐘到動物園前站前往心齋橋。住宿列有行李寄存服務，但可能收費或有使用時段，請出發前先以訂房訊息確認；若當日無法寄放，就改用南海／JR 新今宮站置物櫃。",
+          "title": "OMO 退房 & 寄放行李",
+          "descriptionHtml": "吃完早餐、整理好行李後提早退房，將大件行李寄放在 OMO 的行李室，輕裝步行前往 Outlet。飯店退房時間為 11:00，但先完成手續可避免中午採買後匆忙。",
+          "primaryPlaceId": "omo-kix-place",
+          "relatedPlaceIds": [],
+          "flightId": null,
+          "transportBeforeId": null,
+          "reservationId": null,
+          "highlights": [],
+          "actions": []
+        },
+        {
+          "id": "d2-rinku-outlet",
+          "type": "shopping",
+          "schedule": {
+            "start": "10:00",
+            "end": "12:15",
+            "qualifier": "exact",
+            "displayLabel": "10:00 - 12:15"
+          },
+          "title": "臨空城 Outlet 集中採買",
+          "descriptionHtml": "OMO 步行約 6～10 分鐘即可抵達。10:00 開門後直奔事先鎖定的品牌，採取「買完就走」模式；這不是悠閒逛完整個 Outlet 的版本，<strong>12:15 準時結帳離場</strong>。",
+          "primaryPlaceId": "rinku-premium-outlets",
+          "relatedPlaceIds": [],
+          "flightId": null,
+          "transportBeforeId": "tr-d2-rinku-outlet",
+          "reservationId": null,
+          "highlights": [
+            {
+              "id": "d2-rinku-outlet-highlight-1",
+              "text": "🛍️ 先列品牌與店號・2 小時 15 分鐘精準採買"
+            }
+          ],
+          "actions": []
+        },
+        {
+          "id": "d2-luggage-transfer",
+          "type": "logistics",
+          "schedule": {
+            "start": "12:15",
+            "end": "14:05",
+            "qualifier": "exact",
+            "displayLabel": "12:15 - 14:05"
+          },
+          "title": "Outlet 簡單午餐 → OMO 領行李 → 新今宮寄放",
+          "descriptionHtml": "12:15 結束採買後在 Outlet 快速用餐，12:45 左右回 OMO 領行李；約 13:05 從臨空城搭南海空港急行直達新今宮，再到住宿寄放行李。若住宿無法寄放，改用南海／JR 新今宮站置物櫃。",
           "primaryPlaceId": "shinimamiya-hotel-place",
           "relatedPlaceIds": [],
           "flightId": null,
           "transportBeforeId": "tr-d2-luggage-drop",
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
-          "actions": []
-        },
-        {
-          "id": "d2-pokemon-center",
-          "type": "shopping",
-          "schedule": {
-            "start": "10:00",
-            "end": "11:15",
-            "qualifier": "exact",
-            "displayLabel": "10:00 - 11:15"
-          },
-          "title": "寶可夢中心 OSAKA DX",
-          "descriptionHtml": "寄好行李後從動物園前搭御堂筋線到心齋橋，利用地下道直達大丸心齋橋店。先到本館 9F 的寶可夢官方商店逛限定商品與拍照；<strong>11:15 前結帳離開</strong>，搭電梯上 10F 排隊候位（午餐不能訂位，早到才不用久等）。這裡只逛商店，不排需要另外預約的寶可夢咖啡廳。",
-          "primaryPlaceId": "pokemon-center-osaka-dx",
-          "relatedPlaceIds": [],
-          "flightId": null,
-          "transportBeforeId": "tr-d2-pokemon-center",
-          "reservationId": null,
-          "highlights": [
-            {
-              "id": "d2-pokemon-center-highlight-1",
-              "text": "⚡ 同棟順遊：9F 寶可夢中心 → 10F 敘敘苑"
-            }
-          ],
-          "foodChecklistIds": [],
-          "actions": []
-        },
-        {
-          "id": "d2-jojoen",
-          "type": "meal",
-          "schedule": {
-            "start": "11:30",
-            "end": "13:30",
-            "qualifier": "exact",
-            "displayLabel": "11:30 - 13:30"
-          },
-          "title": "敘敘苑 大丸心齋橋店 (商業午餐)",
-          "descriptionHtml": "高 CP 值燒肉商業午餐，就在大丸本館 10F。<strong>首選 ¥4,700 綜合午餐</strong>，包含赤身里肌、カルビ、烤蝦，以及醃菜、沙拉、拌菜、白飯、湯、甜點與飲料；若想控制預算，再選 ¥3,700 燒肉午餐。平日午餐時段 11:00–15:00（L.O.），<strong>午間不接受訂位</strong>，一律現場候位——大丸開店後直接上 10F 登記，11:30 前到最保險，越接近 12:00 排越久（價格與內容以現場菜單為準）。",
-          "primaryPlaceId": "jojoen-shinsaibashi",
-          "relatedPlaceIds": [],
-          "flightId": null,
-          "transportBeforeId": "tr-d2-jojoen",
-          "reservationId": "rsv-jojoen",
-          "highlights": [
-            {
-              "id": "d2-jojoen-highlight-1",
-              "text": "🍱 首選：¥4,700 綜合午餐"
-            }
-          ],
-          "foodChecklistIds": [
-            "food-jojoen-lunch"
-          ],
           "actions": []
         },
         {
           "id": "d2-osaka-castle",
           "type": "visit",
           "schedule": {
-            "start": "13:30",
-            "end": "15:40",
+            "start": "14:20",
+            "end": "16:05",
             "qualifier": "exact",
-            "displayLabel": "13:30 - 15:40"
+            "displayLabel": "14:20 - 16:05"
           },
           "title": "大阪城公園 & 大阪城天守閣",
-          "descriptionHtml": "午餐後從心齋橋站搭長堀鶴見綠地線到森ノ宮，穿過大阪城公園前往天守閣。建議<strong>先線上購票</strong>，約 14:05 入館、15:15 前離開天守閣，再由西側走向谷町四丁目站；官方開館時間為 09:00–18:00、最後入館 17:30，但今天仍要保留天滿宮與晚餐緩衝。",
+          "descriptionHtml": "寄放行李後前往大阪城公園與天守閣。建議<strong>先線上購票</strong>，把參觀集中在天守閣展覽、展望台與城郭外觀；16:05 左右離開，為大阪天滿宮與晚餐保留緩衝。",
           "primaryPlaceId": "osaka-castle",
           "relatedPlaceIds": [],
           "flightId": null,
@@ -745,7 +830,6 @@ export const trip = {
               "text": "🏯 重點：天守閣展覽、頂樓展望台、城郭外觀"
             }
           ],
-          "foodChecklistIds": [],
           "actions": [
             {
               "type": "statusLink",
@@ -759,10 +843,10 @@ export const trip = {
           "id": "d2-osaka-tenmangu",
           "type": "visit",
           "schedule": {
-            "start": "16:00",
+            "start": "16:25",
             "end": "17:10",
             "qualifier": "exact",
-            "displayLabel": "16:00 - 17:10"
+            "displayLabel": "16:25 - 17:10"
           },
           "title": "大阪天滿宮",
           "descriptionHtml": "從谷町四丁目搭谷町線到南森町，前往供奉學問之神菅原道真的大阪天滿宮參拜。境內約 30～40 分鐘即可；若前段延誤，最少保留 20 分鐘參拜，<strong>17:10 左右離開</strong>，再從南森町搭堺筋線直達堺筋本町。",
@@ -777,7 +861,6 @@ export const trip = {
               "text": "⛩️ 重點：本殿參拜、御守／御朱印依現場時間"
             }
           ],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
@@ -802,9 +885,6 @@ export const trip = {
               "text": "🥩 必吃：KATSU華 炸豬排"
             }
           ],
-          "foodChecklistIds": [
-            "food-katsuhana-tonkatsu"
-          ],
           "actions": []
         },
         {
@@ -817,7 +897,7 @@ export const trip = {
             "displayLabel": "19:30 - 20:30"
           },
           "title": "住宿領行李 & 自助入住",
-          "descriptionHtml": "吃完豬排後從堺筋本町搭堺筋線到動物園前，步行約 5 分鐘回住宿領取早上寄放的行李，再依密碼／入住指示直接進房。若早上使用車站置物櫃，先繞到新今宮站領行李；今天景點密集，入住後以休息為主。",
+          "descriptionHtml": "吃完豬排後從堺筋本町搭堺筋線到動物園前，步行約 5 分鐘回住宿領取下午寄放的行李，再依密碼／入住指示直接進房。若使用車站置物櫃，先繞到新今宮站領行李；今天景點密集，入住後以休息為主。",
           "primaryPlaceId": "shinimamiya-hotel-place",
           "relatedPlaceIds": [],
           "flightId": null,
@@ -829,7 +909,6 @@ export const trip = {
               "text": "🧳 入住時間 16:00 後；確認已收到房號與取鑰匙方式"
             }
           ],
-          "foodChecklistIds": [],
           "actions": []
         }
       ],
@@ -854,7 +933,7 @@ export const trip = {
         "departure": "06:40",
         "area": "伏見稻荷・東山",
         "stamina": "較高・長距離步行",
-        "keyPoint": "奈良線普通車才停稲荷"
+        "keyPoint": "十二段家 13:30・土井活鰻 17:00 到店"
       },
       "transportSummary": {
         "displayText": "JR＋京阪電車；今日交通約 ¥1,880／人。"
@@ -863,7 +942,7 @@ export const trip = {
         {
           "id": "notice-d3-1",
           "position": "afterTimeline",
-          "contentHtml": "這天 08:00–18:30 是全程排最滿的一天。傍晚累了就直接跳過花見小路，從祇園四条搭車回大阪。",
+          "contentHtml": "今天依序走：伏見稻荷 → 清水寺 → 二三年坂 → 八坂神社 → 十二段家花見小路店 → 祇園散步 → 土井活鰻 → 鴨川。十二段家午餐建議選牛すき鍋、ステーキ重或大蝦天丼，避免吃得過飽影響 17:00 鰻魚晚餐；請先電話確認 13:30 座位與當日營業。",
           "style": "info",
           "title": "😌 輕鬆風提醒"
         }
@@ -886,20 +965,19 @@ export const trip = {
           "transportBeforeId": "tr-d3-fushimi-inari",
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
           "id": "d3-kiyomizu-higashiyama",
           "type": "visit",
           "schedule": {
-            "start": "11:00",
-            "end": "14:30",
+            "start": "11:15",
+            "end": "12:20",
             "qualifier": "exact",
-            "displayLabel": "11:00 - 14:30"
+            "displayLabel": "11:15 - 12:20"
           },
-          "title": "清水寺 ➔ 二年坂 ➔ 三年坂",
-          "descriptionHtml": "參觀清水舞台，俯瞰京都市景，沿石板路逛老街品嚐日式小吃。",
+          "title": "清水寺",
+          "descriptionHtml": "參觀清水舞台、音羽瀑布與本堂，俯瞰京都市景。12:20 左右離開，沿三年坂、二年坂往八坂方向前進，確保 13:30 抵達花見小路午餐。",
           "primaryPlaceId": "kiyomizu-dera",
           "relatedPlaceIds": [],
           "flightId": null,
@@ -908,64 +986,137 @@ export const trip = {
           "highlights": [
             {
               "id": "d3-kiyomizu-higashiyama-highlight-1",
-              "text": "🍲 午餐：京都壽喜燒 / 鰻魚飯 / 湯豆腐"
+              "text": "🏯 重點：清水舞台、音羽瀑布與京都市景"
             }
           ],
-          "foodChecklistIds": [
-            "food-unagi",
-            "food-sukiyaki"
-          ],
+          "actions": []
+        },
+        {
+          "id": "d3-higashiyama-stroll",
+          "type": "visit",
+          "schedule": {
+            "start": "12:20",
+            "end": "13:00",
+            "qualifier": "exact",
+            "displayLabel": "12:20 - 13:00"
+          },
+          "title": "三年坂 ➔ 二年坂 ➔ 東山散策",
+          "descriptionHtml": "離開清水寺後沿三年坂、二年坂與石塀小路往八坂方向散步。今天需 13:30 抵達十二段家，因此沿途以重點拍照為主，購物留到後段有餘裕再補。",
+          "primaryPlaceId": "kiyomizu-dera",
+          "relatedPlaceIds": [],
+          "flightId": null,
+          "transportBeforeId": null,
+          "reservationId": null,
+          "highlights": [],
           "actions": []
         },
         {
           "id": "d3-yasaka-gion-kamogawa",
           "type": "visit",
           "schedule": {
-            "start": "15:00",
-            "end": "18:30",
+            "start": "13:00",
+            "end": "13:25",
             "qualifier": "exact",
-            "displayLabel": "15:00 - 18:30"
+            "displayLabel": "13:00 - 13:25"
           },
-          "title": "八坂神社 ➔ 花見小路 ➔ 鴨川",
-          "descriptionHtml": "漫步藝妓風情的花見小路，傍晚坐在鴨川河畔感受京都獨有的悠閒氛圍。",
+          "title": "八坂神社",
+          "descriptionHtml": "由東山一路步行抵達八坂神社，參拜本殿後於 13:25 左右往花見小路移動，預留約 5～10 分鐘前往十二段家。",
           "primaryPlaceId": "yasaka-shrine",
           "relatedPlaceIds": [],
           "flightId": null,
           "transportBeforeId": "tr-d3-yasaka-gion-kamogawa",
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
-          "id": "d3-ramen",
+          "id": "d3-junidanya-lunch",
           "type": "meal",
           "schedule": {
-            "start": null,
-            "end": null,
-            "qualifier": "flexible",
-            "displayLabel": "19:45 後・彈性"
+            "start": "13:30",
+            "end": "14:40",
+            "qualifier": "exact",
+            "displayLabel": "13:30 - 14:40"
           },
-          "title": "回新今宮後的拉麵晚餐",
-          "descriptionHtml": "從祇園四条搭京阪到京橋，再轉大阪環狀線回新今宮；下車後再依當晚營業狀況挑車站或動物園前附近的拉麵店，不需額外搭車。若京都午餐吃得晚、走累了或已先吃晚餐，就直接回住宿休息。",
-          "primaryPlaceId": "shinimamiya-ramen",
+          "title": "十二段家 花見小路店午餐",
+          "descriptionHtml": "花見小路上的老店，餐點比湯豆腐更有味道。建議選<strong>牛すき鍋定食 ¥4,200</strong>、<strong>ステーキ重 ¥3,800</strong>或<strong>大えび天丼 ¥3,500</strong>；考量 17:00 還有鰻魚晚餐，不建議點 ¥8,000 的完整壽喜燒／涮涮鍋套餐。價格與營業時間以當日官方公告為準。",
+          "primaryPlaceId": "junidanya-hanamikoji",
           "relatedPlaceIds": [],
           "flightId": null,
-          "transportBeforeId": "tr-d3-ramen",
-          "reservationId": null,
+          "transportBeforeId": "tr-d3-junidanya-lunch",
+          "reservationId": "rsv-junidanya-hanamikoji",
           "highlights": [
             {
-              "id": "d3-ramen-highlight-1",
-              "text": "🍜 彈性晚餐：新今宮站周邊拉麵"
+              "id": "d3-junidanya-lunch-highlight-1",
+              "text": "🥩 首選：牛すき鍋定食／ステーキ重"
             }
           ],
-          "foodChecklistIds": [
-            "food-ramen"
+          "actions": []
+        },
+        {
+          "id": "d3-gion-stroll",
+          "type": "visit",
+          "schedule": {
+            "start": "14:40",
+            "end": "16:50",
+            "qualifier": "exact",
+            "displayLabel": "14:40 - 16:50"
+          },
+          "title": "花見小路／祇園散步",
+          "descriptionHtml": "午餐後就在花見小路與祇園散步，可安排咖啡休息、補逛東山小店，並讓午餐稍微消化。16:40 左右往八坂神社南側的土井活鰻移動，17:00 開門即到。",
+          "primaryPlaceId": "yasaka-shrine",
+          "relatedPlaceIds": [],
+          "flightId": null,
+          "transportBeforeId": null,
+          "reservationId": null,
+          "highlights": [],
+          "actions": []
+        },
+        {
+          "id": "d3-doi-unagi-dinner",
+          "type": "meal",
+          "schedule": {
+            "start": "17:00",
+            "end": "18:15",
+            "qualifier": "exact",
+            "displayLabel": "17:00 - 18:15"
+          },
+          "title": "土井活鰻 祇園八坂店晚餐",
+          "descriptionHtml": "店就在八坂神社南側，晚餐 17:00 開始且不接受訂位，因此安排開門即到，降低候位風險。用餐後再往鴨川、四条大橋散步。",
+          "primaryPlaceId": "doi-unagi-gion-yasaka",
+          "relatedPlaceIds": [],
+          "flightId": null,
+          "transportBeforeId": "tr-d3-doi-unagi",
+          "reservationId": "rsv-doi-unagi-gion",
+          "highlights": [
+            {
+              "id": "d3-doi-unagi-dinner-highlight-1",
+              "text": "🍱 土井活鰻・17:00 開門即到"
+            }
           ],
+          "actions": []
+        },
+        {
+          "id": "d3-kamogawa-evening",
+          "type": "visit",
+          "schedule": {
+            "start": "18:15",
+            "end": "19:00",
+            "qualifier": "exact",
+            "displayLabel": "18:15 - 19:00"
+          },
+          "title": "鴨川・四条大橋傍晚散步",
+          "descriptionHtml": "晚餐後走到鴨川與四条大橋欣賞京都傍晚；19:00 左右從祇園四条出發，經京橋返回新今宮。",
+          "primaryPlaceId": "yasaka-shrine",
+          "relatedPlaceIds": [],
+          "flightId": null,
+          "transportBeforeId": null,
+          "reservationId": null,
+          "highlights": [],
           "actions": []
         }
       ],
-      "endingTransportId": null
+      "endingTransportId": "tr-d3-return-osaka"
     },
     {
       "id": "d4",
@@ -1018,7 +1169,6 @@ export const trip = {
           "transportBeforeId": "tr-d4-katsuoji",
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
@@ -1038,9 +1188,6 @@ export const trip = {
           "transportBeforeId": "tr-d4-minoh-waterfall",
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [
-            "food-momiji-tempura"
-          ],
           "actions": []
         },
         {
@@ -1064,9 +1211,6 @@ export const trip = {
               "id": "d4-harbs-highlight-1",
               "text": "🍰 首選：ミルクレープ（水果千層蛋糕）"
             }
-          ],
-          "foodChecklistIds": [
-            "food-harbs-mille-crepes"
           ],
           "actions": []
         },
@@ -1092,9 +1236,6 @@ export const trip = {
               "text": "🍋 必吃：檸檬牛舌"
             }
           ],
-          "foodChecklistIds": [
-            "food-gyutan-lemon"
-          ],
           "actions": []
         },
         {
@@ -1118,10 +1259,6 @@ export const trip = {
               "id": "d4-namba-food-highlight-1",
               "text": "🐙 必吃：章魚燒 / 大阪燒"
             }
-          ],
-          "foodChecklistIds": [
-            "food-takoyaki",
-            "food-okonomiyaki"
           ],
           "actions": []
         }
@@ -1191,7 +1328,6 @@ export const trip = {
               "text": "🍱 必吃：平宗柿葉壽司 / 中谷堂麻糬"
             }
           ],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
@@ -1216,9 +1352,6 @@ export const trip = {
               "text": "🍵 必吃：中村藤吉抹茶生茶凍 / 抹茶蕎麥麵"
             }
           ],
-          "foodChecklistIds": [
-            "food-matcha-jelly"
-          ],
           "actions": []
         },
         {
@@ -1242,9 +1375,6 @@ export const trip = {
               "id": "d5-toyotei-highlight-1",
               "text": "🍳 必吃：東洋亭漢堡排"
             }
-          ],
-          "foodChecklistIds": [
-            "food-toyotei-hamburg"
           ],
           "actions": []
         }
@@ -1302,7 +1432,6 @@ export const trip = {
           "transportBeforeId": "tr-d6-kaiyukan",
           "reservationId": "rsv-kaiyukan",
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
@@ -1327,7 +1456,6 @@ export const trip = {
               "text": "⛩️ 重點：反橋、住吉造本殿、四座本宮"
             }
           ],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
@@ -1352,7 +1480,6 @@ export const trip = {
               "text": "🌇 最佳節奏：16:30 入場 → 17:28 日落 → 18:15 後夜景"
             }
           ],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
@@ -1376,9 +1503,6 @@ export const trip = {
               "id": "d6-shinsekai-kushikatsu-highlight-1",
               "text": "🍢 必吃：串カツ配生啤酒"
             }
-          ],
-          "foodChecklistIds": [
-            "food-shinsekai-kushikatsu"
           ],
           "actions": []
         },
@@ -1404,7 +1528,6 @@ export const trip = {
               "text": "🧳 採買原則：今晚買齊，回房立即整理行李與確認重量"
             }
           ],
-          "foodChecklistIds": [],
           "actions": []
         }
       ],
@@ -1414,8 +1537,8 @@ export const trip = {
       "id": "d7",
       "dayNumber": 7,
       "date": "2026-10-13",
-      "title": "地道早市、招福參拜 & 臨空城血拚",
-      "badge": "木津 · 難波 · Outlet",
+      "title": "地道早市、心齋橋採買 & 從容進機場",
+      "badge": "木津 · 難波 · 心齋橋",
       "overnight": {
         "type": "accommodation",
         "accommodationId": "hotel-nikko-kix"
@@ -1427,18 +1550,18 @@ export const trip = {
       "summary": {
         "departureLabel": "輕裝出門",
         "departure": "07:35 左右",
-        "area": "木津・難波・臨空城",
+        "area": "木津・難波・心齋橋",
         "stamina": "中等・帶行李移動",
-        "keyPoint": "10:00 前回房退房"
+        "keyPoint": "10:00 退房後寄物再去心齋橋"
       },
       "transportSummary": {
-        "displayText": "步行＋南海電車；今日交通約 ¥1,150／人（不含臨空城置物櫃）。"
+        "displayText": "步行＋Osaka Metro＋南海電車；15:00 左右由新今宮前往關西機場，傍晚提早入住。"
       },
       "notices": [
         {
           "id": "notice-d7-1",
           "position": "beforeTimeline",
-          "contentHtml": "這天改成「<strong>行李留房內，輕裝逛市場與神社，再回住宿退房</strong>」。前一晚先把行李整理好，07:35 左右出門；難波八阪神社最晚 09:20 離開，09:40 左右回房取行李，確保 10:00 前完成退房。這樣不用在新今宮站寄放，也不必拖行李逛早市。",
+          "contentHtml": "早上先把行李留房內，輕裝逛市場與神社，再於 10:00 前回住宿退房。退房後優先詢問住宿能否續寄行李；若不能，就使用南海／JR 新今宮站置物櫃。接著到大丸心齋橋同棟完成 9F 寶可夢中心與 10F 午餐；午餐首選敘敘苑，備案為青空blue。14:30 左右回新今宮領行李。",
           "style": "info",
           "title": "🧳 退房與行李動線"
         }
@@ -1466,10 +1589,6 @@ export const trip = {
               "text": "🍣 必吃：海鮮丼 / 握壽司 / 天丼 / 肉吸い"
             }
           ],
-          "foodChecklistIds": [
-            "food-unagi",
-            "food-kizu-seafood"
-          ],
           "actions": []
         },
         {
@@ -1494,7 +1613,6 @@ export const trip = {
               "text": "⛩️ 免費參拜・重點拍獅子殿"
             }
           ],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
@@ -1507,7 +1625,7 @@ export const trip = {
             "displayLabel": "09:40 - 10:00"
           },
           "title": "回住宿取行李 & 退房",
-          "descriptionHtml": "前一晚完成打包，回房後確認護照、錢包、充電器與冰箱，拿行李直接退房。接著步行到南海新今宮站，搭空港急行前往臨空城。",
+          "descriptionHtml": "前一晚完成打包，回房後確認護照、錢包、充電器與冰箱，10:00 前完成退房。先詢問住宿能否退房後續寄行李；若不能，改用南海／JR 新今宮站置物櫃，再輕裝前往心齋橋。",
           "primaryPlaceId": "shinimamiya-hotel-place",
           "relatedPlaceIds": [],
           "flightId": null,
@@ -1516,50 +1634,101 @@ export const trip = {
           "highlights": [
             {
               "id": "d7-checkout-highlight-1",
-              "text": "⏰ 10:00 前完成退房"
+              "text": "⏰ 10:00 前完成退房・行李寄放後再去心齋橋"
             }
           ],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
-          "id": "d7-rinku-outlet",
+          "id": "d7-pokemon-center",
           "type": "shopping",
           "schedule": {
-            "start": "11:15",
-            "end": "18:30",
+            "start": "10:30",
+            "end": "11:15",
             "qualifier": "exact",
-            "displayLabel": "11:15 - 18:30"
+            "displayLabel": "10:30 - 11:15"
           },
-          "title": "臨空城 Outlet (Rinku Premium Outlets)",
-          "descriptionHtml": "關西最大 Outlet！回住宿退房後直接從新今宮搭車，預計 11:00～11:15 抵達；先寄放行李，再從容吃午餐、逛各大品牌，傍晚欣賞海景夕陽。18:30 左右離場，避免隔天早班機前一晚太晚入住。",
-          "primaryPlaceId": "rinku-premium-outlets",
+          "title": "寶可夢中心 OSAKA DX",
+          "descriptionHtml": "從動物園前搭御堂筋線到心齋橋，利用地下道直達大丸心齋橋店本館 9F。逛限定商品與拍照，<strong>11:15 前結帳離開</strong>，再搭電梯上 10F 吃午餐。這裡不排需要另外預約的寶可夢咖啡廳。",
+          "primaryPlaceId": "pokemon-center-osaka-dx",
           "relatedPlaceIds": [],
           "flightId": null,
-          "transportBeforeId": "tr-d7-rinku-outlet",
+          "transportBeforeId": "tr-d7-pokemon-center",
+          "reservationId": null,
+          "highlights": [
+            {
+              "id": "d7-pokemon-center-highlight-1",
+              "text": "⚡ 同棟順遊：9F 寶可夢中心 → 10F 午餐"
+            }
+          ],
+          "actions": []
+        },
+        {
+          "id": "d7-jojoen",
+          "type": "meal",
+          "schedule": {
+            "start": "11:30",
+            "end": "13:00",
+            "qualifier": "exact",
+            "displayLabel": "11:30 - 13:00"
+          },
+          "title": "敘敘苑 大丸心齋橋店 (商業午餐)",
+          "descriptionHtml": "寶可夢中心上一層就是大丸本館 10F 敘敘苑。午間不接受訂位，一律現場候位；11:15 開始登記，首選 ¥4,700 綜合午餐，若想控制預算可選 ¥3,700 燒肉午餐（價格與內容以現場菜單為準）。候位過長時，備案為同樓的<strong>青空blue 大丸心齋橋店</strong>。",
+          "primaryPlaceId": "jojoen-shinsaibashi",
+          "relatedPlaceIds": [
+            "aozora-blue-daimaru-shinsaibashi"
+          ],
+          "flightId": null,
+          "transportBeforeId": "tr-d7-jojoen",
+          "reservationId": "rsv-jojoen",
+          "highlights": [
+            {
+              "id": "d7-jojoen-highlight-1",
+              "text": "🍱 首選：¥4,700 綜合午餐"
+            },
+            {
+              "id": "d7-jojoen-highlight-2",
+              "text": "🔄 備案：同樓青空blue・烏龍麵午餐"
+            }
+          ],
+          "actions": []
+        },
+        {
+          "id": "d7-shinsaibashi-shopping",
+          "type": "shopping",
+          "schedule": {
+            "start": "13:00",
+            "end": "14:30",
+            "qualifier": "exact",
+            "displayLabel": "13:00 - 14:30"
+          },
+          "title": "心齋橋最後採買／咖啡休息",
+          "descriptionHtml": "午餐後留約 90 分鐘在大丸與心齋橋周邊補買伴手禮，或找咖啡店休息。14:30 準時離開，回新今宮領行李。",
+          "primaryPlaceId": "shinsaibashi-shopping",
+          "relatedPlaceIds": [],
+          "flightId": null,
+          "transportBeforeId": null,
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
           "id": "d7-nikko-checkin",
           "type": "accommodation",
           "schedule": {
-            "start": "19:30",
-            "end": null,
+            "start": "14:30",
+            "end": "16:15",
             "qualifier": "around",
-            "displayLabel": "19:30 左右"
+            "displayLabel": "14:30 - 16:15 左右"
           },
-          "title": "關西機場日航酒店 Check-in",
-          "descriptionHtml": "收拾戰利品，準備隔天清晨無縫搭機回家！",
+          "title": "回新今宮領行李 → 關西機場日航酒店 Check-in",
+          "descriptionHtml": "14:30 從心齋橋返回新今宮領行李，15:00 左右搭南海空港急行前往關西機場，約 16:00 入住日航酒店。晚上提早整理行李與休息，準備隔日 07:50 班機。",
           "primaryPlaceId": "hotel-nikko-kix-place",
           "relatedPlaceIds": [],
           "flightId": null,
           "transportBeforeId": "tr-d7-nikko-checkin",
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         }
       ],
@@ -1608,7 +1777,6 @@ export const trip = {
           "transportBeforeId": "tr-d8-kix-checkin",
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         },
         {
@@ -1628,7 +1796,6 @@ export const trip = {
           "transportBeforeId": "tr-d8-flight-return",
           "reservationId": null,
           "highlights": [],
-          "foodChecklistIds": [],
           "actions": []
         }
       ],
@@ -1764,21 +1931,84 @@ export const trip = {
         }
       ]
     },
-    "tr-d2-luggage-drop": {
-      "id": "tr-d2-luggage-drop",
-      "label": "前往 住宿寄放行李",
+    "tr-d2-rinku-outlet": {
+      "id": "tr-d2-rinku-outlet",
+      "label": "前往 臨空城 Outlet",
       "from": {
         "type": "text",
         "value": "OMO Kansai Airport by Hoshino Resorts"
       },
       "to": {
         "type": "text",
+        "value": "Rinku Premium Outlets"
+      },
+      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=OMO%20Kansai%20Airport%20by%20Hoshino%20Resorts&destination=Rinku%20Premium%20Outlets&travelmode=walking",
+      "estimatedDurationMin": 10,
+      "noteHtml": "行李寄放 OMO 後輕裝前往；Outlet 10:00 開門。",
+      "steps": [
+        {
+          "mode": "walk",
+          "icon": "🚶",
+          "operator": null,
+          "badges": [
+            {
+              "colorKey": "walk",
+              "label": "步行"
+            }
+          ],
+          "label": "OMO → Rinku Premium Outlets",
+          "from": "OMO",
+          "to": "Rinku Premium Outlets",
+          "direction": null,
+          "duration": null,
+          "displayMeta": "約6～10分",
+          "fare": {
+            "kind": "free",
+            "displayLabel": "免費"
+          },
+          "noteHtml": "09:30 左右慢慢出發，10:00 開門後直奔鎖定品牌",
+          "warning": null
+        }
+      ]
+    },
+    "tr-d2-luggage-drop": {
+      "id": "tr-d2-luggage-drop",
+      "label": "Outlet → OMO 領行李 → 新今宮住宿寄放",
+      "from": {
+        "type": "text",
+        "value": "Rinku Premium Outlets"
+      },
+      "to": {
+        "type": "text",
         "value": "Apartment Hotel 11 Shinimamiya 1"
       },
-      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=OMO%20Kansai%20Airport%20by%20Hoshino%20Resorts&destination=Apartment%20Hotel%2011%20Shinimamiya%201&dir_action=navigate",
+      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=Rinku%20Premium%20Outlets&destination=Apartment%20Hotel%2011%20Shinimamiya%201&waypoints=OMO%20Kansai%20Airport%20by%20Hoshino%20Resorts&dir_action=navigate",
       "estimatedDurationMin": null,
       "noteHtml": null,
       "steps": [
+        {
+          "mode": "walk",
+          "icon": "🚶",
+          "operator": null,
+          "badges": [
+            {
+              "colorKey": "walk",
+              "label": "步行"
+            }
+          ],
+          "label": "Outlet → OMO 領行李",
+          "from": "Rinku Premium Outlets",
+          "to": "OMO",
+          "direction": null,
+          "duration": null,
+          "displayMeta": "約6～10分・12:45 左右",
+          "fare": {
+            "kind": "free",
+            "displayLabel": "免費"
+          },
+          "noteHtml": "先在 Outlet 快速吃午餐，再回飯店領取寄放行李",
+          "warning": null
+        },
         {
           "mode": "walk",
           "icon": "🚶",
@@ -1799,7 +2029,7 @@ export const trip = {
             "kind": "free",
             "displayLabel": "免費"
           },
-          "noteHtml": "不用回關西機場，也不用搭 OMO 的機場接駁；直接從臨空城往大阪市區",
+          "noteHtml": "13:05 左右進站；不用回關西機場，也不用搭 OMO 的機場接駁",
           "warning": null
         },
         {
@@ -1846,8 +2076,8 @@ export const trip = {
         }
       ]
     },
-    "tr-d2-pokemon-center": {
-      "id": "tr-d2-pokemon-center",
+    "tr-d7-pokemon-center": {
+      "id": "tr-d7-pokemon-center",
       "label": "前往 寶可夢中心 OSAKA DX",
       "from": {
         "type": "text",
@@ -1885,13 +2115,13 @@ export const trip = {
             "note": null,
             "displayLabel": "約 ¥240／人"
           },
-          "noteHtml": "心齋橋站地下道直結大丸；先上本館 9F 寶可夢中心，再到 10F 吃敘敘苑午餐",
+          "noteHtml": "心齋橋站地下道直結大丸；先上本館 9F 寶可夢中心，再到 10F 吃午餐",
           "warning": null
         }
       ]
     },
-    "tr-d2-jojoen": {
-      "id": "tr-d2-jojoen",
+    "tr-d7-jojoen": {
+      "id": "tr-d7-jojoen",
       "label": "前往 敘敘苑 大丸心齋橋店 (商業午餐)",
       "from": {
         "type": "text",
@@ -1903,7 +2133,7 @@ export const trip = {
       },
       "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=Pok%C3%A9mon%20Center%20OSAKA%20DX&destination=%E6%95%98%E6%95%98%E8%8B%91%20%E5%A4%A7%E4%B8%B8%E5%BF%83%E9%BD%8B%E6%A9%8B%E5%BA%97&dir_action=navigate",
       "estimatedDurationMin": null,
-      "noteHtml": "同棟移動：從本館 9F 寶可夢中心搭電梯至 10F 敘敘苑。",
+      "noteHtml": "同棟移動：從本館 9F 寶可夢中心搭電梯至 10F；首選敘敘苑，備案青空blue。",
       "steps": []
     },
     "tr-d2-osaka-castle": {
@@ -1911,13 +2141,13 @@ export const trip = {
       "label": "前往 大阪城公園 & 大阪城天守閣",
       "from": {
         "type": "text",
-        "value": "敘敘苑 大丸心齋橋店"
+        "value": "Apartment Hotel 11 Shinimamiya 1"
       },
       "to": {
         "type": "text",
         "value": "大阪城天守閣"
       },
-      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E6%95%98%E6%95%98%E8%8B%91%20%E5%A4%A7%E4%B8%B8%E5%BF%83%E9%BD%8B%E6%A9%8B%E5%BA%97&destination=%E5%A4%A7%E9%98%AA%E5%9F%8E%E5%A4%A9%E5%AE%88%E9%96%A3&dir_action=navigate",
+      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=Apartment%20Hotel%2011%20Shinimamiya%201&destination=%E5%A4%A7%E9%98%AA%E5%9F%8E%E5%A4%A9%E5%AE%88%E9%96%A3&dir_action=navigate",
       "estimatedDurationMin": null,
       "noteHtml": null,
       "steps": [
@@ -1927,16 +2157,16 @@ export const trip = {
           "operator": null,
           "badges": [
             {
-              "colorKey": "nagahori",
-              "label": "Ⓝ 長堀鶴見綠地線"
+              "colorKey": "mido",
+              "label": "Ⓜ 御堂筋線＋Ⓒ 中央線"
             }
           ],
-          "label": "心齋橋 → 森ノ宮",
-          "from": "心齋橋",
+          "label": "動物園前 → 本町 → 森ノ宮",
+          "from": "動物園前",
           "to": "森ノ宮",
           "direction": null,
           "duration": null,
-          "displayMeta": "約12分・往「門真南」方面",
+          "displayMeta": "約25～30分・依即時路線轉乘",
           "fare": {
             "kind": "estimate",
             "amount": 240,
@@ -1945,7 +2175,7 @@ export const trip = {
             "note": null,
             "displayLabel": "約 ¥240／人"
           },
-          "noteHtml": "從森ノ宮站 3-B 出口進大阪城公園，步行至天守閣約20分",
+          "noteHtml": "動物園前搭御堂筋線到本町，再轉中央線到森ノ宮；3-B 出口進大阪城公園，步行至天守閣約20分",
           "warning": null
         }
       ]
@@ -2077,7 +2307,7 @@ export const trip = {
             "note": null,
             "displayLabel": "約 ¥240／人"
           },
-          "noteHtml": "豬排晚餐後步行約5分回住宿，領取寄放行李並自助入住；若早上改用車站置物櫃，先到新今宮站領行李",
+          "noteHtml": "豬排晚餐後步行約5分回住宿，領取下午寄放的行李並自助入住；若改用車站置物櫃，先到新今宮站領行李",
           "warning": null
         }
       ]
@@ -2276,18 +2506,34 @@ export const trip = {
         }
       ]
     },
+    "tr-d3-junidanya-lunch": {
+      "id": "tr-d3-junidanya-lunch",
+      "label": "前往 十二段家 花見小路店",
+      "from": {
+        "type": "text",
+        "value": "八坂神社"
+      },
+      "to": {
+        "type": "text",
+        "value": "十二段家 花見小路店"
+      },
+      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E5%85%AB%E5%9D%82%E7%A5%9E%E7%A4%BE&destination=%E5%8D%81%E4%BA%8C%E6%AE%B5%E5%AE%B6%20%E8%8A%B1%E8%A6%8B%E5%B0%8F%E8%B7%AF%E5%BA%97&travelmode=walking",
+      "estimatedDurationMin": 10,
+      "noteHtml": "八坂神社參拜後沿四条通往花見小路，13:30 前抵達；請先電話確認座位。",
+      "steps": []
+    },
     "tr-d3-yasaka-gion-kamogawa": {
       "id": "tr-d3-yasaka-gion-kamogawa",
       "label": "前往 八坂神社 ➔ 花見小路 ➔ 鴨川",
       "from": {
         "type": "text",
-        "value": "清水寺"
+        "value": "二年坂"
       },
       "to": {
         "type": "text",
         "value": "八坂神社"
       },
-      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E6%B8%85%E6%B0%B4%E5%AF%BA&destination=%E5%85%AB%E5%9D%82%E7%A5%9E%E7%A4%BE&dir_action=navigate",
+      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E4%BA%8C%E5%B9%B4%E5%9D%82&destination=%E5%85%AB%E5%9D%82%E7%A5%9E%E7%A4%BE&travelmode=walking",
       "estimatedDurationMin": null,
       "noteHtml": null,
       "steps": [
@@ -2301,9 +2547,9 @@ export const trip = {
               "label": "步行"
             }
           ],
-          "label": "清水寺 → 二三年坂 → 八坂神社 → 花見小路 → 鴨川",
-          "from": "清水寺",
-          "to": "二三年坂 → 八坂神社 → 花見小路 → 鴨川",
+          "label": "二年坂／石塀小路 → 八坂神社",
+          "from": "二年坂／石塀小路",
+          "to": "八坂神社",
           "direction": null,
           "duration": null,
           "displayMeta": "全程散步，邊走邊逛",
@@ -2316,18 +2562,34 @@ export const trip = {
         }
       ]
     },
-    "tr-d3-ramen": {
-      "id": "tr-d3-ramen",
-      "label": "前往 回新今宮後的拉麵晚餐",
+    "tr-d3-doi-unagi": {
+      "id": "tr-d3-doi-unagi",
+      "label": "前往 土井活鰻 祇園八坂店",
       "from": {
         "type": "text",
-        "value": "八坂神社"
+        "value": "花見小路"
       },
       "to": {
         "type": "text",
-        "value": "ラーメン 新今宮駅"
+        "value": "土井活鰻 祇園八坂店"
       },
-      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E5%85%AB%E5%9D%82%E7%A5%9E%E7%A4%BE&destination=%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%20%E6%96%B0%E4%BB%8A%E5%AE%AE%E9%A7%85&dir_action=navigate",
+      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E8%8A%B1%E8%A6%8B%E5%B0%8F%E8%B7%AF&destination=%E5%9C%9F%E4%BA%95%E6%B4%BB%E9%B0%BB%20%E7%A5%87%E5%9C%92%E5%85%AB%E5%9D%82%E5%BA%97&travelmode=walking",
+      "estimatedDurationMin": 10,
+      "noteHtml": "16:40 左右從花見小路出發，17:00 開門即到。",
+      "steps": []
+    },
+    "tr-d3-return-osaka": {
+      "id": "tr-d3-return-osaka",
+      "label": "祇園四条返回新今宮住宿",
+      "from": {
+        "type": "text",
+        "value": "鴨川・四条大橋"
+      },
+      "to": {
+        "type": "text",
+        "value": "Apartment Hotel 11 Shinimamiya 1"
+      },
+      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E7%A5%87%E5%9C%92%E5%9B%9B%E6%9D%A1%E9%A7%85&destination=Apartment%20Hotel%2011%20Shinimamiya%201&dir_action=navigate",
       "estimatedDurationMin": null,
       "noteHtml": null,
       "steps": [
@@ -3350,42 +3612,46 @@ export const trip = {
         }
       ]
     },
-    "tr-d7-rinku-outlet": {
-      "id": "tr-d7-rinku-outlet",
-      "label": "前往 臨空城 Outlet (Rinku Premium Outlets)",
+    "tr-d7-nikko-checkin": {
+      "id": "tr-d7-nikko-checkin",
+      "label": "心齋橋 → 新今宮領行李 → 關西機場日航酒店",
       "from": {
         "type": "text",
-        "value": "Apartment Hotel 11 Shinimamiya 1"
+        "value": "心斎橋筋商店街"
       },
       "to": {
         "type": "text",
-        "value": "Rinku Premium Outlets"
+        "value": "關西機場日航酒店"
       },
-      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=Apartment%20Hotel%2011%20Shinimamiya%201&destination=Rinku%20Premium%20Outlets&dir_action=navigate",
+      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E5%BF%83%E6%96%8E%E6%A9%8B%E7%AD%8B%E5%95%86%E5%BA%97%E8%A1%97&destination=%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E6%97%A5%E8%88%AA%E9%85%92%E5%BA%97&waypoints=Apartment%20Hotel%2011%20Shinimamiya%201&dir_action=navigate",
       "estimatedDurationMin": null,
       "noteHtml": null,
       "steps": [
         {
-          "mode": "walk",
-          "icon": "🚶",
-          "operator": null,
+          "mode": "train",
+          "icon": "🚃",
+          "operator": "Osaka Metro",
           "badges": [
             {
-              "colorKey": "walk",
-              "label": "步行"
+              "colorKey": "mido",
+              "label": "Ⓜ 御堂筋線"
             }
           ],
-          "label": "住宿 → 南海「新今宮」駅",
-          "from": "住宿",
-          "to": "南海「新今宮」駅",
+          "label": "心齋橋 → 動物園前／新今宮",
+          "from": "心齋橋",
+          "to": "動物園前／新今宮",
           "direction": null,
           "duration": null,
-          "displayMeta": "約2～5分",
+          "displayMeta": "約8分・14:30 左右出發",
           "fare": {
-            "kind": "free",
-            "displayLabel": "免費"
+            "kind": "estimate",
+            "amount": 240,
+            "currency": "JPY",
+            "unit": "perPerson",
+            "note": null,
+            "displayLabel": "約 ¥240／人"
           },
-          "noteHtml": null,
+          "noteHtml": "回住宿或車站置物櫃領取行李，預留約 20～30 分鐘",
           "warning": null
         },
         {
@@ -3398,88 +3664,21 @@ export const trip = {
               "label": "南海空港急行"
             }
           ],
-          "label": "新今宮 → りんくうタウン",
+          "label": "新今宮 → 関西空港",
           "from": "新今宮",
-          "to": "りんくうタウン",
-          "direction": null,
-          "duration": null,
-          "displayMeta": "約40分・往「関西空港」方面",
-          "fare": {
-            "kind": "estimate",
-            "amount": 780,
-            "currency": "JPY",
-            "unit": "perPerson",
-            "note": null,
-            "displayLabel": "約 ¥780／人"
-          },
-          "noteHtml": "<span class=\"rs-warn\">站名是片假名「りんくうタウン」</span>（= 臨空城），英文 Rinku Town，別坐過站",
-          "warning": null
-        },
-        {
-          "mode": "walk",
-          "icon": "🚶",
-          "operator": null,
-          "badges": [
-            {
-              "colorKey": "walk",
-              "label": "步行"
-            }
-          ],
-          "label": "りんくうタウン駅 → Outlet",
-          "from": "りんくうタウン駅",
-          "to": "Outlet",
-          "direction": null,
-          "duration": null,
-          "displayMeta": "約6分，車站直結",
-          "fare": {
-            "kind": "free",
-            "displayLabel": "免費"
-          },
-          "noteHtml": "行李放臨空城站置物櫃；若滿櫃，改用 Outlet 服務區置物櫃",
-          "warning": null
-        }
-      ]
-    },
-    "tr-d7-nikko-checkin": {
-      "id": "tr-d7-nikko-checkin",
-      "label": "前往 關西機場日航酒店 Check-in",
-      "from": {
-        "type": "text",
-        "value": "Rinku Premium Outlets"
-      },
-      "to": {
-        "type": "text",
-        "value": "關西機場日航酒店"
-      },
-      "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=Rinku%20Premium%20Outlets&destination=%E9%97%9C%E8%A5%BF%E6%A9%9F%E5%A0%B4%E6%97%A5%E8%88%AA%E9%85%92%E5%BA%97&dir_action=navigate",
-      "estimatedDurationMin": null,
-      "noteHtml": null,
-      "steps": [
-        {
-          "mode": "train",
-          "icon": "🚃",
-          "operator": null,
-          "badges": [
-            {
-              "colorKey": "nankai",
-              "label": "南海空港線"
-            }
-          ],
-          "label": "りんくうタウン → 関西空港",
-          "from": "りんくうタウン",
           "to": "関西空港",
           "direction": null,
           "duration": null,
-          "displayMeta": "1站約6分",
+          "displayMeta": "約45分・往「関西空港」方面",
           "fare": {
             "kind": "estimate",
-            "amount": 370,
+            "amount": 970,
             "currency": "JPY",
             "unit": "perPerson",
             "note": null,
-            "displayLabel": "約 ¥370／人"
+            "displayLabel": "約 ¥970／人"
           },
-          "noteHtml": null,
+          "noteHtml": "15:00 左右搭車；不要搭需另購特急券的ラピート",
           "warning": null
         },
         {
@@ -3502,7 +3701,7 @@ export const trip = {
             "kind": "free",
             "displayLabel": "免費"
           },
-          "noteHtml": null,
+          "noteHtml": "約 16:00 抵達並辦理入住",
           "warning": null
         }
       ]
@@ -3602,121 +3801,6 @@ export const trip = {
       "steps": []
     }
   },
-  "foodChecklist": [
-    {
-      "id": "food-jojoen-lunch",
-      "eventIds": [
-        "d2-jojoen"
-      ],
-      "title": "🥩 敘敘苑商業午餐",
-      "subtitle": "大丸心齋橋店 (10/8 午餐・首選 ¥4,700 綜合午餐)"
-    },
-    {
-      "id": "food-katsuhana-tonkatsu",
-      "eventIds": [
-        "d2-katsuhana"
-      ],
-      "title": "🐖 炸豬排",
-      "subtitle": "とんかつ KATSU 華 (10/8 四 18:00・建議 TableCheck 預約)"
-    },
-    {
-      "id": "food-unagi",
-      "eventIds": [
-        "d3-kiyomizu-higashiyama",
-        "d7-kizu-market"
-      ],
-      "title": "🍱 鰻魚飯",
-      "subtitle": "京都老店 (10/9 午餐備選) / 木津市場川上商店 (10/13)"
-    },
-    {
-      "id": "food-sukiyaki",
-      "eventIds": [
-        "d3-kiyomizu-higashiyama"
-      ],
-      "title": "🍲 壽喜燒",
-      "subtitle": "京都東山 (10/9 午餐備選)"
-    },
-    {
-      "id": "food-ramen",
-      "eventIds": [
-        "d3-ramen"
-      ],
-      "title": "🍜 拉麵",
-      "subtitle": "新今宮站周邊 (10/9 回大阪後・彈性晚餐)"
-    },
-    {
-      "id": "food-momiji-tempura",
-      "eventIds": [
-        "d4-minoh-waterfall"
-      ],
-      "title": "🍁 紅葉天婦羅",
-      "subtitle": "箕面滝道 (10/10 散步途中・當地名物)"
-    },
-    {
-      "id": "food-harbs-mille-crepes",
-      "eventIds": [
-        "d4-harbs"
-      ],
-      "title": "🍰 HARBS 水果千層蛋糕",
-      "subtitle": "Namba Parks 店 (10/10 下午・牛舌晚餐前順遊)"
-    },
-    {
-      "id": "food-gyutan-lemon",
-      "eventIds": [
-        "d4-gyutan-lemon"
-      ],
-      "title": "🍋 檸檬牛舌",
-      "subtitle": "新宿燒肉 牛舌的檸檬 (10/10 晚餐)"
-    },
-    {
-      "id": "food-takoyaki",
-      "eventIds": [
-        "d4-namba-food"
-      ],
-      "title": "🐙 章魚燒",
-      "subtitle": "難波 / 道頓堀 (10/10 晚間)"
-    },
-    {
-      "id": "food-okonomiyaki",
-      "eventIds": [
-        "d4-namba-food"
-      ],
-      "title": "🥞 大阪燒",
-      "subtitle": "千房 / 美津の (10/10 晚間)"
-    },
-    {
-      "id": "food-matcha-jelly",
-      "eventIds": [
-        "d5-uji"
-      ],
-      "title": "🍵 抹茶生茶凍",
-      "subtitle": "中村藤吉本店 宇治 (10/11 下午・先抽整理券)"
-    },
-    {
-      "id": "food-toyotei-hamburg",
-      "eventIds": [
-        "d5-toyotei"
-      ],
-      "title": "🍳 漢堡排",
-      "subtitle": "東洋亭 京都Porta店 (10/11 晚餐・回程轉車時)"
-    },
-    {
-      "id": "food-shinsekai-kushikatsu",
-      "eventIds": [
-        "d6-shinsekai-kushikatsu"
-      ],
-      "title": "🍢 新世界串炸",
-      "subtitle": "新世界 & 通天閣 (10/12 晚餐・住宿旁)"
-    },
-    {
-      "id": "food-kizu-seafood",
-      "eventIds": [
-        "d7-kizu-market"
-      ],
-      "title": "🍣 海鮮丼 / 市場壽司",
-      "subtitle": "木津卸売市場 (10/13 早餐・魚市食堂/まるよし)"
-    }
-  ],
   "shopping": [
     {
       "id": "shopping-rohto-gold40-max",

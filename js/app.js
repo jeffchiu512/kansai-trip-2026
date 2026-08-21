@@ -1,5 +1,5 @@
-import { trip } from "../data/trip.js?v=5";
-import { assertValidTrip } from "../data/validate.js?v=5";
+import { trip } from "../data/trip.js?v=10";
+import { assertValidTrip } from "../data/validate.js?v=8";
 
 assertValidTrip(trip);
 
@@ -8,23 +8,6 @@ const accommodationById = new Map(trip.accommodations.map(item => [item.id, item
 const reservationById = new Map(trip.reservations.map(item => [item.id, item]));
 const dayById = new Map(trip.days.map(item => [item.id, item]));
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-const legacyFoodKeys = {
-  "food-jojoen-lunch": "item-2",
-  "food-katsuhana-tonkatsu": "item-9",
-  "food-unagi": "item-3",
-  "food-sukiyaki": "item-4",
-  "food-ramen": "item-5",
-  "food-momiji-tempura": "item-16",
-  "food-harbs-mille-crepes": "item-17",
-  "food-gyutan-lemon": "item-1",
-  "food-takoyaki": "item-6",
-  "food-okonomiyaki": "item-7",
-  "food-matcha-jelly": "item-15",
-  "food-toyotei-hamburg": "item-11",
-  "food-shinsekai-kushikatsu": "item-14",
-  "food-kizu-seafood": "item-8"
-};
 
 const legacyShoppingKeys = {
   "shopping-rohto-gold40-max": "shopping-1",
@@ -62,16 +45,19 @@ function formatDateRange() {
 }
 
 function loadUserState() {
-  const fallback = { version: 1, lastDayId: null, foodChecked: {}, shopping: {} };
+  const fallback = { version: 1, lastDayId: null, shopping: {} };
   try {
     const saved = JSON.parse(localStorage.getItem(USER_STATE_KEY));
-    if (saved?.version === 1) return { ...fallback, ...saved };
+    if (saved?.version === 1) {
+      return {
+        version: 1,
+        lastDayId: saved.lastDayId || null,
+        shopping: saved.shopping || {}
+      };
+    }
 
-    const migrated = { version: 1, lastDayId: null, foodChecked: {}, shopping: {} };
+    const migrated = { version: 1, lastDayId: null, shopping: {} };
     migrated.lastDayId = localStorage.getItem("lastTripDay");
-    Object.entries(legacyFoodKeys).forEach(([id, oldKey]) => {
-      if (localStorage.getItem(oldKey) === "checked") migrated.foodChecked[id] = true;
-    });
     Object.entries(legacyShoppingKeys).forEach(([id, oldKey]) => {
       const checked = localStorage.getItem(`${oldKey}-checked`) === "true";
       const quantity = Number(localStorage.getItem(`${oldKey}-quantity`)) || 1;
@@ -261,28 +247,6 @@ function renderDay(day) {
   `;
 }
 
-function renderFoodPage() {
-  return `
-    <section id="food-page" class="section-panel" aria-hidden="true">
-      <div class="day-header-card">
-        <div class="day-title"><span>🍱 和風美食必吃巡禮</span><span class="day-badge">打卡清單</span></div>
-        <div class="spot-desc" style="margin-top:6px;">吃過的項目勾選後會自動保存進度喔！</div>
-      </div>
-      <div class="food-grid" id="foodGrid">
-        ${trip.foodChecklist.map(item => `
-          <label class="food-item ${userState.foodChecked[item.id] ? "checked" : ""}" id="${escapeAttr(item.id)}">
-            <input type="checkbox" data-food-id="${escapeAttr(item.id)}" ${userState.foodChecked[item.id] ? "checked" : ""}>
-            <div class="food-info">
-              <div class="food-title">${escapeHtml(item.title)}</div>
-              <div class="food-sub">${escapeHtml(item.subtitle)}</div>
-            </div>
-          </label>
-        `).join("")}
-      </div>
-    </section>
-  `;
-}
-
 function shoppingState(item) {
   const state = userState.shopping[item.id] || {};
   return {
@@ -354,7 +318,9 @@ function renderReservationSummary() {
       <div class="info-title">📋 訂位總表（一頁掌握）</div>
       <div class="reservation-list">
         ${trip.reservations.map(item => {
-          const day = trip.days.find(candidate => candidate.events.some(eventItem => eventItem.id === item.eventId));
+          const day = item.dayId
+            ? dayById.get(item.dayId)
+            : trip.days.find(candidate => candidate.events.some(eventItem => eventItem.id === item.eventId));
           return `
             <div class="reservation-item">
               <div class="reservation-date">${escapeHtml(formatDayLabel(day.date).split(" ")[0])}<span>${escapeHtml(formatDayLabel(day.date).match(/\((.)\)/)?.[1] || "")}・${escapeHtml(item.periodLabel)}</span></div>
@@ -422,7 +388,6 @@ function renderApp() {
   renderDayTabs();
   document.getElementById("appContent").innerHTML = [
     ...trip.days.map(renderDay),
-    renderFoodPage(),
     renderShoppingPage(),
     renderInfoPage()
   ].join("");
@@ -493,12 +458,6 @@ function bindInteractions() {
     if (button) switchMainNav(button.dataset.mainNav);
   });
   document.getElementById("appContent").addEventListener("change", event => {
-    const foodId = event.target.dataset.foodId;
-    if (foodId) {
-      userState.foodChecked[foodId] = event.target.checked;
-      event.target.closest(".food-item")?.classList.toggle("checked", event.target.checked);
-      saveUserState();
-    }
     const shoppingId = event.target.dataset.shoppingId;
     if (shoppingId) {
       const current = shoppingState(trip.shopping.find(item => item.id === shoppingId));
@@ -535,7 +494,7 @@ function initializeNavigation() {
     document.querySelector(`[data-day="${todayDay}"]`)?.insertAdjacentHTML("beforeend", '<span class="day-badge today-badge">今天</span>');
     document.querySelector(`#${todayDay} .day-title`)?.insertAdjacentHTML("beforeend", '<span class="day-badge today-badge">今天</span>');
   }
-  if (["food", "shopping", "info"].includes(hash)) switchMainNav(hash);
+  if (["shopping", "info"].includes(hash)) switchMainNav(hash);
   else switchDay(todayDay || (dayById.has(hash) && hash) || (dayById.has(userState.lastDayId) && userState.lastDayId) || "d1", false);
 }
 
