@@ -51,4 +51,15 @@ if (katsuhanaJourney?.steps?.[0]) {
   katsuhanaJourney.steps[0].noteHtml = "17:10 左右離開天滿宮，距 19:00 訂位仍有充裕緩衝；可在堺筋本町附近休息或散步，<strong>18:45 前抵達 KATSU華</strong>。";
 }
 
-void import("./app.js?v=10");
+void import("./app.js?v=10").then(() => {
+  const infoPage = document.getElementById("info-page");
+  if (!infoPage) return;
+
+  const updatedLabel = String(trip.updatedAt || "").replaceAll("-", "/");
+  infoPage.insertAdjacentHTML("beforeend", `
+    <div aria-label="版本資訊" style="text-align:center; margin:24px 0 8px; color:#888; font-size:0.78rem; line-height:1.6;">
+      ${trip.meta.title} · v${trip.contentVersion}<br>
+      最後更新：${updatedLabel}
+    </div>
+  `);
+});
