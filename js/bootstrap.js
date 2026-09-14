@@ -2,7 +2,7 @@ import { trip } from "../data/trip.js?v=10";
 
 // Runtime itinerary adjustments are applied before app.js validates and renders the trip.
 // The large base trip file remains stable; this bootstrap contains the latest confirmed plan.
-trip.contentVersion = "2.2.0";
+trip.contentVersion = "2.2.1";
 trip.updatedAt = "2026-09-14";
 
 const day = id => trip.days.find(item => item.id === id);
@@ -129,7 +129,6 @@ if (!reservation("rsv-usj")) {
   });
 }
 
-// Shopping is no longer tied to D6 because D6 is a full USJ day.
 trip.shopping.forEach(item => {
   item.preferredStore = "D7 心齋橋周邊藥妝優先；前幾天順路買到也可直接完成";
 });
@@ -166,7 +165,7 @@ addJourney(
   "Osaka Tenmangu Shrine",
   "Shinsaibashi Station",
   "https://www.google.com/maps/dir/?api=1&origin=Osaka%20Tenmangu%20Shrine&destination=Shinsaibashi%20Station&dir_action=navigate",
-  "下午後段開始往南船場收斂，不再跨區跑景點；保留咖啡、購物與休息時間，18:30 左右往 KATSU華移動。"
+  "下午後段移動到南船場一帶，保留咖啡、購物與休息時間，18:30 左右往 KATSU華移動。"
 );
 addJourney(
   "tr-d2-katsuhana",
@@ -231,7 +230,7 @@ addJourney(
   "Tazaemonbashi Pier",
   "Apartment Hotel 11 Shinimamiya 1",
   "https://www.google.com/maps/dir/?api=1&origin=Tazaemonbashi%20Pier%20Osaka&destination=Apartment%20Hotel%2011%20Shinimamiya%201&dir_action=navigate",
-  "遊船後可在道頓堀短暫散步；今天白天步行量大，不再安排通天閣登塔。"
+  "遊船後可在道頓堀短暫散步，再依體力返回新今宮住宿。"
 );
 
 addJourney(
@@ -240,7 +239,7 @@ addJourney(
   "Uji Station Kyoto",
   "Abeno Harukas",
   "https://www.google.com/maps/dir/?api=1&origin=Uji%20Station%20Kyoto&destination=Abeno%20Harukas&dir_action=navigate",
-  "宇治玩夠就直接回大阪，不再繞京都站吃東洋亭。預留約 1 小時 15～30 分鐘交通與轉乘，抵達阿倍野後先晚餐，再上 HARUKAS 300。"
+  "宇治結束後直接前往大阪阿倍野／天王寺。預留約 1 小時 15～30 分鐘交通與轉乘，抵達後先晚餐，再上 HARUKAS 300。"
 );
 addJourney(
   "tr-d5-return",
@@ -305,7 +304,7 @@ if (d2) {
     stamina: "中等・市區移動",
     keyPoint: "御座船先確認班次／19:00 KATSU華／20:30 染髮"
   };
-  d2.transportSummary.displayText = "南海電車＋Osaka Metro；取消早上 Outlet，先寄行李再完整逛大阪城，傍晚一路往南船場收斂。";
+  d2.transportSummary.displayText = "南海電車＋Osaka Metro；先寄放行李，再前往大阪城，傍晚往心齋橋／南船場移動。";
   d2.notices = [
     {
       id: "notice-d2-castle",
@@ -320,7 +319,7 @@ if (d2) {
       beforeEventId: "d2-katsuhana",
       style: "warning",
       title: "⏰ 晚上兩個硬時間點",
-      contentHtml: "<strong>19:00 KATSU華已訂位</strong>，店家 60 分鐘制；吃完直接前往 <strong>20:30 Lond luce 心斎橋</strong>。18:30 後不再新增景點。"
+      contentHtml: "<strong>19:00 KATSU華已訂位</strong>，店家 60 分鐘制；吃完直接前往 <strong>20:30 Lond luce 心斎橋</strong>。18:30 後以兩個預約為主。"
     }
   ];
   d2.events = [
@@ -329,10 +328,10 @@ if (d2) {
       type: "logistics",
       schedule: schedule("08:30", "09:00", "08:30 - 09:00"),
       title: "OMO 早餐收尾、退房後直接進大阪",
-      descriptionHtml: "今天不逛臨空 Outlet。早餐後完成退房，帶行李搭南海電車直達新今宮，把早上的時間完整還給大阪市區。",
+      descriptionHtml: "早餐後完成退房，帶行李搭南海電車前往新今宮，寄放行李後開始大阪市區行程。",
       primaryPlaceId: "omo-kix-place",
       relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null,
-      highlights: [{ id: "d2-direct-city-highlight", text: "🧳 Outlet 改到 D7；今天不在臨空城停留" }],
+      highlights: [{ id: "d2-direct-city-highlight", text: "🧳 退房後直接前往新今宮寄放行李" }],
       actions: []
     },
     {
@@ -384,7 +383,7 @@ if (d2) {
       type: "shopping",
       schedule: schedule("16:20", "18:20", "16:20 - 18:20・自由活動"),
       title: "心齋橋／南船場自由活動",
-      descriptionHtml: "咖啡、購物或休息皆可。今天晚上餐廳與髮廊都在南船場一帶，下午後段不再跨區移動，讓 19:00 與 20:30 兩個預約都從容。",
+      descriptionHtml: "咖啡、購物或休息皆可。晚上餐廳與髮廊都在南船場一帶，下午後段留在附近活動，讓 19:00 與 20:30 兩個預約都從容。",
       primaryPlaceId: "shinsaibashi-shopping", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d2-shinsaibashi-free", reservationId: null,
       highlights: [], actions: []
     },
@@ -459,7 +458,7 @@ if (d4) {
       type: "logistics",
       schedule: schedule("15:15", "17:30", "15:15 - 17:30 左右", "around"),
       title: "箕面下山 → 回難波／道頓堀",
-      descriptionHtml: "從山區返回大阪南區。若比預期早到，就把多出的時間用來休息、咖啡或逛街，不再塞 HARBS 固定行程。",
+      descriptionHtml: "從山區返回大阪南區。若比預期早到，可先休息、喝咖啡或逛街，再依時間前往道頓堀換取晚間遊船班次。",
       primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-return-namba", reservationId: null,
       highlights: [], actions: []
     },
@@ -489,14 +488,14 @@ if (d4) {
       title: "一本松海運 道頓堀水上觀光船",
       descriptionHtml: "從河面看道頓堀霓虹與大阪南區夜景。官方班次一般到 21:00，每小時 00、30 分出航；樂享券旅客需依現場空位搭乘，至少提前 15 分鐘回乘船處。",
       primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-dotonbori-cruise", reservationId: null,
-      highlights: [{ id: "d4-cruise-highlight", text: "🚤 夜間搭船比登通天閣更符合本次路線" }], actions: []
+      highlights: [{ id: "d4-cruise-highlight", text: "🚤 道頓堀夜間水上巡遊" }], actions: []
     },
     {
       id: "d4-dotonbori-walk",
       type: "visit",
       schedule: schedule(null, null, "遊船後・視體力短暫散步", "flexible"),
       title: "道頓堀夜間散步 → 回新今宮",
-      descriptionHtml: "遊船結束後看體力走走戎橋、格力高跑跑人與道頓堀商圈；今天不安排通天閣登塔，想看通天閣外觀可在住宿附近任何晚上順路散步。",
+      descriptionHtml: "遊船結束後視體力散步戎橋、格力高跑跑人與道頓堀商圈，再返回新今宮住宿。",
       primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null,
       highlights: [], actions: []
     }
@@ -504,7 +503,7 @@ if (d4) {
   d4.endingTransportId = "tr-d4-return-hotel";
 }
 
-// --- D5: Nara / Uji + Harukas night view; Toyotei no longer fixed ---
+// --- D5: Nara / Uji + Harukas night view ---
 const d5 = day("d5");
 if (d5) {
   d5.title = "奈良萌鹿、宇治抹茶與阿倍野夜景";
@@ -516,7 +515,7 @@ if (d5) {
     stamina: "中高・跨城移動",
     keyPoint: "中村藤吉16:00前受付／鳳凰堂內部選配／晚上HARUKAS"
   };
-  d5.transportSummary.displayText = "JR 大和路線＋奈良線＋大阪方向電車；宇治結束後直接回阿倍野，不再繞京都站吃東洋亭。";
+  d5.transportSummary.displayText = "JR 大和路線＋奈良線＋大阪方向電車；宇治結束後直接前往阿倍野／天王寺。";
   d5.notices = [
     {
       id: "notice-d5-nara",
@@ -549,7 +548,7 @@ if (d5) {
       type: "meal",
       schedule: schedule("18:30", "19:40", "18:30 - 19:40 左右", "around"),
       title: "回大阪阿倍野｜彈性晚餐",
-      descriptionHtml: "宇治結束後直接往天王寺／阿倍野，不再繞京都站。晚餐不綁名店，以不用久排、能在 19:40 左右結束為原則，替 HARUKAS 夜景留充裕時間。",
+      descriptionHtml: "宇治結束後直接往天王寺／阿倍野。晚餐以不用久排、能在 19:40 左右結束為原則，替 HARUKAS 夜景留充裕時間。",
       primaryPlaceId: null, relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d5-harukas", reservationId: null,
       highlights: [], actions: []
     },
@@ -587,7 +586,7 @@ if (d6) {
       id: "notice-d6-hours",
       position: "beforeTimeline",
       style: "warning",
-      title: "🎢 10/12 開閉園時間先不要寫死",
+      title: "🎢 10/12 開閉園時間待官方公布",
       contentHtml: "USJ 官方目前尚未公布 10/12 的正式營業時間，而且園區也提醒可能<strong>比公告開園時間提早開放入場</strong>。出發前一週再確認當日時間，原則上提前 60～90 分鐘抵達門口。"
     },
     {
@@ -605,7 +604,7 @@ if (d6) {
       type: "logistics",
       schedule: schedule(null, null, "依官方開園時間反推・提早60～90分抵達", "flexible"),
       title: "新今宮出發 → USJ 提前排隊",
-      descriptionHtml: "不要再塞其他上午景點。前一天 HARUKAS 結束後早點休息，D6 把體力完整留給 USJ。",
+      descriptionHtml: "全天行程集中在 USJ。依官方開園時間提早 60～90 分鐘抵達園區，入園後立即確認任天堂世界與各項整理券狀態。",
       primaryPlaceId: "usj", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d6-usj", reservationId: null,
       highlights: [], actions: []
     },
@@ -678,7 +677,7 @@ if (d7) {
       type: "logistics",
       schedule: schedule("14:30", "15:15", "14:30 - 15:15 左右", "around"),
       title: "回新今宮領行李",
-      descriptionHtml: "心齋橋最後採買 14:30 準時收尾，回新今宮領取寄放行李後直接搭南海往臨空城，不再回大阪市中心。",
+      descriptionHtml: "心齋橋最後採買於 14:30 左右收尾，回新今宮領取寄放行李後直接搭南海電車前往臨空城。",
       primaryPlaceId: "shinimamiya-hotel-place", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d7-collect-luggage", reservationId: null,
       highlights: [], actions: []
     },
@@ -687,9 +686,9 @@ if (d7) {
       type: "shopping",
       schedule: schedule("16:00", "18:00", "16:00 - 18:00 左右・最多2小時", "around"),
       title: "臨空 Premium Outlets｜最後順路看看",
-      descriptionHtml: "不再像原 D2 一樣把 Outlet 當半日主行程。今天只鎖定想看的品牌，約 1.5～2 小時就走；官方一般營業到 20:00，因此 16:00 左右抵達仍有足夠餘裕。",
+      descriptionHtml: "鎖定想看的品牌，停留約 1.5～2 小時。官方一般營業至 20:00，16:00 左右抵達仍有充裕時間；逛完直接前往關西機場日航酒店。",
       primaryPlaceId: "rinku-premium-outlets", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d7-rinku-outlet", reservationId: null,
-      highlights: [{ id: "d7-rinku-highlight", text: "🛍️ 原 D2 Outlet 移到這裡・順路不折返" }], actions: []
+      highlights: [{ id: "d7-rinku-highlight", text: "🛍️ 臨空城順路採買・停留約1.5～2小時" }], actions: []
     },
     {
       id: "d7-nikko-checkin",
@@ -705,7 +704,6 @@ if (d7) {
 }
 
 void import("./app.js?v=10").then(() => {
-  // The shopping page previously assumed D6 was a drugstore night; D6 is now full-day USJ.
   const shoppingPage = document.getElementById("shopping-page");
   if (shoppingPage) {
     const badge = shoppingPage.querySelector(".day-badge");
@@ -714,7 +712,7 @@ void import("./app.js?v=10").then(() => {
     if (tip) {
       tip.innerHTML = `
         <div class="tip-title">🧾 採買順序</div>
-        D7 心齋橋最後採買時優先處理清單；前幾天若順路看到也可先買，不必拖到最後。<strong>D6 是 USJ 全天，不安排藥妝採買</strong>。若心齋橋未買齊，再視臨空城實際店家補買。
+        D7 心齋橋採買時優先處理清單；前幾天若順路看到也可先買。心齋橋未買齊的品項，再視臨空城實際店家補買。
       `;
     }
   }
