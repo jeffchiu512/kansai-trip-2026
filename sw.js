@@ -1,9 +1,10 @@
-const CACHE_VERSION = 'kansai-trip-v13';
+const CACHE_VERSION = 'kansai-trip-v14';
 const APP_SHELL = [
   './',
   './index.html',
   './css/app.css?v=11',
   './js/bootstrap.js?v=13',
+  './js/cleanup.js?v=14',
   './js/app.js?v=10',
   './data/trip.js?v=10',
   './data/validate.js?v=8',
@@ -67,7 +68,6 @@ self.addEventListener('fetch', (event) => {
         })
         .catch(() => cached);
 
-      // Keep the app fast while refreshing CSS, JS and trip data in the background.
       return cached || network;
     })
   );
