@@ -1,9 +1,9 @@
-const CACHE_VERSION = 'kansai-trip-v12';
+const CACHE_VERSION = 'kansai-trip-v13';
 const APP_SHELL = [
   './',
   './index.html',
   './css/app.css?v=11',
-  './js/bootstrap.js?v=12',
+  './js/bootstrap.js?v=13',
   './js/app.js?v=10',
   './data/trip.js?v=10',
   './data/validate.js?v=8',
