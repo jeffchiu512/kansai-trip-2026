@@ -2,6 +2,17 @@ export function createPlanHelpers(trip) {
   const day = id => trip.days.find(item => item.id === id);
   const reservation = id => trip.reservations.find(item => item.id === id);
 
+  const setDay = value => {
+    if (!value?.id || !Number.isInteger(value.dayNumber)) {
+      throw new Error("[trip plan] setDay requires id and dayNumber");
+    }
+    const index = trip.days.findIndex(item => item.id === value.id);
+    if (index >= 0) trip.days[index] = value;
+    else trip.days.push(value);
+    trip.days.sort((a, b) => a.dayNumber - b.dayNumber);
+    return value;
+  };
+
   const requireDay = id => {
     const value = day(id);
     if (!value) throw new Error(`[trip plan] Missing required day "${id}"`);
@@ -58,6 +69,7 @@ export function createPlanHelpers(trip) {
   return {
     day,
     reservation,
+    setDay,
     requireDay,
     requireEvent,
     requireReservation,
