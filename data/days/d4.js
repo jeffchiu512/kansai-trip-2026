@@ -5,7 +5,7 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
     "Katsuoji Temple",
     "Minoh Waterfall",
     "https://www.google.com/maps/dir/?api=1&origin=Katsuoji%20Temple&destination=Minoh%20Waterfall&travelmode=walking",
-    "勝尾寺から箕面大瀑布までは山道を徒歩移動。箕面市観光協会のモデルコースでは勝尾寺→箕面大滝を徒歩約40分としているため、休憩や写真撮影も考えて45分前後みておく。",
+    "勝尾寺到箕面大瀑布以山路步行移動。箕面市觀光協會的官方示範行程標示，勝尾寺到箕面大瀑布步行約40分鐘；考量休息與拍照，本行程抓約45分鐘較充裕。",
     45,
     [
       walkStep(
@@ -13,7 +13,7 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
         "勝尾寺",
         "箕面大瀑布",
         "約40～45分・山道",
-        "箕面市観光協会モデルコースでは徒歩約40分。三連休で人が多い場合や路面状況を考え、余裕を持って移動する。"
+        "箕面市觀光協會的示範行程標示步行約40分鐘；三連休可能人多，加上山路路況，建議保留一些緩衝時間。"
       )
     ]
   );
@@ -23,10 +23,10 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
     "Minoh Waterfall",
     "Tazaemonbashi Pier",
     "https://www.google.com/maps/dir/?api=1&origin=Minoh%20Waterfall&destination=Tazaemonbashi%20Pier%20Osaka&dir_action=navigate",
-    "瀑布沿滝道步行下山到阪急箕面站，再於石橋阪大前轉寶塚線到大阪梅田，最後搭御堂筋線到なんば。",
+    "從瀑布沿溪谷步道步行下山到阪急箕面站，再於石橋阪大前轉阪急寶塚線到大阪梅田，最後搭御堂筋線到なんば。",
     115,
     [
-      walkStep("箕面大瀑布 → 阪急 箕面駅", "箕面大瀑布", "箕面駅", "約40～50分・沿滝道下坡", "連假人多時步行速度會下降，15:15 左右就開始下山較穩。"),
+      walkStep("箕面大瀑布 → 阪急 箕面駅", "箕面大瀑布", "箕面駅", "約40～50分・沿溪谷步道下坡", "連假人多時步行速度會下降，15:15 左右就開始下山較穩。"),
       trainStep({
         label: "箕面 → 石橋阪大前 → 大阪梅田",
         from: "箕面",
@@ -121,7 +121,7 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
     notices: [
       {
         id: "notice-d4-mountain", position: "beforeTimeline", style: "warning", title: "🥾 山區行程：勝尾寺 → 箕面大瀑布步行",
-        contentHtml: "勝尾寺參拜後直接步行前往箕面大瀑布。箕面市觀光協會的模型行程標示<strong>徒歩約40分</strong>；本行程抓約40～45分並預留少量緩衝。當天請穿適合山路的鞋，若下雨或路況不佳則現場再調整。"
+        contentHtml: "勝尾寺參拜後直接步行前往箕面大瀑布。箕面市觀光協會的示範行程標示<strong>步行約40分鐘</strong>；本行程抓約40～45分鐘並預留少量緩衝。當天請穿適合山路的鞋，若下雨或路況不佳則現場再調整。"
       },
       {
         id: "notice-d4-cruise", position: "beforeEvent", beforeEventId: "d4-cruise-ticket", style: "info", title: "🚤 遊船先換票，不賭吃完飯才排",
@@ -136,7 +136,7 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
       },
       {
         id: "d4-minoh-waterfall", type: "visit", schedule: schedule("12:30", "15:15", "12:30 - 15:15"), title: "箕面大瀑布大自然踏青",
-        descriptionHtml: "從勝尾寺步行約40～45分抵達箕面大瀑布，在日本百選名瀑下享受森林負離子；之後沿溪谷滝道一路散步下山。小提醒：當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 很有趣，可以買來吃！",
+        descriptionHtml: "從勝尾寺步行約40～45分鐘抵達箕面大瀑布，在日本百選名瀑下享受森林負離子；之後沿溪谷步道一路散步下山。小提醒：當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 很有趣，可以買來吃！",
         primaryPlaceId: "minoh-waterfall", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-minoh-waterfall", reservationId: null, highlights: [], actions: []
       },
       {
