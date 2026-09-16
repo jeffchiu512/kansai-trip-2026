@@ -27,10 +27,10 @@ export function validateTrip(trip) {
   const accommodationIds = collectIds(trip.accommodations || [], "trip.accommodations", errors);
   const reservationIds = collectIds(trip.reservations || [], "trip.reservations", errors);
   const shoppingIds = collectIds(trip.shopping || [], "trip.shopping", errors);
+  const dayIds = collectIds(trip.days || [], "trip.days", errors);
   const placeIds = new Set(Object.keys(trip.places || {}));
   const journeyIds = new Set(Object.keys(trip.journeys || {}));
   const eventIds = new Set();
-  const dayIds = new Set((trip.days || []).map(day => day.id));
 
   let previousDate = "";
   (trip.days || []).forEach((day, dayIndex) => {
@@ -43,6 +43,9 @@ export function validateTrip(trip) {
     previousDate = day.date;
     if (day.overnight?.type === "accommodation" && !accommodationIds.has(day.overnight.accommodationId)) {
       errors.push(`${path}.overnight.accommodationId: unknown accommodation "${day.overnight.accommodationId}"`);
+    }
+    if (day.routeOrigin?.type === "accommodation" && !accommodationIds.has(day.routeOrigin.accommodationId)) {
+      errors.push(`${path}.routeOrigin.accommodationId: unknown accommodation "${day.routeOrigin.accommodationId}"`);
     }
     if (day.endingTransportId && !journeyIds.has(day.endingTransportId)) {
       errors.push(`${path}.endingTransportId: unknown journey "${day.endingTransportId}"`);
