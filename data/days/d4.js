@@ -5,7 +5,7 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
     "Katsuoji Temple",
     "Minoh Waterfall",
     "https://www.google.com/maps/dir/?api=1&origin=Katsuoji%20Temple&destination=Minoh%20Waterfall&travelmode=walking",
-    "勝尾寺到箕面大瀑布以山路步行移動。箕面市觀光協會的官方示範行程標示，勝尾寺到箕面大瀑布步行約40分鐘；考量休息與拍照，本行程抓約45分鐘較充裕。",
+    null,
     45,
     [
       walkStep(
@@ -13,7 +13,7 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
         "勝尾寺",
         "箕面大瀑布",
         "約40～45分・山道",
-        "箕面市觀光協會的示範行程標示步行約40分鐘；三連休可能人多，加上山路路況，建議保留一些緩衝時間。"
+        "三連休可能人多，加上山路路況，建議保留一些緩衝時間。"
       )
     ]
   );
@@ -120,10 +120,6 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
     },
     notices: [
       {
-        id: "notice-d4-mountain", position: "beforeTimeline", style: "warning", title: "🥾 山區行程：勝尾寺 → 箕面大瀑布步行",
-        contentHtml: "勝尾寺參拜後直接步行前往箕面大瀑布。箕面市觀光協會的示範行程標示<strong>步行約40分鐘</strong>；本行程抓約40～45分鐘並預留少量緩衝。當天請穿適合山路的鞋，若下雨或路況不佳則現場再調整。"
-      },
-      {
         id: "notice-d4-cruise", position: "beforeEvent", beforeEventId: "d4-cruise-ticket", style: "info", title: "🚤 遊船先換票，不賭吃完飯才排",
         contentHtml: "關西樂享券的一本松海運道頓堀水上觀光船<strong>不接受樂享券預約，須視現場空位</strong>。回難波後先去太左衛門橋船著場掃 QR 換晚間班次，首選 20:30、備案 21:00。"
       }
@@ -136,7 +132,7 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
       },
       {
         id: "d4-minoh-waterfall", type: "visit", schedule: schedule("12:30", "15:15", "12:30 - 15:15"), title: "箕面大瀑布大自然踏青",
-        descriptionHtml: "從勝尾寺步行約40～45分鐘抵達箕面大瀑布，在日本百選名瀑下享受森林負離子；之後沿溪谷步道一路散步下山。小提醒：當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 很有趣，可以買來吃！",
+        descriptionHtml: "欣賞日本百選名瀑與森林景色，稍作休息、拍照；之後沿溪谷步道散步下山。當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 也可以順路嘗試。",
         primaryPlaceId: "minoh-waterfall", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-minoh-waterfall", reservationId: null, highlights: [], actions: []
       },
       {
