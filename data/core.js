@@ -1,7 +1,7 @@
 export const core = {
   "schemaVersion": 3,
-  "contentVersion": "2.1.0",
-  "updatedAt": "2026-08-21",
+  "contentVersion": "2.7.0",
+  "updatedAt": "2026-09-16",
   "meta": {
     "id": "kansai-2026",
     "title": "關西食光散策",
@@ -10,12 +10,7 @@ export const core = {
     "endDate": "2026-10-14",
     "timezone": "Asia/Tokyo",
     "locale": "zh-TW",
-    "destinations": [
-      "大阪",
-      "京都",
-      "奈良",
-      "箕面"
-    ]
+    "destinations": ["大阪", "京都", "奈良", "箕面"]
   },
   "flights": [
     {
