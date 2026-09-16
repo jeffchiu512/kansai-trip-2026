@@ -35,6 +35,8 @@ export function validateTrip(trip) {
   let previousDate = "";
   (trip.days || []).forEach((day, dayIndex) => {
     const path = `trip.days[${dayIndex}]`;
+    const dayEventIds = new Set((day.events || []).map(event => event.id).filter(Boolean));
+
     if (day.dayNumber !== dayIndex + 1) errors.push(`${path}.dayNumber: expected ${dayIndex + 1}`);
     if (!isDate(day.date || "")) errors.push(`${path}.date: expected YYYY-MM-DD`);
     if (previousDate && day.date <= previousDate) errors.push(`${path}.date: days must be strictly increasing`);
@@ -46,13 +48,28 @@ export function validateTrip(trip) {
       errors.push(`${path}.endingTransportId: unknown journey "${day.endingTransportId}"`);
     }
 
+    (day.notices || []).forEach((notice, noticeIndex) => {
+      const noticePath = `${path}.notices[${noticeIndex}]`;
+      if (!notice?.id) errors.push(`${noticePath}.id: required`);
+      if (notice.position === "beforeEvent" && !notice.beforeEventId) {
+        errors.push(`${noticePath}.beforeEventId: required when position is "beforeEvent"`);
+      }
+      if (notice.beforeEventId && !dayEventIds.has(notice.beforeEventId)) {
+        errors.push(`${noticePath}.beforeEventId: unknown event "${notice.beforeEventId}" in day "${day.id}"`);
+      }
+    });
+
     (day.events || []).forEach((event, eventIndex) => {
       const eventPath = `${path}.events[${eventIndex}]`;
       if (!event.id) errors.push(`${eventPath}.id: required`);
       else if (eventIds.has(event.id)) errors.push(`${eventPath}.id: duplicate "${event.id}"`);
       else eventIds.add(event.id);
       if (!event.title?.trim()) errors.push(`${eventPath}.title: required`);
+      if (!event.schedule?.displayLabel?.trim()) errors.push(`${eventPath}.schedule.displayLabel: required`);
       if (event.primaryPlaceId && !placeIds.has(event.primaryPlaceId)) errors.push(`${eventPath}.primaryPlaceId: unknown place "${event.primaryPlaceId}"`);
+      (event.relatedPlaceIds || []).forEach((placeId, relatedIndex) => {
+        if (!placeIds.has(placeId)) errors.push(`${eventPath}.relatedPlaceIds[${relatedIndex}]: unknown place "${placeId}"`);
+      });
       if (event.flightId && !flightIds.has(event.flightId)) errors.push(`${eventPath}.flightId: unknown flight "${event.flightId}"`);
       if (event.flightId && event.type !== "flight") errors.push(`${eventPath}.type: flightId requires type "flight"`);
       if (event.reservationId && !reservationIds.has(event.reservationId)) errors.push(`${eventPath}.reservationId: unknown reservation "${event.reservationId}"`);
