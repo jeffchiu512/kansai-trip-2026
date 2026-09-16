@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'kansai-trip-v30';
+const CACHE_VERSION = 'kansai-trip-v31';
 const APP_SHELL = [
   './',
   './index.html',
