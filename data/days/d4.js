@@ -1,4 +1,4 @@
-export function applyD4Plan(trip, { addPlace, addJourney, schedule, requireDay, requireEvent }) {
+export function applyD4Plan(trip, { addPlace, addJourney, schedule, setDay }) {
   addPlace(
     "dotonbori-river-cruise",
     "一本松海運 道頓堀水上觀光船",
@@ -48,87 +48,117 @@ export function applyD4Plan(trip, { addPlace, addJourney, schedule, requireDay, 
     "遊船後可在道頓堀短暫散步，再依體力返回新今宮住宿。"
   );
 
-  const d4 = requireDay("d4");
-
-  d4.title = "勝尾寺、箕面自然與道頓堀夜遊";
-  d4.badge = "箕面 · 達摩 · 道頓堀";
-  d4.summary = {
-    departureLabel: "建議出門",
-    departure: "07:30",
-    area: "勝尾寺・箕面・難波",
-    stamina: "中高・山區步行＋夜遊",
-    keyPoint: "18:30 牛舌已訂位／晚餐前先換遊船班次"
-  };
-  d4.transportSummary.displayText = "Metro＋巴士／計程車＋阪急＋Osaka Metro；山區交通保留備案，晚上固定回難波。";
-  d4.notices = [
-    {
-      id: "notice-d4-mountain",
-      position: "beforeTimeline",
-      style: "warning",
-      title: "🚕 山區行程：接駁仍是成敗關鍵",
-      contentHtml: "勝尾寺與箕面瀑布之間的交通要在出發前一週再核對阪急巴士與計程車。若接駁無法確認或塞車嚴重，<strong>勝尾寺優先、瀑布可縮短或取消</strong>；18:30 牛舌訂位不能被犧牲。"
+  setDay({
+    id: "d4",
+    dayNumber: 4,
+    date: "2026-10-10",
+    title: "勝尾寺、箕面自然與道頓堀夜遊",
+    badge: "箕面 · 達摩 · 道頓堀",
+    overnight: { type: "accommodation", accommodationId: "shinimamiya-1" },
+    routeOrigin: { type: "accommodation", accommodationId: "shinimamiya-1" },
+    summary: {
+      departureLabel: "建議出門",
+      departure: "07:30",
+      area: "勝尾寺・箕面・難波",
+      stamina: "中高・山區步行＋夜遊",
+      keyPoint: "18:30 牛舌已訂位／晚餐前先換遊船班次"
     },
-    {
-      id: "notice-d4-cruise",
-      position: "beforeEvent",
-      beforeEventId: "d4-cruise-ticket",
-      style: "info",
-      title: "🚤 遊船先換票，不賭吃完飯才排",
-      contentHtml: "關西樂享券的一本松海運道頓堀水上觀光船<strong>不接受樂享券預約，須視現場空位</strong>。回難波後先去太左衛門橋船著場掃 QR 換晚間班次，首選 20:30、備案 21:00。"
-    }
-  ];
-
-  const katsuojiEvent = requireEvent(d4, "d4-katsuoji");
-  const waterfallEvent = requireEvent(d4, "d4-minoh-waterfall");
-  d4.events = [
-    katsuojiEvent,
-    waterfallEvent,
-    {
-      id: "d4-return-namba",
-      type: "logistics",
-      schedule: schedule("15:15", "17:30", "15:15 - 17:30 左右", "around"),
-      title: "箕面下山 → 回難波／道頓堀",
-      descriptionHtml: "從山區返回大阪南區。若比預期早到，可先休息、喝咖啡或逛街，再依時間前往道頓堀換取晚間遊船班次。",
-      primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-return-namba", reservationId: null,
-      highlights: [], actions: []
+    transportSummary: {
+      displayText: "Metro＋巴士／計程車＋阪急＋Osaka Metro；山區交通保留備案，晚上固定回難波。"
     },
-    {
-      id: "d4-cruise-ticket",
-      type: "logistics",
-      schedule: schedule("17:45", "18:10", "17:45 - 18:10・先換晚間船班", "around"),
-      title: "太左衛門橋船著場｜先換道頓堀遊船班次",
-      descriptionHtml: "用關西樂享周遊券 QR Code 換當日登船券。首選 20:30，若額滿就選 21:00 或當日晚間其他可行班次；換好票再走去晚餐。",
-      primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-cruise-ticket", reservationId: null,
-      highlights: [{ id: "d4-cruise-pass-highlight", text: "🎫 樂享券 #3：道頓堀水上觀光船" }],
-      actions: [{ type: "statusLink", label: "🎫 樂享券設施資訊", url: "https://travelcontentsapp.com/en/attraction/osaka/dotonbori-river-cruise/", statusClass: "rsv-ticket" }]
-    },
-    {
-      id: "d4-gyutan-lemon",
-      type: "meal",
-      schedule: schedule("18:30", "19:45", "18:30 - 19:45 左右", "around"),
-      title: "新宿燒肉 牛舌的檸檬 大阪本店",
-      descriptionHtml: "<strong>已訂位 18:30</strong>。白天山區若延誤，所有彈性項目都讓位給這個訂位；若用餐時間拉長，遊船就改 21:00 班。",
-      primaryPlaceId: "gyutan-lemon-osaka", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-gyutan-lemon", reservationId: "rsv-gyutan-lemon",
-      highlights: [], actions: []
-    },
-    {
-      id: "d4-dotonbori-cruise",
-      type: "visit",
-      schedule: schedule(null, null, "20:30 首選／21:00 備案・約20分鐘", "flexible"),
-      title: "一本松海運 道頓堀水上觀光船",
-      descriptionHtml: "從河面看道頓堀霓虹與大阪南區夜景。官方班次一般到 21:00，每小時 00、30 分出航；樂享券旅客需依現場空位搭乘，至少提前 15 分鐘回乘船處。",
-      primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-dotonbori-cruise", reservationId: null,
-      highlights: [{ id: "d4-cruise-highlight", text: "🚤 道頓堀夜間水上巡遊" }], actions: []
-    },
-    {
-      id: "d4-dotonbori-walk",
-      type: "visit",
-      schedule: schedule(null, null, "遊船後・視體力短暫散步", "flexible"),
-      title: "道頓堀夜間散步 → 回新今宮",
-      descriptionHtml: "遊船結束後視體力散步戎橋、格力高跑跑人與道頓堀商圈，再返回新今宮住宿。",
-      primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null,
-      highlights: [], actions: []
-    }
-  ];
-  d4.endingTransportId = "tr-d4-return-hotel";
+    notices: [
+      {
+        id: "notice-d4-mountain",
+        position: "beforeTimeline",
+        style: "warning",
+        title: "🚕 山區行程：接駁仍是成敗關鍵",
+        contentHtml: "勝尾寺與箕面瀑布之間的交通要在出發前一週再核對阪急巴士與計程車。若接駁無法確認或塞車嚴重，<strong>勝尾寺優先、瀑布可縮短或取消</strong>；18:30 牛舌訂位不能被犧牲。"
+      },
+      {
+        id: "notice-d4-cruise",
+        position: "beforeEvent",
+        beforeEventId: "d4-cruise-ticket",
+        style: "info",
+        title: "🚤 遊船先換票，不賭吃完飯才排",
+        contentHtml: "關西樂享券的一本松海運道頓堀水上觀光船<strong>不接受樂享券預約，須視現場空位</strong>。回難波後先去太左衛門橋船著場掃 QR 換晚間班次，首選 20:30、備案 21:00。"
+      }
+    ],
+    events: [
+      {
+        id: "d4-katsuoji",
+        type: "visit",
+        schedule: schedule("09:00", "11:45", "09:00 - 11:45"),
+        title: "勝尾寺 (勝運達摩之寺)",
+        descriptionHtml: "滿山滿谷可愛的不倒翁達摩！求勝運、拍照打卡的絕佳避世景點。連假請早點出發，開門就到最舒服。",
+        primaryPlaceId: "katsuoji",
+        relatedPlaceIds: [],
+        flightId: null,
+        transportBeforeId: "tr-d4-katsuoji",
+        reservationId: null,
+        highlights: [],
+        actions: []
+      },
+      {
+        id: "d4-minoh-waterfall",
+        type: "visit",
+        schedule: schedule("12:30", "15:15", "12:30 - 15:15"),
+        title: "箕面大瀑布大自然踏青",
+        descriptionHtml: "在日本百選名瀑下享受森林負離子，沿著溪谷步道一路散步下山。小提醒：當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 很有趣，可以買來吃！",
+        primaryPlaceId: "minoh-waterfall",
+        relatedPlaceIds: [],
+        flightId: null,
+        transportBeforeId: "tr-d4-minoh-waterfall",
+        reservationId: null,
+        highlights: [],
+        actions: []
+      },
+      {
+        id: "d4-return-namba",
+        type: "logistics",
+        schedule: schedule("15:15", "17:30", "15:15 - 17:30 左右", "around"),
+        title: "箕面下山 → 回難波／道頓堀",
+        descriptionHtml: "從山區返回大阪南區。若比預期早到，可先休息、喝咖啡或逛街，再依時間前往道頓堀換取晚間遊船班次。",
+        primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-return-namba", reservationId: null,
+        highlights: [], actions: []
+      },
+      {
+        id: "d4-cruise-ticket",
+        type: "logistics",
+        schedule: schedule("17:45", "18:10", "17:45 - 18:10・先換晚間船班", "around"),
+        title: "太左衛門橋船著場｜先換道頓堀遊船班次",
+        descriptionHtml: "用關西樂享周遊券 QR Code 換當日登船券。首選 20:30，若額滿就選 21:00 或當日晚間其他可行班次；換好票再走去晚餐。",
+        primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-cruise-ticket", reservationId: null,
+        highlights: [{ id: "d4-cruise-pass-highlight", text: "🎫 樂享券 #3：道頓堀水上觀光船" }],
+        actions: [{ type: "statusLink", label: "🎫 樂享券設施資訊", url: "https://travelcontentsapp.com/en/attraction/osaka/dotonbori-river-cruise/", statusClass: "rsv-ticket" }]
+      },
+      {
+        id: "d4-gyutan-lemon",
+        type: "meal",
+        schedule: schedule("18:30", "19:45", "18:30 - 19:45 左右", "around"),
+        title: "新宿燒肉 牛舌的檸檬 大阪本店",
+        descriptionHtml: "<strong>已訂位 18:30</strong>。白天山區若延誤，所有彈性項目都讓位給這個訂位；若用餐時間拉長，遊船就改 21:00 班。",
+        primaryPlaceId: "gyutan-lemon-osaka", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-gyutan-lemon", reservationId: "rsv-gyutan-lemon",
+        highlights: [], actions: []
+      },
+      {
+        id: "d4-dotonbori-cruise",
+        type: "visit",
+        schedule: schedule(null, null, "20:30 首選／21:00 備案・約20分鐘", "flexible"),
+        title: "一本松海運 道頓堀水上觀光船",
+        descriptionHtml: "從河面看道頓堀霓虹與大阪南區夜景。官方班次一般到 21:00，每小時 00、30 分出航；樂享券旅客需依現場空位搭乘，至少提前 15 分鐘回乘船處。",
+        primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-dotonbori-cruise", reservationId: null,
+        highlights: [{ id: "d4-cruise-highlight", text: "🚤 道頓堀夜間水上巡遊" }], actions: []
+      },
+      {
+        id: "d4-dotonbori-walk",
+        type: "visit",
+        schedule: schedule(null, null, "遊船後・視體力短暫散步", "flexible"),
+        title: "道頓堀夜間散步 → 回新今宮",
+        descriptionHtml: "遊船結束後視體力散步戎橋、格力高跑跑人與道頓堀商圈，再返回新今宮住宿。",
+        primaryPlaceId: "dotonbori-river-cruise", relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null,
+        highlights: [], actions: []
+      }
+    ],
+    endingTransportId: "tr-d4-return-hotel"
+  });
 }
