@@ -1,4 +1,4 @@
-export function applyD7Plan(trip, { addJourney, schedule, day }) {
+export function applyD7Plan(trip, { addJourney, schedule, requireDay, requireEvent }) {
   addJourney(
     "tr-d7-collect-luggage",
     "心齋橋 → 新今宮領行李",
@@ -24,8 +24,7 @@ export function applyD7Plan(trip, { addJourney, schedule, day }) {
     "Outlet 只留約 1.5～2 小時，18:00 左右收尾；從りんくうタウン搭一站至関西空港，再步行前往 Aeroplaza 內的日航酒店。"
   );
 
-  const d7 = day("d7");
-  if (!d7) return;
+  const d7 = requireDay("d7");
 
   d7.title = "地道早市、心齋橋採買與臨空收尾";
   d7.badge = "木津 · 心齋橋 · 臨空城";
@@ -55,7 +54,7 @@ export function applyD7Plan(trip, { addJourney, schedule, day }) {
     "d7-jojoen",
     "d7-shinsaibashi-shopping"
   ];
-  const kept = keepIds.map(id => d7.events.find(event => event.id === id)).filter(Boolean);
+  const kept = keepIds.map(id => requireEvent(d7, id));
 
   d7.events = [
     ...kept,
