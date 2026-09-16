@@ -1,6 +1,6 @@
 export const core = {
   "schemaVersion": 3,
-  "contentVersion": "2.8.1",
+  "contentVersion": "2.9.0",
   "updatedAt": "2026-09-16",
   "meta": {
     "id": "kansai-2026",
