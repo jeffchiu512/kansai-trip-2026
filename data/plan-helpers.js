@@ -32,6 +32,58 @@ export function createPlanHelpers(trip) {
     };
   };
 
+  const fare = amount => ({
+    kind: "estimate",
+    amount,
+    currency: "JPY",
+    unit: "perPerson",
+    note: null,
+    displayLabel: `約 ¥${amount.toLocaleString("en-US")}／人`
+  });
+
+  const freeFare = () => ({ kind: "free", displayLabel: "免費" });
+
+  const walkStep = (label, from, to, displayMeta, noteHtml = null) => ({
+    mode: "walk",
+    icon: "🚶",
+    operator: null,
+    badges: [{ colorKey: "walk", label: "步行" }],
+    label,
+    from,
+    to,
+    direction: null,
+    duration: null,
+    displayMeta,
+    fare: freeFare(),
+    noteHtml,
+    warning: null
+  });
+
+  const trainStep = ({
+    label,
+    from,
+    to,
+    displayMeta,
+    amount,
+    badges,
+    noteHtml = null,
+    operator = null
+  }) => ({
+    mode: "train",
+    icon: "🚃",
+    operator,
+    badges,
+    label,
+    from,
+    to,
+    direction: null,
+    duration: null,
+    displayMeta,
+    fare: fare(amount),
+    noteHtml,
+    warning: null
+  });
+
   const schedule = (start, end, displayLabel, qualifier = "exact") => ({
     start,
     end,
@@ -39,5 +91,5 @@ export function createPlanHelpers(trip) {
     displayLabel
   });
 
-  return { setDay, addJourney, schedule };
+  return { setDay, addJourney, walkStep, trainStep, schedule };
 }
