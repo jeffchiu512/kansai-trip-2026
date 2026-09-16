@@ -10,7 +10,16 @@ export function createPlanHelpers(trip) {
     return value;
   };
 
-  const addJourney = (id, label, from, to, routeUrl, noteHtml, estimatedDurationMin = null) => {
+  const addJourney = (
+    id,
+    label,
+    from,
+    to,
+    routeUrl,
+    noteHtml,
+    estimatedDurationMin = null,
+    steps = []
+  ) => {
     trip.journeys[id] = {
       id,
       label,
@@ -19,7 +28,7 @@ export function createPlanHelpers(trip) {
       routeUrl,
       estimatedDurationMin,
       noteHtml,
-      steps: []
+      steps
     };
   };
 
