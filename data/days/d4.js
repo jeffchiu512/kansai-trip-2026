@@ -1,12 +1,4 @@
-export function applyD4Plan(trip, { addPlace, addJourney, schedule, setDay }) {
-  addPlace(
-    "dotonbori-river-cruise",
-    "一本松海運 道頓堀水上觀光船",
-    "Tazaemonbashi Pier Tombori River Cruise",
-    "大阪府大阪市中央区宗右衛門町 太左衛門橋船着場",
-    "とんぼりリバークルーズ"
-  );
-
+export function applyD4Plan(trip, { addJourney, schedule, setDay }) {
   addJourney(
     "tr-d4-return-namba",
     "箕面 → 難波／道頓堀",
@@ -91,12 +83,8 @@ export function applyD4Plan(trip, { addPlace, addJourney, schedule, setDay }) {
         title: "勝尾寺 (勝運達摩之寺)",
         descriptionHtml: "滿山滿谷可愛的不倒翁達摩！求勝運、拍照打卡的絕佳避世景點。連假請早點出發，開門就到最舒服。",
         primaryPlaceId: "katsuoji",
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: "tr-d4-katsuoji",
-        reservationId: null,
-        highlights: [],
-        actions: []
+        relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-katsuoji", reservationId: null,
+        highlights: [], actions: []
       },
       {
         id: "d4-minoh-waterfall",
@@ -105,12 +93,8 @@ export function applyD4Plan(trip, { addPlace, addJourney, schedule, setDay }) {
         title: "箕面大瀑布大自然踏青",
         descriptionHtml: "在日本百選名瀑下享受森林負離子，沿著溪谷步道一路散步下山。小提醒：當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 很有趣，可以買來吃！",
         primaryPlaceId: "minoh-waterfall",
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: "tr-d4-minoh-waterfall",
-        reservationId: null,
-        highlights: [],
-        actions: []
+        relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-minoh-waterfall", reservationId: null,
+        highlights: [], actions: []
       },
       {
         id: "d4-return-namba",
