@@ -1,0 +1,21 @@
+name: Transport audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "scripts/audit-transport.mjs"
+      - ".github/workflows/transport-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check active transport coverage
+        run: node scripts/audit-transport.mjs
