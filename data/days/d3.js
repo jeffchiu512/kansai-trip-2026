@@ -20,7 +20,7 @@ export const d3 = {
     "keyPoint": "十二段家 13:30・土井活鰻 17:00 到店"
   },
   "transportSummary": {
-    "displayText": "JR＋京阪電車；今日交通約 ¥1,880／人。"
+    "displayText": "JR＋京阪電車；今日交通約 ¥1,870／人。"
   },
   "notices": [
     {

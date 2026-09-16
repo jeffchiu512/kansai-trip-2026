@@ -208,11 +208,11 @@ export const journeys = {
         "displayMeta": "約16分・往「西九条・大阪」方面",
         "fare": {
           "kind": "estimate",
-          "amount": 990,
+          "amount": 960,
           "currency": "JPY",
           "unit": "perPerson",
           "note": "JR 通算",
-          "displayLabel": "JR 通算約 ¥990／人"
+          "displayLabel": "JR 通算約 ¥960／人"
         },
         "noteHtml": "⏰ 想 08:00 到稻荷，約 <strong>06:40</strong> 從住宿出門",
         "warning": null
@@ -419,7 +419,31 @@ export const journeys = {
     "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E5%85%AB%E5%9D%82%E7%A5%9E%E7%A4%BE&destination=%E5%8D%81%E4%BA%8C%E6%AE%B5%E5%AE%B6%20%E8%8A%B1%E8%A6%8B%E5%B0%8F%E8%B7%AF%E5%BA%97&travelmode=walking",
     "estimatedDurationMin": 10,
     "noteHtml": "八坂神社參拜後沿四条通往花見小路，13:30 前抵達；請先電話確認座位。",
-    "steps": []
+    "steps": [
+      {
+        "mode": "walk",
+        "icon": "🚶",
+        "operator": null,
+        "badges": [
+          {
+            "colorKey": "walk",
+            "label": "步行"
+          }
+        ],
+        "label": "八坂神社 → 十二段家 花見小路店",
+        "from": "八坂神社",
+        "to": "十二段家 花見小路店",
+        "direction": null,
+        "duration": null,
+        "displayMeta": "約5～10分",
+        "fare": {
+          "kind": "free",
+          "displayLabel": "免費"
+        },
+        "noteHtml": "沿四条通往花見小路方向步行，13:30 前抵達。",
+        "warning": null
+      }
+    ]
   },
   "tr-d3-doi-unagi": {
     "id": "tr-d3-doi-unagi",
@@ -435,7 +459,31 @@ export const journeys = {
     "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=%E8%8A%B1%E8%A6%8B%E5%B0%8F%E8%B7%AF&destination=%E5%9C%9F%E4%BA%95%E6%B4%BB%E9%B0%BB%20%E7%A5%87%E5%9C%92%E5%85%AB%E5%9D%82%E5%BA%97&travelmode=walking",
     "estimatedDurationMin": 10,
     "noteHtml": "16:40 左右從花見小路出發，17:00 開門即到。",
-    "steps": []
+    "steps": [
+      {
+        "mode": "walk",
+        "icon": "🚶",
+        "operator": null,
+        "badges": [
+          {
+            "colorKey": "walk",
+            "label": "步行"
+          }
+        ],
+        "label": "花見小路 → 土井活鰻 祇園八坂店",
+        "from": "花見小路",
+        "to": "土井活鰻 祇園八坂店",
+        "direction": null,
+        "duration": null,
+        "displayMeta": "約10分",
+        "fare": {
+          "kind": "free",
+          "displayLabel": "免費"
+        },
+        "noteHtml": "16:40 左右出發，17:00 開門即到。",
+        "warning": null
+      }
+    ]
   },
   "tr-d3-return-osaka": {
     "id": "tr-d3-return-osaka",
@@ -470,11 +518,11 @@ export const journeys = {
         "displayMeta": "約40分・往「淀屋橋」方面",
         "fare": {
           "kind": "estimate",
-          "amount": 430,
+          "amount": 480,
           "currency": "JPY",
           "unit": "perPerson",
           "note": null,
-          "displayLabel": "約 ¥430／人"
+          "displayLabel": "約 ¥480／人"
         },
         "noteHtml": "回程搭特急 OK（京橋有停），免加價",
         "warning": null
@@ -501,11 +549,11 @@ export const journeys = {
         "displayMeta": "約16分・往「鶴橋・天王寺」方面",
         "fare": {
           "kind": "estimate",
-          "amount": 230,
+          "amount": 200,
           "currency": "JPY",
           "unit": "perPerson",
           "note": null,
-          "displayLabel": "約 ¥230／人"
+          "displayLabel": "約 ¥200／人"
         },
         "noteHtml": null,
         "warning": null
@@ -962,7 +1010,31 @@ export const journeys = {
     "routeUrl": "https://www.google.com/maps/dir/?api=1&origin=Pok%C3%A9mon%20Center%20OSAKA%20DX&destination=%E6%95%98%E6%95%98%E8%8B%91%20%E5%A4%A7%E4%B8%B8%E5%BF%83%E9%BD%8B%E6%A9%8B%E5%BA%97&dir_action=navigate",
     "estimatedDurationMin": null,
     "noteHtml": "同棟移動：從本館 9F 寶可夢中心搭電梯至 10F；首選敘敘苑，備案青空blue。",
-    "steps": []
+    "steps": [
+      {
+        "mode": "walk",
+        "icon": "🚶",
+        "operator": null,
+        "badges": [
+          {
+            "colorKey": "walk",
+            "label": "步行"
+          }
+        ],
+        "label": "大丸心齋橋 本館9F → 10F",
+        "from": "Pokémon Center OSAKA DX",
+        "to": "敘敘苑 大丸心齋橋店",
+        "direction": null,
+        "duration": null,
+        "displayMeta": "館內電梯約3～5分",
+        "fare": {
+          "kind": "free",
+          "displayLabel": "免費"
+        },
+        "noteHtml": "同一棟本館移動，不需要出大樓；9F 寶可夢中心結帳後直接上 10F。",
+        "warning": null
+      }
+    ]
   },
   "tr-d8-kix-checkin": {
     "id": "tr-d8-kix-checkin",
@@ -989,7 +1061,7 @@ export const journeys = {
         "to": null,
         "direction": null,
         "duration": null,
-        "displayMeta": null,
+        "displayMeta": "05:30 起床・06:00 前離開飯店",
         "fare": null,
         "noteHtml": "樂桃國際線官方報到截止為起飛前50分鐘（07:00）；<span class=\"rs-warn\">本行程以06:50前完成為安全線</span>",
         "warning": null
@@ -1056,6 +1128,22 @@ export const journeys = {
     "routeUrl": null,
     "estimatedDurationMin": null,
     "noteHtml": "完成報到與安檢後，依航班螢幕確認登機門並預留步行時間。",
-    "steps": []
+    "steps": [
+      {
+        "mode": "procedure",
+        "icon": "✈️",
+        "operator": null,
+        "badges": [],
+        "label": "T2 安檢後 → MM023 登機門",
+        "from": "KIX Terminal 2",
+        "to": "MM023 Gate",
+        "direction": null,
+        "duration": null,
+        "displayMeta": "07:50 起飛・依航班螢幕確認 Gate",
+        "fare": null,
+        "noteHtml": "完成報到與安檢後留意航班螢幕與樂桃廣播，預留前往登機門的步行時間。",
+        "warning": null
+      }
+    ]
   }
 };
