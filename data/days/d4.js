@@ -1,4 +1,4 @@
-export function applyD4Plan(trip, { addPlace, addJourney, schedule, day }) {
+export function applyD4Plan(trip, { addPlace, addJourney, schedule, requireDay, requireEvent }) {
   addPlace(
     "dotonbori-river-cruise",
     "一本松海運 道頓堀水上觀光船",
@@ -48,8 +48,7 @@ export function applyD4Plan(trip, { addPlace, addJourney, schedule, day }) {
     "遊船後可在道頓堀短暫散步，再依體力返回新今宮住宿。"
   );
 
-  const d4 = day("d4");
-  if (!d4) return;
+  const d4 = requireDay("d4");
 
   d4.title = "勝尾寺、箕面自然與道頓堀夜遊";
   d4.badge = "箕面 · 達摩 · 道頓堀";
@@ -79,11 +78,11 @@ export function applyD4Plan(trip, { addPlace, addJourney, schedule, day }) {
     }
   ];
 
-  const katsuojiEvent = d4.events.find(event => event.id === "d4-katsuoji");
-  const waterfallEvent = d4.events.find(event => event.id === "d4-minoh-waterfall");
+  const katsuojiEvent = requireEvent(d4, "d4-katsuoji");
+  const waterfallEvent = requireEvent(d4, "d4-minoh-waterfall");
   d4.events = [
-    ...(katsuojiEvent ? [katsuojiEvent] : []),
-    ...(waterfallEvent ? [waterfallEvent] : []),
+    katsuojiEvent,
+    waterfallEvent,
     {
       id: "d4-return-namba",
       type: "logistics",
