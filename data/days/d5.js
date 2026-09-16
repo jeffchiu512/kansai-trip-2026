@@ -1,18 +1,4 @@
-export function applyD5Plan(trip, { addJourney, schedule, setDay, requireReservation }) {
-  const harukasReservation = requireReservation("rsv-harukas-300");
-  harukasReservation.eventId = "d5-harukas-300";
-  harukasReservation.periodLabel = "夜景";
-  harukasReservation.status = "recommended";
-  harukasReservation.method = "haveFunPass";
-  harukasReservation.displayName = "HARUKAS 300 展望台";
-  harukasReservation.summaryStatusLabel = "● 樂享券";
-  harukasReservation.note = "D5 晚上使用關西樂享周遊券；通常 09:00–22:00，最晚 21:30 入場，出發前再確認當日營業時間";
-  harukasReservation.action = {
-    label: "官方營業資訊",
-    url: "https://www.abenoharukas-300.jp/observatory/information.html"
-  };
-  harukasReservation.eventLabel = "🎫 樂享券 #2：HARUKAS 300";
-
+export function applyD5Plan(trip, { addJourney, schedule, setDay }) {
   addJourney(
     "tr-d5-harukas",
     "宇治 → 阿倍野／天王寺",
@@ -73,12 +59,8 @@ export function applyD5Plan(trip, { addJourney, schedule, setDay, requireReserva
         title: "奈良公園 & 東大寺",
         descriptionHtml: "買仙貝體驗與小鹿互動，參訪氣勢恢宏的東大寺大佛殿。加碼：<strong>中谷堂</strong> 看現搗麻糬表演、<strong>奈良町</strong> 古巷散步。",
         primaryPlaceId: "nara-park",
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: "tr-d5-nara-todaiji",
-        reservationId: null,
-        highlights: [{ id: "d5-nara-todaiji-highlight-1", text: "🍱 必吃：平宗柿葉壽司 / 中谷堂麻糬" }],
-        actions: []
+        relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d5-nara-todaiji", reservationId: null,
+        highlights: [{ id: "d5-nara-todaiji-highlight-1", text: "🍱 必吃：平宗柿葉壽司 / 中谷堂麻糬" }], actions: []
       },
       {
         id: "d5-uji",
@@ -87,12 +69,8 @@ export function applyD5Plan(trip, { addJourney, schedule, setDay, requireReserva
         title: "宇治散策 (平等院 & 宇治川)",
         descriptionHtml: "抵達宇治先到<strong>中村藤吉本店抽候位</strong>，再依叫號時間穿插平等院庭園與鳳翔館。鳳凰堂內部參觀因 2026 夏季減班，週末等待可能很長，只有遇到不影響 17:00 左右離開宇治的場次才參加。",
         primaryPlaceId: "byodoin",
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: "tr-d5-uji",
-        reservationId: "rsv-nakamura-tokichi",
-        highlights: [{ id: "d5-uji-highlight-1", text: "🍵 中村藤吉：16:00 前完成受付" }],
-        actions: []
+        relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d5-uji", reservationId: "rsv-nakamura-tokichi",
+        highlights: [{ id: "d5-uji-highlight-1", text: "🍵 中村藤吉：16:00 前完成受付" }], actions: []
       },
       {
         id: "d5-abeno-dinner",
@@ -101,12 +79,8 @@ export function applyD5Plan(trip, { addJourney, schedule, setDay, requireReserva
         title: "回大阪阿倍野｜彈性晚餐",
         descriptionHtml: "宇治結束後直接往天王寺／阿倍野。晚餐以不用久排、能在 19:40 左右結束為原則，替 HARUKAS 夜景留充裕時間。",
         primaryPlaceId: null,
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: "tr-d5-harukas",
-        reservationId: null,
-        highlights: [],
-        actions: []
+        relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d5-harukas", reservationId: null,
+        highlights: [], actions: []
       },
       {
         id: "d5-harukas-300",
@@ -115,10 +89,7 @@ export function applyD5Plan(trip, { addJourney, schedule, setDay, requireReserva
         title: "HARUKAS 300 阿倍野夜景",
         descriptionHtml: "使用關西樂享周遊券登上大阪高空夜景。一般營業 09:00–22:00、最晚 21:30 入場；本次排 20:00 左右上樓，不追夕陽，純看夜景更從容。2026/10/11 仍在名偵探柯南合作活動期間。",
         primaryPlaceId: "harukas-300",
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: null,
-        reservationId: "rsv-harukas-300",
+        relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: "rsv-harukas-300",
         highlights: [],
         actions: [
           {
