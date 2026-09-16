@@ -183,8 +183,7 @@ function reservationClass(status) {
 function renderReservationTag(reservation) {
   if (!reservation?.eventLabel) return "";
   const className = reservationClass(reservation.status);
-  const eventUsesActionLink = reservation.method === "tablecheck" || reservation.eventId === "d6-harukas-300";
-  if (reservation.action?.url && eventUsesActionLink) {
+  if (reservation.action?.url && reservation.method === "tablecheck") {
     return `<a href="${escapeAttr(reservation.action.url)}" target="_blank" rel="noopener noreferrer" class="rsv-tag ${className}">${escapeHtml(reservation.eventLabel)}</a>`;
   }
   return `<span class="rsv-tag ${className}">${escapeHtml(reservation.eventLabel)}</span>`;
@@ -259,7 +258,7 @@ function renderShoppingPage() {
   return `
     <section id="shopping-page" class="section-panel" aria-hidden="true">
       <div class="day-header-card">
-        <div class="day-title"><span>🛍️ 日本採買清單</span><span class="day-badge">D6 購買</span></div>
+        <div class="day-title"><span>🛍️ 日本採買清單</span><span class="day-badge">D7 優先</span></div>
         <div class="spot-desc" style="margin-top:6px;">點照片可放大給店員看；勾選與數量會自動保存在這台裝置。</div>
         <div class="shopping-summary" aria-label="購物進度">
           <span class="shopping-progress-track"><span class="shopping-progress-bar" id="shoppingProgressBar"></span></span>
@@ -296,7 +295,7 @@ function renderShoppingPage() {
       </div>
       <div class="tip-box info" style="margin-top:16px;">
         <div class="tip-title">🧾 採買順序</div>
-        D6 串炸後先到 <strong>SUGI 藥局通天閣店</strong>找齊三項；缺貨再到 MEGA 唐吉訶德新世界店。三項皆屬醫藥品，請依包裝說明使用；有慢性病、過敏、正在用藥或症狀持續時，先詢問藥師或醫師。
+        D7 心齋橋採買時優先處理清單；前幾天若順路看到也可先買。心齋橋未買齊的品項，再視臨空城實際店家補買。
       </div>
     </section>
   `;
@@ -347,6 +346,16 @@ function formatFlight(flight) {
   return `${dateLabel} ${flight.airlineDisplayName.replace("航空", "")} ${flight.flightNumber} (${departureTime} ${flight.departure.airportCode}${flight.departure.terminal ? ` ${flight.departure.terminal}` : ""} ➔ ${arrivalTime} ${flight.arrival.airportCode}${flight.arrival.terminal ? ` ${flight.arrival.terminal}` : ""})`;
 }
 
+function renderVersionInfo() {
+  const updatedLabel = String(trip.updatedAt || "").replaceAll("-", "/");
+  return `
+    <div aria-label="版本資訊" style="text-align:center; margin:24px 0 8px; color:#888; font-size:0.78rem; line-height:1.6;">
+      ${escapeHtml(trip.meta.title)} · v${escapeHtml(trip.contentVersion)}<br>
+      最後更新：${escapeHtml(updatedLabel)}
+    </div>
+  `;
+}
+
 function renderInfoPage() {
   return `
     <section id="info-page" class="section-panel" aria-hidden="true">
@@ -379,6 +388,7 @@ function renderInfoPage() {
           ${trip.externalLinks.map(link => `<a href="${escapeAttr(link.url)}" target="_blank" rel="noopener noreferrer" class="map-btn" style="padding:8px 12px; font-size:0.85rem;">${escapeHtml(link.label)}</a>`).join("")}
         </div>
       </div>
+      ${renderVersionInfo()}
     </section>
   `;
 }
