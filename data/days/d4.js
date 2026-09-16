@@ -110,7 +110,7 @@ export function applyD4Plan(trip, { addPlace, addJourney, schedule, day }) {
       title: "新宿燒肉 牛舌的檸檬 大阪本店",
       descriptionHtml: "<strong>已訂位 18:30</strong>。白天山區若延誤，所有彈性項目都讓位給這個訂位；若用餐時間拉長，遊船就改 21:00 班。",
       primaryPlaceId: "gyutan-lemon-osaka", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-gyutan-lemon", reservationId: "rsv-gyutan-lemon",
-      highlights: [{ id: "d4-gyutan-highlight", text: "🍋 已訂位：10/10（六）18:30" }], actions: []
+      highlights: [], actions: []
     },
     {
       id: "d4-dotonbori-cruise",
