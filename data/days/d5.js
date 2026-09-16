@@ -1,19 +1,17 @@
-export function applyD5Plan(trip, { addJourney, schedule, reservation, day }) {
-  const harukasReservation = reservation("rsv-harukas-300");
-  if (harukasReservation) {
-    harukasReservation.eventId = "d5-harukas-300";
-    harukasReservation.periodLabel = "夜景";
-    harukasReservation.status = "recommended";
-    harukasReservation.method = "haveFunPass";
-    harukasReservation.displayName = "HARUKAS 300 展望台";
-    harukasReservation.summaryStatusLabel = "● 樂享券";
-    harukasReservation.note = "D5 晚上使用關西樂享周遊券；通常 09:00–22:00，最晚 21:30 入場，出發前再確認當日營業時間";
-    harukasReservation.action = {
-      label: "官方營業資訊",
-      url: "https://www.abenoharukas-300.jp/observatory/information.html"
-    };
-    harukasReservation.eventLabel = "🎫 樂享券 #2：HARUKAS 300";
-  }
+export function applyD5Plan(trip, { addJourney, schedule, requireDay, requireEvent, requireReservation }) {
+  const harukasReservation = requireReservation("rsv-harukas-300");
+  harukasReservation.eventId = "d5-harukas-300";
+  harukasReservation.periodLabel = "夜景";
+  harukasReservation.status = "recommended";
+  harukasReservation.method = "haveFunPass";
+  harukasReservation.displayName = "HARUKAS 300 展望台";
+  harukasReservation.summaryStatusLabel = "● 樂享券";
+  harukasReservation.note = "D5 晚上使用關西樂享周遊券；通常 09:00–22:00，最晚 21:30 入場，出發前再確認當日營業時間";
+  harukasReservation.action = {
+    label: "官方營業資訊",
+    url: "https://www.abenoharukas-300.jp/observatory/information.html"
+  };
+  harukasReservation.eventLabel = "🎫 樂享券 #2：HARUKAS 300";
 
   addJourney(
     "tr-d5-harukas",
@@ -32,8 +30,7 @@ export function applyD5Plan(trip, { addJourney, schedule, reservation, day }) {
     "夜景結束後直接回住宿休息，為隔天 USJ 全天行程保留體力。"
   );
 
-  const d5 = day("d5");
-  if (!d5) return;
+  const d5 = requireDay("d5");
 
   d5.title = "奈良萌鹿、宇治抹茶與阿倍野夜景";
   d5.badge = "奈良 · 宇治 · HARUKAS";
@@ -63,17 +60,15 @@ export function applyD5Plan(trip, { addJourney, schedule, reservation, day }) {
     }
   ];
 
-  const naraEvent = d5.events.find(event => event.id === "d5-nara-todaiji");
-  const ujiEvent = d5.events.find(event => event.id === "d5-uji");
-  if (ujiEvent) {
-    ujiEvent.schedule = schedule("13:30", "17:00", "13:30 - 17:00 左右", "around");
-    ujiEvent.descriptionHtml = "抵達宇治先到<strong>中村藤吉本店抽候位</strong>，再依叫號時間穿插平等院庭園與鳳翔館。鳳凰堂內部參觀因 2026 夏季減班，週末等待可能很長，只有遇到不影響 17:00 左右離開宇治的場次才參加。";
-    ujiEvent.highlights = [{ id: "d5-uji-highlight-1", text: "🍵 中村藤吉：16:00 前完成受付" }];
-  }
+  const naraEvent = requireEvent(d5, "d5-nara-todaiji");
+  const ujiEvent = requireEvent(d5, "d5-uji");
+  ujiEvent.schedule = schedule("13:30", "17:00", "13:30 - 17:00 左右", "around");
+  ujiEvent.descriptionHtml = "抵達宇治先到<strong>中村藤吉本店抽候位</strong>，再依叫號時間穿插平等院庭園與鳳翔館。鳳凰堂內部參觀因 2026 夏季減班，週末等待可能很長，只有遇到不影響 17:00 左右離開宇治的場次才參加。";
+  ujiEvent.highlights = [{ id: "d5-uji-highlight-1", text: "🍵 中村藤吉：16:00 前完成受付" }];
 
   d5.events = [
-    ...(naraEvent ? [naraEvent] : []),
-    ...(ujiEvent ? [ujiEvent] : []),
+    naraEvent,
+    ujiEvent,
     {
       id: "d5-abeno-dinner",
       type: "meal",
