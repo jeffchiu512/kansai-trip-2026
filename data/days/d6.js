@@ -1,11 +1,25 @@
-export function applyD6Plan(trip, { addJourney, schedule, setDay }) {
+export function applyD6Plan(trip, { addJourney, walkStep, trainStep, schedule, setDay }) {
   addJourney(
     "tr-d6-usj",
     "新今宮住宿 → USJ",
     "Apartment Hotel 11 Shinimamiya 1",
     "Universal Studios Japan",
     "https://www.google.com/maps/dir/?api=1&origin=Apartment%20Hotel%2011%20Shinimamiya%201&destination=Universal%20Studios%20Japan&dir_action=navigate",
-    "以 JR 為主：新今宮 → 西九条 → JRゆめ咲線 → ユニバーサルシティ。10/12 正式開園時間公布後，反推抵達時間；建議比官方開園時間提早 60～90 分鐘到門口。"
+    "JR 新今宮から大阪環状線で西九条へ、JRゆめ咲線へ乗換えてユニバーサルシティへ。通常運賃は約 ¥200／人。",
+    35,
+    [
+      walkStep("住宿 → JR 新今宮駅", "Apartment Hotel 11 Shinimamiya 1", "JR 新今宮駅", "約2～5分"),
+      trainStep({
+        label: "新今宮 → 西九条 → ユニバーサルシティ",
+        from: "新今宮",
+        to: "ユニバーサルシティ",
+        displayMeta: "約20～22分・通常西九条轉1次",
+        amount: 200,
+        badges: [{ colorKey: "jr", label: "JR" }, { colorKey: "jro", label: "Ⓞ 大阪環状線＋ゆめ咲線" }],
+        noteHtml: "西九条で桜島方面の JRゆめ咲線へ。時間帯によっては直通列車もあるので、乗換案内に『ユニバーサルシティ直通』が出ればそのまま乗車。"
+      }),
+      walkStep("ユニバーサルシティ駅 → USJ 入場口", "ユニバーサルシティ駅", "USJ 入場口", "約5分", "開園時間確定後、公式開園の 60～90 分前にゲートへ着くよう逆算。")
+    ]
   );
   addJourney(
     "tr-d6-return-usj",
@@ -13,7 +27,21 @@ export function applyD6Plan(trip, { addJourney, schedule, setDay }) {
     "Universal Studios Japan",
     "Apartment Hotel 11 Shinimamiya 1",
     "https://www.google.com/maps/dir/?api=1&origin=Universal%20Studios%20Japan&destination=Apartment%20Hotel%2011%20Shinimamiya%201&dir_action=navigate",
-    "Halloween Horror Nights 結束後依當日閉園時間離園；回程仍以 JR ユニバーサルシティ → 西九条 → 新今宮為主。"
+    "回程も JR ユニバーサルシティ→西九条→新今宮が基本。通常運賃約 ¥200／人。閉園直後は駅が混むので余裕を持つ。",
+    35,
+    [
+      walkStep("USJ → ユニバーサルシティ駅", "USJ 入場口", "ユニバーサルシティ駅", "約5分", "Halloween Horror Nights 終了後は駅が混雑しやすい。"),
+      trainStep({
+        label: "ユニバーサルシティ → 西九条 → 新今宮",
+        from: "ユニバーサルシティ",
+        to: "新今宮",
+        displayMeta: "約20～25分・通常西九条轉1次",
+        amount: 200,
+        badges: [{ colorKey: "jr", label: "JR" }, { colorKey: "jro", label: "ゆめ咲線＋Ⓞ 大阪環状線" }],
+        noteHtml: "西九条で大阪環状線の天王寺方面へ。直通表示があれば乗換不要。"
+      }),
+      walkStep("JR 新今宮駅 → 住宿", "JR 新今宮駅", "Apartment Hotel 11 Shinimamiya 1", "約2～5分")
+    ]
   );
 
   setDay({
@@ -32,81 +60,43 @@ export function applyD6Plan(trip, { addJourney, schedule, setDay }) {
       keyPoint: "入園先處理任天堂世界／Biohazard e整理券，18:00後萬聖節"
     },
     transportSummary: {
-      displayText: "JR 新今宮 → 西九条 → ユニバーサルシティ；10/12 正式開閉園時間尚待官方公布，出發前再確認。"
+      displayText: "JR 新今宮⇄ユニバーサルシティ，通常在西九条轉乘；來回約 ¥400／人。"
     },
     notices: [
       {
-        id: "notice-d6-hours",
-        position: "beforeTimeline",
-        style: "warning",
-        title: "🎢 10/12 開閉園時間待官方公布",
+        id: "notice-d6-hours", position: "beforeTimeline", style: "warning", title: "🎢 10/12 開閉園時間待官方公布",
         contentHtml: "USJ 官方目前尚未公布 10/12 的正式營業時間，而且園區也提醒可能<strong>比公告開園時間提早開放入場</strong>。出發前一週再確認當日時間，原則上提前 60～90 分鐘抵達門口。"
       },
       {
-        id: "notice-d6-tickets",
-        position: "beforeEvent",
-        beforeEventId: "d6-usj-main",
-        style: "info",
-        title: "📱 入園第一件事：看官方 App",
+        id: "notice-d6-tickets", position: "beforeEvent", beforeEventId: "d6-usj-main", style: "info", title: "📱 入園第一件事：看官方 App",
         contentHtml: "確認 Klook 憑證是否含 SUPER NINTENDO WORLD 指定入場時段；若沒有，入園後立即在 USJ App 確認 Area Timed Entry Ticket。另『BIOHAZARD REQUIEM: The Dive』需要 <strong>e整理券</strong>，10:00 起開放體驗。"
       }
     ],
     events: [
       {
-        id: "d6-usj-arrival",
-        type: "logistics",
-        schedule: schedule(null, null, "依官方開園時間反推・提早60～90分抵達", "flexible"),
-        title: "新今宮出發 → USJ 提前排隊",
+        id: "d6-usj-arrival", type: "logistics", schedule: schedule(null, null, "依官方開園時間反推・提早60～90分抵達", "flexible"), title: "新今宮出發 → USJ 提前排隊",
         descriptionHtml: "全天行程集中在 USJ。依官方開園時間提早 60～90 分鐘抵達園區，入園後立即確認任天堂世界與各項整理券狀態。",
-        primaryPlaceId: "usj",
-        relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d6-usj", reservationId: null,
-        highlights: [], actions: []
+        primaryPlaceId: "usj", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d6-usj", reservationId: null, highlights: [], actions: []
       },
       {
-        id: "d6-usj-main",
-        type: "visit",
-        schedule: schedule(null, "17:30", "開園後 - 17:30・白天主力", "flexible"),
-        title: "USJ 白天｜SUPER NINTENDO WORLD＋主要設施",
+        id: "d6-usj-main", type: "visit", schedule: schedule(null, "17:30", "開園後 - 17:30・白天主力", "flexible"), title: "USJ 白天｜SUPER NINTENDO WORLD＋主要設施",
         descriptionHtml: "入園後先處理 SUPER NINTENDO WORLD 入場資格與需要的 e整理券，再依排隊時間玩任天堂世界、Power-Up Band 互動、哈利波特、小小兵、侏羅紀等想玩的設施。『BIOHAZARD REQUIEM: The Dive』10:00 起至閉園、需 e整理券，可同步處理。",
-        primaryPlaceId: "usj",
-        relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: "rsv-usj",
-        highlights: [
-          { id: "d6-usj-powerup-highlight", text: "🍄 能量手環：SUPER NINTENDO WORLD 優先" },
-          { id: "d6-usj-bio-highlight", text: "🧟 BIOHAZARD：需 e整理券" }
-        ],
+        primaryPlaceId: "usj", relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: "rsv-usj",
+        highlights: [{ id: "d6-usj-powerup-highlight", text: "🍄 能量手環：SUPER NINTENDO WORLD 優先" }, { id: "d6-usj-bio-highlight", text: "🧟 BIOHAZARD：需 e整理券" }],
         actions: [
-          {
-            type: "statusLink",
-            label: "📅 USJ 官方營業時間",
-            url: "https://www.usj.co.jp/web/zh/tw/park-guide/schedule/park-hour2",
-            statusClass: "rsv-must"
-          },
-          {
-            type: "statusLink",
-            label: "🧟 2026 Halloween Horror Nights",
-            url: "https://www.usj.co.jp/web/ja/jp/events/halloween-extreme-autumn-2026/halloween-horror-nights",
-            statusClass: "rsv-must"
-          }
+          { type: "statusLink", label: "📅 USJ 官方營業時間", url: "https://www.usj.co.jp/web/zh/tw/park-guide/schedule/park-hour2", statusClass: "rsv-must" },
+          { type: "statusLink", label: "🧟 2026 Halloween Horror Nights", url: "https://www.usj.co.jp/web/ja/jp/events/halloween-extreme-autumn-2026/halloween-horror-nights", statusClass: "rsv-must" }
         ]
       },
       {
-        id: "d6-usj-dinner",
-        type: "meal",
-        schedule: schedule("17:00", "18:00", "17:00 左右・提早吃晚餐／休息", "around"),
-        title: "園內提早晚餐＋休息",
+        id: "d6-usj-dinner", type: "meal", schedule: schedule("17:00", "18:00", "17:00 左右・提早吃晚餐／休息", "around"), title: "園內提早晚餐＋休息",
         descriptionHtml: "萬聖節夜間活動 18:00 起進入重點時段，建議 17:00 左右先吃晚餐、補水與休息，避免 18:00 後還在餐廳排隊。",
-        primaryPlaceId: "usj",
-        relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null,
-        highlights: [], actions: []
+        primaryPlaceId: "usj", relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null, highlights: [], actions: []
       },
       {
-        id: "d6-usj-halloween",
-        type: "visit",
-        schedule: schedule("18:00", null, "18:00 - 閉園・Halloween Horror Nights", "flexible"),
-        title: "Halloween Horror Nights｜Street Zombies＋Zombie de Dance",
+        id: "d6-usj-halloween", type: "visit", schedule: schedule("18:00", null, "18:00 - 閉園・Halloween Horror Nights", "flexible"), title: "Halloween Horror Nights｜Street Zombies＋Zombie de Dance",
         descriptionHtml: "2026 年 Street Zombies 與 Zombie de Dance 都是 18:00 起至閉園。晚上不提早離園，把一天最後的體力留給萬聖節氣氛；實際演出／設施狀態以當日官方 App 為準。",
-        primaryPlaceId: "usj",
-        relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null,
+        primaryPlaceId: "usj", relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null,
         highlights: [{ id: "d6-halloween-highlight", text: "🎃 18:00 後才是這天第二個主場" }], actions: []
       }
     ],
