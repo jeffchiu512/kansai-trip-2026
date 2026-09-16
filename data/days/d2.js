@@ -1,42 +1,4 @@
-export function applyD2Plan(trip, { addPlace, addJourney, schedule, reservation, setDay, requireReservation }) {
-  addPlace(
-    "osaka-castle-gozabune",
-    "大阪城御座船",
-    "Osaka Castle Gozabune",
-    "大阪府大阪市中央区大阪城2"
-  );
-  addPlace(
-    "lond-luce-shinsaibashi",
-    "Lond luce 心斎橋",
-    "Lond luce 心斎橋",
-    "大阪府大阪市中央区南船場3-8-14 ACN心斎橋Garden 7F",
-    "Lond luce 心斎橋"
-  );
-
-  const katsuhanaReservation = requireReservation("rsv-katsuhana");
-  katsuhanaReservation.status = "confirmed";
-  katsuhanaReservation.summaryStatusLabel = "● 已訂位";
-  katsuhanaReservation.note = "10/8（四）19:00 已確認；60分鐘制、每人一份定食、僅收現金";
-  katsuhanaReservation.eventLabel = "✅ 已訂位：10/8（四）19:00";
-
-  if (!reservation("rsv-lond-luce")) {
-    trip.reservations.push({
-      id: "rsv-lond-luce",
-      eventId: "d2-lond-luce",
-      periodLabel: "下午",
-      status: "confirmed",
-      method: "officialSite",
-      displayName: "Lond luce 心斎橋",
-      summaryStatusLabel: "● 已預約",
-      note: "10/8（四）16:30 染髮預約；平日營業至 23:00",
-      action: {
-        label: "店家資訊",
-        url: "https://www.lond.jp/salon/41/"
-      },
-      eventLabel: "✅ 已預約：10/8（四）16:30"
-    });
-  }
-
+export function applyD2Plan(trip, { addJourney, schedule, setDay }) {
   addJourney(
     "tr-d2-direct-city",
     "OMO 退房 → 新今宮住宿寄放行李",
