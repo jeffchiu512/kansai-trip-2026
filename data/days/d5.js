@@ -99,7 +99,7 @@ export function applyD5Plan(trip, { addJourney, schedule, reservation, day }) {
       flightId: null,
       transportBeforeId: null,
       reservationId: "rsv-harukas-300",
-      highlights: [{ id: "d5-harukas-pass-highlight", text: "🎫 樂享券 #2：HARUKAS 300" }],
+      highlights: [],
       actions: [
         {
           type: "statusLink",
