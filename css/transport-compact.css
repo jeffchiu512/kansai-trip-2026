@@ -1,0 +1,68 @@
+/* Compact transport presentation
+   Single-step journeys should answer only "how to get there" once.
+   Multi-step journeys keep the detailed transfer cards. */
+
+.inline-transport-card:has(.route-step:only-child) {
+    padding: 10px 12px;
+}
+
+.inline-transport-card:has(.route-step:only-child) .inline-transport-head {
+    margin-bottom: 2px;
+}
+
+.inline-transport-card:has(.route-step:only-child) .route-steps {
+    margin-top: 2px;
+}
+
+.inline-transport-card:has(.route-step:only-child) .route-step {
+    background: transparent;
+    border: 0;
+    padding: 2px 0 0;
+    align-items: center;
+}
+
+/* The journey header already shows the origin/destination, so don't repeat it. */
+.inline-transport-card:has(.route-step:only-child) .route-step strong {
+    display: none;
+}
+
+.inline-transport-card:has(.route-step:only-child) .rs-body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+}
+
+.inline-transport-card:has(.route-step:only-child) .rs-meta {
+    margin-left: 0;
+}
+
+.inline-transport-card:has(.route-step:only-child) .rs-note {
+    flex-basis: 100%;
+    margin-top: 2px;
+    line-height: 1.55;
+}
+
+/* If the single step already has its own useful note, hide the journey-level
+   paragraph to avoid saying the same thing a second time. */
+.inline-transport-card:has(.route-step:only-child .rs-note) > .rs-note {
+    display: none;
+}
+
+/* Multi-step cards are intentionally more detailed, but keep the overview
+   visually secondary so the actual transfer steps are easier to scan. */
+.inline-transport-card:has(.route-step:nth-child(2)) > .rs-note {
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px dashed #d3e0dc;
+}
+
+@media (max-width: 480px) {
+    .inline-transport-card:has(.route-step:only-child) .route-step {
+        gap: 6px;
+    }
+
+    .inline-transport-card:has(.route-step:only-child) .rs-mode {
+        font-size: 0.95rem;
+    }
+}
