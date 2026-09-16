@@ -2,6 +2,28 @@ export function createPlanHelpers(trip) {
   const day = id => trip.days.find(item => item.id === id);
   const reservation = id => trip.reservations.find(item => item.id === id);
 
+  const requireDay = id => {
+    const value = day(id);
+    if (!value) throw new Error(`[trip plan] Missing required day "${id}"`);
+    return value;
+  };
+
+  const requireEvent = (dayOrId, eventId) => {
+    const targetDay = typeof dayOrId === "string" ? requireDay(dayOrId) : dayOrId;
+    const value = targetDay?.events?.find(item => item.id === eventId);
+    if (!value) {
+      const dayId = targetDay?.id || String(dayOrId);
+      throw new Error(`[trip plan] Missing required event "${eventId}" in day "${dayId}"`);
+    }
+    return value;
+  };
+
+  const requireReservation = id => {
+    const value = reservation(id);
+    if (!value) throw new Error(`[trip plan] Missing required reservation "${id}"`);
+    return value;
+  };
+
   const addPlace = (id, name, query, address = null, nameLocal = null) => {
     trip.places[id] = {
       id,
@@ -33,5 +55,14 @@ export function createPlanHelpers(trip) {
     displayLabel
   });
 
-  return { day, reservation, addPlace, addJourney, schedule };
+  return {
+    day,
+    reservation,
+    requireDay,
+    requireEvent,
+    requireReservation,
+    addPlace,
+    addJourney,
+    schedule
+  };
 }
