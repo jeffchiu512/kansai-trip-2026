@@ -2,7 +2,7 @@ import { trip } from "../data/trip.js?v=10";
 
 // Runtime itinerary adjustments are applied before app.js validates and renders the trip.
 // The large base trip file remains stable; this bootstrap contains the latest confirmed plan.
-trip.contentVersion = "2.2.2";
+trip.contentVersion = "2.2.3";
 trip.updatedAt = "2026-09-16";
 
 const day = id => trip.days.find(item => item.id === id);
@@ -102,7 +102,7 @@ if (!reservation("rsv-lond-luce")) {
     method: "officialSite",
     displayName: "Lond luce 心斎橋",
     summaryStatusLabel: "● 已預約",
-    note: "10/8（四）16:30 旅伴染髮；平日營業至 23:00",
+    note: "10/8（四）16:30 染髮預約；平日營業至 23:00",
     action: {
       label: "店家資訊",
       url: "https://www.lond.jp/salon/41/"
@@ -165,15 +165,7 @@ addJourney(
   "Osaka Tenmangu Shrine",
   "Lond luce 心斎橋",
   "https://www.google.com/maps/dir/?api=1&origin=Osaka%20Tenmangu%20Shrine&destination=Lond%20luce%20%E5%BF%83%E6%96%8E%E6%A9%8B&dir_action=navigate",
-  "旅伴 16:30 已預約染髮；建議 16:20 前抵達。送達後可在心齋橋／南船場自由活動。"
-);
-addJourney(
-  "tr-d2-shinsaibashi-free",
-  "Lond luce 心斎橋 → 心齋橋／南船場",
-  "Lond luce 心斎橋",
-  "Shinsaibashi Station",
-  "https://www.google.com/maps/dir/?api=1&origin=Lond%20luce%20Shinsaibashi&destination=Shinsaibashi%20Station&dir_action=navigate",
-  "旅伴染髮期間可在附近咖啡、購物或看眼鏡，18:20 左右收尾，準備前往 KATSU華。"
+  "16:30 已預約染髮；建議 16:20 前抵達。"
 );
 addJourney(
   "tr-d2-katsuhana",
@@ -319,7 +311,7 @@ if (d2) {
       beforeEventId: "d2-lond-luce",
       style: "warning",
       title: "⏰ 下午與晚餐兩個硬時間點",
-      contentHtml: "<strong>16:30 Lond luce 心斎橋已預約旅伴染髮</strong>；送達後可在心齋橋／南船場自由活動。<strong>19:00 KATSU華已訂位</strong>，店家 60 分鐘制，建議 18:45 前抵達。"
+      contentHtml: "<strong>16:30 Lond luce 心斎橋染髮已預約</strong>；<strong>19:00 KATSU華已訂位</strong>，店家 60 分鐘制，建議 18:45 前抵達。"
     }
   ];
   d2.events = [
@@ -382,18 +374,9 @@ if (d2) {
       id: "d2-lond-luce",
       type: "reservation",
       schedule: schedule("16:30", null, "16:30 開始・結束依染髮時間", "around"),
-      title: "Lond luce 心斎橋｜旅伴染髮",
-      descriptionHtml: "<strong>16:30 已預約</strong>。建議 16:20 前抵達；旅伴染髮期間，你可留在心齋橋／南船場自由活動。染髮所需時間依當天項目與髮況為準。",
+      title: "Lond luce 心斎橋｜染髮",
+      descriptionHtml: "<strong>16:30 已預約</strong>。建議 16:20 前抵達；染髮所需時間依當天項目與髮況為準。",
       primaryPlaceId: "lond-luce-shinsaibashi", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d2-lond-luce", reservationId: "rsv-lond-luce",
-      highlights: [], actions: []
-    },
-    {
-      id: "d2-shinsaibashi-free",
-      type: "shopping",
-      schedule: schedule("16:30", "18:20", "16:30 - 18:20・自由活動"),
-      title: "你：心齋橋／南船場自由活動",
-      descriptionHtml: "旅伴染髮期間可自由安排咖啡、購物、休息或看眼鏡。18:20 左右收尾，預留移動與集合時間，18:45 前抵達 KATSU華。",
-      primaryPlaceId: "shinsaibashi-shopping", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d2-shinsaibashi-free", reservationId: null,
       highlights: [], actions: []
     },
     {
