@@ -1,4 +1,5 @@
 export function applySharedPlan(trip) {
+  const managedDayIds = new Set(["d2", "d4", "d5", "d6", "d7"]);
   const obsoleteReservations = new Set([
     "rsv-harbs",
     "rsv-toyotei",
@@ -6,6 +7,9 @@ export function applySharedPlan(trip) {
     "rsv-shinsekai-kushikatsu"
   ]);
 
+  // These days are rebuilt from their canonical data/days modules.
+  // Removing the legacy snapshots first prevents stale trip.js data from ever becoming a fallback.
+  trip.days = trip.days.filter(item => !managedDayIds.has(item.id));
   trip.reservations = trip.reservations.filter(item => !obsoleteReservations.has(item.id));
 
   trip.shopping.forEach(item => {
