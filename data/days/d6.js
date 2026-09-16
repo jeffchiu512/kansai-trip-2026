@@ -1,30 +1,4 @@
-export function applyD6Plan(trip, { addPlace, addJourney, schedule, reservation, setDay }) {
-  addPlace(
-    "usj",
-    "日本環球影城 Universal Studios Japan",
-    "Universal Studios Japan",
-    "大阪府大阪市此花区桜島2-1-33",
-    "ユニバーサル・スタジオ・ジャパン"
-  );
-
-  if (!reservation("rsv-usj")) {
-    trip.reservations.push({
-      id: "rsv-usj",
-      eventId: "d6-usj-main",
-      periodLabel: "全天",
-      status: "confirmed",
-      method: "klook",
-      displayName: "日本環球影城 1 日票＋能量手環",
-      summaryStatusLabel: "● 已購買",
-      note: "D6 10/12 使用；另含關西樂享周遊券 3 項設施。10 月正式開閉園時間公布後再確認到場時間。",
-      action: {
-        label: "USJ 官方營業時間",
-        url: "https://www.usj.co.jp/web/zh/tw/park-guide/schedule/park-hour2"
-      },
-      eventLabel: "✅ 已購買：USJ 1 日票＋能量手環"
-    });
-  }
-
+export function applyD6Plan(trip, { addJourney, schedule, setDay }) {
   addJourney(
     "tr-d6-usj",
     "新今宮住宿 → USJ",
@@ -85,12 +59,8 @@ export function applyD6Plan(trip, { addPlace, addJourney, schedule, reservation,
         title: "新今宮出發 → USJ 提前排隊",
         descriptionHtml: "全天行程集中在 USJ。依官方開園時間提早 60～90 分鐘抵達園區，入園後立即確認任天堂世界與各項整理券狀態。",
         primaryPlaceId: "usj",
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: "tr-d6-usj",
-        reservationId: null,
-        highlights: [],
-        actions: []
+        relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d6-usj", reservationId: null,
+        highlights: [], actions: []
       },
       {
         id: "d6-usj-main",
@@ -99,10 +69,7 @@ export function applyD6Plan(trip, { addPlace, addJourney, schedule, reservation,
         title: "USJ 白天｜SUPER NINTENDO WORLD＋主要設施",
         descriptionHtml: "入園後先處理 SUPER NINTENDO WORLD 入場資格與需要的 e整理券，再依排隊時間玩任天堂世界、Power-Up Band 互動、哈利波特、小小兵、侏羅紀等想玩的設施。『BIOHAZARD REQUIEM: The Dive』10:00 起至閉園、需 e整理券，可同步處理。",
         primaryPlaceId: "usj",
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: null,
-        reservationId: "rsv-usj",
+        relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: "rsv-usj",
         highlights: [
           { id: "d6-usj-powerup-highlight", text: "🍄 能量手環：SUPER NINTENDO WORLD 優先" },
           { id: "d6-usj-bio-highlight", text: "🧟 BIOHAZARD：需 e整理券" }
@@ -129,12 +96,8 @@ export function applyD6Plan(trip, { addPlace, addJourney, schedule, reservation,
         title: "園內提早晚餐＋休息",
         descriptionHtml: "萬聖節夜間活動 18:00 起進入重點時段，建議 17:00 左右先吃晚餐、補水與休息，避免 18:00 後還在餐廳排隊。",
         primaryPlaceId: "usj",
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: null,
-        reservationId: null,
-        highlights: [],
-        actions: []
+        relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null,
+        highlights: [], actions: []
       },
       {
         id: "d6-usj-halloween",
@@ -143,12 +106,8 @@ export function applyD6Plan(trip, { addPlace, addJourney, schedule, reservation,
         title: "Halloween Horror Nights｜Street Zombies＋Zombie de Dance",
         descriptionHtml: "2026 年 Street Zombies 與 Zombie de Dance 都是 18:00 起至閉園。晚上不提早離園，把一天最後的體力留給萬聖節氣氛；實際演出／設施狀態以當日官方 App 為準。",
         primaryPlaceId: "usj",
-        relatedPlaceIds: [],
-        flightId: null,
-        transportBeforeId: null,
-        reservationId: null,
-        highlights: [{ id: "d6-halloween-highlight", text: "🎃 18:00 後才是這天第二個主場" }],
-        actions: []
+        relatedPlaceIds: [], flightId: null, transportBeforeId: null, reservationId: null,
+        highlights: [{ id: "d6-halloween-highlight", text: "🎃 18:00 後才是這天第二個主場" }], actions: []
       }
     ],
     endingTransportId: "tr-d6-return-usj"
