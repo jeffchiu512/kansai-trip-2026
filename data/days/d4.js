@@ -1,5 +1,23 @@
 export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, setDay }) {
   addJourney(
+    "tr-d4-minoh-waterfall",
+    "勝尾寺 → 箕面大瀑布",
+    "Katsuoji Temple",
+    "Minoh Waterfall",
+    "https://www.google.com/maps/dir/?api=1&origin=Katsuoji%20Temple&destination=Minoh%20Waterfall&travelmode=walking",
+    "勝尾寺から箕面大瀑布までは山道を徒歩移動。箕面市観光協会のモデルコースでは勝尾寺→箕面大滝を徒歩約40分としているため、休憩や写真撮影も考えて45分前後みておく。",
+    45,
+    [
+      walkStep(
+        "勝尾寺 → 箕面大瀑布",
+        "勝尾寺",
+        "箕面大瀑布",
+        "約40～45分・山道",
+        "箕面市観光協会モデルコースでは徒歩約40分。三連休で人が多い場合や路面状況を考え、余裕を持って移動する。"
+      )
+    ]
+  );
+  addJourney(
     "tr-d4-return-namba",
     "箕面 → 難波／道頓堀",
     "Minoh Waterfall",
@@ -98,12 +116,12 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
       keyPoint: "18:30 牛舌已訂位／晚餐前先換遊船班次"
     },
     transportSummary: {
-      displayText: "Metro＋阪急＋巴士約 ¥2,040／人；勝尾寺→瀑布另抓計程車約 ¥2,500～3,500／車。"
+      displayText: "Metro＋阪急＋巴士約 ¥2,040／人；勝尾寺→箕面大瀑布採步行，約40～45分。"
     },
     notices: [
       {
-        id: "notice-d4-mountain", position: "beforeTimeline", style: "warning", title: "🚕 山區行程：接駁仍是成敗關鍵",
-        contentHtml: "勝尾寺與箕面瀑布之間的交通要在出發前一週再核對阪急巴士與計程車。若接駁無法確認或塞車嚴重，<strong>勝尾寺優先、瀑布可縮短或取消</strong>；18:30 牛舌訂位不能被犧牲。"
+        id: "notice-d4-mountain", position: "beforeTimeline", style: "warning", title: "🥾 山區行程：勝尾寺 → 箕面大瀑布步行",
+        contentHtml: "勝尾寺參拜後直接步行前往箕面大瀑布。箕面市觀光協會的模型行程標示<strong>徒歩約40分</strong>；本行程抓約40～45分並預留少量緩衝。當天請穿適合山路的鞋，若下雨或路況不佳則現場再調整。"
       },
       {
         id: "notice-d4-cruise", position: "beforeEvent", beforeEventId: "d4-cruise-ticket", style: "info", title: "🚤 遊船先換票，不賭吃完飯才排",
@@ -118,7 +136,7 @@ export function applyD4Plan(trip, { addJourney, walkStep, trainStep, schedule, s
       },
       {
         id: "d4-minoh-waterfall", type: "visit", schedule: schedule("12:30", "15:15", "12:30 - 15:15"), title: "箕面大瀑布大自然踏青",
-        descriptionHtml: "在日本百選名瀑下享受森林負離子，沿著溪谷步道一路散步下山。小提醒：當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 很有趣，可以買來吃！",
+        descriptionHtml: "從勝尾寺步行約40～45分抵達箕面大瀑布，在日本百選名瀑下享受森林負離子；之後沿溪谷滝道一路散步下山。小提醒：當地名物 <strong>紅葉天婦羅（炸楓葉）</strong> 很有趣，可以買來吃！",
         primaryPlaceId: "minoh-waterfall", relatedPlaceIds: [], flightId: null, transportBeforeId: "tr-d4-minoh-waterfall", reservationId: null, highlights: [], actions: []
       },
       {
